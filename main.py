@@ -12,7 +12,7 @@ while broker:
         Terminal Menu - Subtitle generator
                    
 1. Download Video from YouTube.
-2. Create and insert Spanish to English subtitles from video.
+2. Create spanish transcription (.str file) of the selected video.
 3. More options
 0. closing the program. 
 """)
@@ -33,6 +33,8 @@ Enter the URL of the video to download: """)
 Enter the name of the video file: """)
 
         name = fh.extract_audio(name)
+
+        # If name = none it means fh.extract_audio had an exception
 
         if name != None:
 

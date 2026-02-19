@@ -35,7 +35,7 @@ def extract_audio(video_name):
 ], check = True, stdout = sys.stdout, stderr = sys.stderr) 
         
         print()
-        print(f"Audio successfully extracted: temp_{video_name}_audio.wav") # Confirmation
+        print(f"Audio successfully extracted: temp_{video_name}_audio.wav (press enter to continue)") # Confirmation
         input()
         
         return video_name
