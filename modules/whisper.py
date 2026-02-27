@@ -1,8 +1,8 @@
-import whisper as w
+import whisper_timestamped as w
 import os
 import torch
 
-# Generating Spanish subtitles of the temporal audio with Whisper
+# Generating Spanish subtitles of the temporal audio with Whisper5
 
 def generate_spanish_subtitles(audio_name):
 
@@ -40,19 +40,19 @@ def generate_spanish_subtitles(audio_name):
 
     try:
 
-        subtitles = model.transcribe(
+        subtitles = w.transcribe(model,
 
             f"temp_{audio_name}_audio.wav",
 
             language = "es",
             task = "transcribe",
             fp16 = True if device == "cuda" else False,
-            word_timestamps = True,
-            best_of = 5,
+            compute_word_confidence = True,
             no_speech_threshold = 0.1,
             compression_ratio_threshold = 1.8,
             condition_on_previous_text = True,
             initial_prompt="THE AUDIO STARTS RIGHT NOW. DO NOT SKIP THE SEGMENT",
+            vad = True
 
         )
 
@@ -83,7 +83,7 @@ def generate_spanish_subtitles(audio_name):
                     
                     # saves word in list
 
-                    words_list.append(info["word"])
+                    words_list.append(info["text"])
                     
                     if ((len(segment["words"]) - 1) > i):
 
@@ -103,7 +103,7 @@ def generate_spanish_subtitles(audio_name):
 
                     # If last word saves end time 
 
-                    if (len(words_list) == words_per_line) or (info["word"] == subtitles["segments"][-1]["words"][-1]["word"]) or (too_long):
+                    if (len(words_list) == words_per_line) or (info["text"] == subtitles["segments"][-1]["words"][-1]["text"]) or (too_long):
 
                         end = info["end"]
 
@@ -123,7 +123,7 @@ def generate_spanish_subtitles(audio_name):
                         # If time is alr, or in its the last line in the limit (lines_per_subtitle)
                         # It adds all the information in the file in .srt format
 
-                        if ((len(lines_list) - 1) == lines_per_subtitle) or ((end - lines_list[0]) > minumum_subtitles_time) or (too_long) or (info["word"] == subtitles["segments"][-1]["words"][-1]["word"]):
+                        if ((len(lines_list) - 1) == lines_per_subtitle) or ((end - lines_list[0]) > minumum_subtitles_time) or (too_long) or (info["text"] == subtitles["segments"][-1]["words"][-1]["text"]):
 
                             x = x + 1
                             ssf.write(f"{x}\n")
