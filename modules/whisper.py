@@ -2,6 +2,9 @@ import whisper_timestamped as w
 import os
 import torch
 
+# Global variable to make sure the model loads only the first time
+model = None
+
 # Generating Spanish subtitles of the temporal audio with Whisper5
 
 def generate_spanish_subtitles(audio_name):
@@ -15,7 +18,7 @@ def generate_spanish_subtitles(audio_name):
     if not (os.path.exists(f"temp_{audio_name}_audio.wav")):
 
         print()
-        print("Video not found")
+        print("Audio not found")
         input()
         
         return None
@@ -34,7 +37,9 @@ def generate_spanish_subtitles(audio_name):
 
     # Load small model 
 
-    model = w.load_model("small").to(device)
+    if model == None:
+
+        model = w.load_model("small").to(device)
 
     # Subtitle settings and running
 
@@ -163,14 +168,6 @@ def generate_spanish_subtitles(audio_name):
         if os.path.exists(f"temp_{audio_name}_audio.wav"):
            
             os.remove(f"temp_{audio_name}_audio.wav")
-
-        # Emptying VRAM space
-
-        del model
-
-        if device == "cuda":
-
-            torch.cuda.empty_cache()
 
 def srt_timelaps_format(x):
 
