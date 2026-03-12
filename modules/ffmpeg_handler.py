@@ -1,17 +1,17 @@
 import os
-import subprocess
+from subprocess import run as sr
 import sys
 
 # Extract audio of video - Input is name of the video in folder /video
 
 def extract_audio(video_name):
 
-    # verificando que el archivo existe
+    # Checking file existence
 
     if not (os.path.exists(f"videos/{video_name}.mp4")):
 
         print()
-        print("❌ Video not found")
+        print("❌ Video not found (press enter to continue)")
         input()
         
         return None
@@ -20,7 +20,7 @@ def extract_audio(video_name):
 
     # Runs "ffmpeg -i "video.mp4" -vn -ar 16000 -ac 1 "audio.wav" in CMD 
 
-        subprocess.run([
+        sr([
 
             "ffmpeg",
             "-i", f"videos/{video_name}.mp4",

@@ -1,4 +1,5 @@
-import whisper_timestamped as w
+from whisper_timestamped import transcribe as wt
+from whisper_timestamped import load_model as wld
 import os
 import torch
 
@@ -8,6 +9,8 @@ model = None
 # Generating Spanish subtitles of the temporal audio with Whisper5
 
 def generate_spanish_subtitles(audio_name):
+
+    global model
 
     words_per_line = 10 # Amount of words that there will be per line in a subtitle
     minumum_subtitles_time = 6 # The minimum amount of time a subtitle will span
@@ -39,13 +42,13 @@ def generate_spanish_subtitles(audio_name):
 
     if model == None:
 
-        model = w.load_model("small").to(device)
+        model = wld("small").to(device)
 
     # Subtitle settings and running
 
     try:
 
-        subtitles = w.transcribe(model,
+        subtitles = wt(model,
 
             f"temp_{audio_name}_audio.wav",
 

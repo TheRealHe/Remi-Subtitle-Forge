@@ -1,4 +1,4 @@
-import ctranslate2 as ct
+from ctranslate2 import Translator as ct
 from transformers import AutoTokenizer as at
 import torch
 import os
@@ -81,9 +81,9 @@ def srt_translation(srt_file_name):
 
     if model == None:
         
-        model = ct.Translator(
+        model = ct(
 
-        "cache/nllb-600M-ct2",
+        "Models/nllb-600M-ct2",
         device = device,
         compute_type = "int8"
 
@@ -99,7 +99,7 @@ def srt_translation(srt_file_name):
 
         for line in lines:
 
-            if (line[0].isdigit() == False) and (line != ""):
+            if (line[0].isdigit() == False) and (line != "\n"):
                 
                 try:
 
@@ -117,7 +117,7 @@ def srt_translation(srt_file_name):
 
             else:
 
-                if line == "":
+                if line == "\n":
 
                     translated_lines.append("\n")
 
@@ -137,7 +137,7 @@ def model_token_flow(text, final_lang):
 
     # Encode incoming text
 
-    tokens = tokenizer.tokenize(text)
+    tokens = tokenizer.convert_ids_to_tokens(tokenizer.encode(text))
     print(tokens)
 
     # Model translates tokens
@@ -148,20 +148,33 @@ def model_token_flow(text, final_lang):
 
         [tokens],
         target_prefix = [[final_lang]],
-        max_decoding_length = 10,
+        max_decoding_length = 250,
         repetition_penalty = 1.5,
         prefix_bias_beta = 0.5,
+        disable_unk = False,
     )
 
     print(translation[0])
+    print()
 
     # Saves the best translation tokens
 
-    translated_tokens = translation[0].hypotheses[0]
-    print(translated_tokens)
+    translated_tokens = translation[0].hypotheses[0][1:]
+
+    # Eliminate Unkowns "<unk>"
+
+    unk_number = translated_tokens.count("<unk>")
+
+    if unk_number > 0:
+
+        for x in range(unk_number):
+
+            translated_tokens.remove("<unk>")
 
     # Decode the tokens to actual text
 
-    translated_text = tokenizer.convert_tokens_to_string(translated_tokens)
+    translated_text = tokenizer.decode(tokenizer.convert_tokens_to_ids(translated_tokens))
+    print(translated_text)
+    print()
 
     return translated_text

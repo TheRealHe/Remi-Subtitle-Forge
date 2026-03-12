@@ -62,7 +62,9 @@ Enter the name of the video file: """)
 
         if name != None:
 
-            input(w.generate_spanish_subtitles(name))
+            w.generate_spanish_subtitles(name)
+            print()
+            input("Press enter to continue ")
 
     elif option == "3":
 
@@ -74,6 +76,7 @@ Enter the name of the video file: """)
 
         name = input("""
 Enter the name of the spanish .srt file to translate: """)
+        print()
         
         nt.srt_translation(name)
     

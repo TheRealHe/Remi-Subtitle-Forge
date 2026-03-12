@@ -1,4 +1,4 @@
-import yt_dlp as yd
+from yt_dlp import YoutubeDL as yd
 
 # This function download videos from Youtube. It uses the input url to download
 # and the input name to name the video file.
@@ -28,14 +28,14 @@ def download_youtube(url, name):
     
         # Creating downloader
 
-        with yd.YoutubeDL(settings) as downloader:
+        with yd(settings) as downloader:
         
             # Donwload the video
 
             downloader.download([url])
 
             print()
-            print(f"The Video ({name}) has been downloaded successfully")
+            print(f"The Video ({name}) has been downloaded successfully (press enter to continue)")
             input()
 
             return name
@@ -44,7 +44,7 @@ def download_youtube(url, name):
 
         print()
         print(f"❌ Error: {type(ae).__name__}: {ae}")
-        input()
+        input("Press enter to continue ")
         
         return None
 

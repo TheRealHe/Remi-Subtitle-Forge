@@ -1,0 +1,414 @@
+1
+00:00:00,0 --> 00:00:07,200
+Todos quieren aprender a programar. Soñan con trabajar en tecnología,
+ganar un buen sueldo y hasta crear su propio videojuego
+
+2
+00:00:07,200 --> 00:00:16,39
+o aplicación. Pero hay un problema. La mayoría frascaza. Intentan
+aprender, pero terminan abandonando. Diciendo cosas como... Esto no es
+
+3
+00:00:16,39 --> 00:00:22,920
+para mí. Se necesita hacer un genio para programar. O
+peor. No tengo talento para esto. Pero es realmente así.
+
+4
+00:00:23,179 --> 00:00:29,280
+Es que la programación es demasiado difícil. O hay algo
+que nadie te está diciendo. Hoy vamos a analizar por
+
+5
+00:00:29,280 --> 00:00:34,719
+qué la mayoría de las personas no aprenden a programar
+y lo peor. Puede que vos también estés cometiendo estos
+
+6
+00:00:34,719 --> 00:00:51,700
+errores sin darte cuenta. Bienvenidos al rincón de cap. Uno
+
+7
+00:00:51,700 --> 00:00:57,119
+de los mayores problemas es que la gente empieza con
+expectativas irreal. Creen que en un mes van a estar
+
+8
+00:00:57,119 --> 00:01:01,299
+creando la próxima aplicación viral. Y cuando se dan cuenta
+de que no pueden ni hacer que su primer hola
+
+9
+00:01:01,299 --> 00:01:07,780
+mundo o compilé, entran en pánico. ¿Por qué mi código
+no funciona? La búsqueda más popular en la historia de
+
+10
+00:01:07,780 --> 00:01:15,840
+la programación. Bienvenido al infierno. El problema es que la
+gente subestima lo que realmente significa programar. Creen que es
+
+11
+00:01:15,840 --> 00:01:19,900
+solo escribir líneas de código y hacer que todo funciona
+a la primera. Pero la realidad es que en el
+
+12
+00:01:19,900 --> 00:01:26,0
+90% del tiempo estás arreglando errores buscando un stack overflow.
+Y probando hasta que por fin algo funciona. Programar no
+
+13
+00:01:26,0 --> 00:01:32,400
+es solo escribir código. Es arreglar mil errores que tu
+código te devuelve. Es básicamente pelear contra una máquina que
+
+14
+00:01:32,400 --> 00:01:37,680
+sigue de órdenes. Pero por alguna razón sigue sin hacer
+lo que querés. Así que si pensabas que en dos
+
+15
+00:01:37,680 --> 00:01:45,480
+semanas ibas a estar programando el próximo GTA, déjame decirte
+que estás equivocado. La programación no es difícil, pero sí
+
+16
+00:01:45,480 --> 00:01:51,480
+es completamente distinta a lo que la mayoría se imagina.
+Y por eso muchos abandonan la primera obstáculo. ¿Seguro escuchaste
+
+17
+00:01:51,480 --> 00:01:57,159
+esto mil veces? Para programar hay que ser un genio
+matemático. O si no sos bueno en lógica, no vas
+
+18
+00:01:57,159 --> 00:02:03,99
+a poder. Hay que nacer con talento para esto. Bueno,
+déjame decirte algo. Todo eso es una mentira. Si programar
+
+19
+00:02:03,99 --> 00:02:10,680
+fuera un talento con el que naces, no existirían miles
+de cursos, tutoriales y universidades enseñando a programar. No se
+
+20
+00:02:10,680 --> 00:02:17,759
+necesita talento, se necesita práctica y paciencia. El problema es
+que la gente vea los programadores como genios con una
+
+21
+00:02:17,759 --> 00:02:25,439
+mente brillante. Pero la realidad es que la mayoría empezó
+igual que vos, sin entender nada. Frustrándose con errores tontos
+
+22
+00:02:25,439 --> 00:02:30,819
+y sintiéndose inútil al principio. No importa cuántos lenguajes de
+programación aprendas, siempre habrá un momento donde mires tu propio
+
+23
+00:02:30,819 --> 00:02:38,900
+código y pienses... ¿Quién escribió este desastre? ¿Te hagas un
+spoiler? Fuiste vos. La clave para aprender a programar no
+
+24
+00:02:38,900 --> 00:02:45,379
+es ser inteligente, es ser constante. Los mejores programadores no
+son los que tienen más talento, sino los que no
+
+25
+00:02:45,379 --> 00:02:49,759
+se rinden cuando algo no le sale. Porque la programación
+no se trata de hacerlo todo perfecto desde el inicio,
+
+26
+00:02:51,39 --> 00:02:56,439
+sino de aprender a resolver problemas. Y si entendés esto,
+ya estás mucho más cerca de ser un verdadero programador.
+
+27
+00:02:56,520 --> 00:03:04,120
+¿Te suena familiar? ¿Estás programando? ¿Pensas que todo está perfecto?
+¿Apretas? ¿Ejecutar? ¿Tú programas funcionando? ¿Te aparece un error misterioso
+
+28
+00:03:04,120 --> 00:03:11,900
+en la terminal? Y lo peor de todo, no tenés
+idea qué significa. En este momento tenés dos opciones. Buscar
+
+29
+00:03:11,900 --> 00:03:17,979
+el error, aprender y seguir adelante, o rendirte y decir...
+Ah, esto no es para mí. Y tristemente, la mayoría
+
+30
+00:03:17,979 --> 00:03:23,159
+elige la segunda opción. Esto pasa porque nadie te avisa
+que programar es como aprender a andar en bicicleta. Pero
+
+31
+00:03:23,159 --> 00:03:27,659
+sin reditas y con piedras en el camino. Al principio
+te vas a caer mil veces. Pero solo los que
+
+32
+00:03:27,659 --> 00:03:35,939
+siguen intentando, terminan dominando lo. Aceptémoslo. La frustración en la
+programación es real. Vas a sentir que tu código te
+
+33
+00:03:35,939 --> 00:03:40,500
+odia, que la computadora está en tu contra. Y que
+si aparece otro error más, vas a tirar todo por
+
+34
+00:03:40,500 --> 00:03:47,460
+la ventana. Pero hay algo que los que abandonan no
+entienden. La frustración es parte del proceso. De hecho, es
+
+35
+00:03:47,460 --> 00:03:50,900
+lo que realmente te convierte en un programador. Porque cada
+vez que resolves un error, cada vez que buscas una
+
+36
+00:03:50,900 --> 00:03:57,20
+solución y la entiendés, estás evolucionando. Aprender a programar no
+es evitar la frustración, es aprender a superarla. Así que
+
+37
+00:03:57,20 --> 00:04:03,919
+la próxima vez que pienses en rendirte, porque tu código
+no funciona, recordad esto. La diferencia entre los que aprenden
+
+38
+00:04:03,919 --> 00:04:09,39
+y los que abandonan no es el talento. Es la
+capacidad de aguantar los golpes y seguir adelante. Bien, ya
+
+39
+00:04:09,39 --> 00:04:15,580
+superaste la frustración. Tenés la mentalidad correcta. Pero ahora te
+encontrás con otro problema gigante. El caos de información. Por
+
+40
+00:04:15,580 --> 00:04:20,939
+dónde empezar? ¿Qué lenguaje aprender? ¿Necesitas un título universitario o
+un curso de YouTube? Ya es suficiente. Demasiadas preguntas y
+
+41
+00:04:20,939 --> 00:04:29,220
+ninguna respuesta clara. Esto es lo que se llama parálisis
+por análisis. Hay tanta información, tantas opciones, que en vez
+
+42
+00:04:29,220 --> 00:04:32,680
+de avanzar, te quedás paralizado sin saber qué hacer. Y
+lo peor es que muchos caen en la trampa de
+
+43
+00:04:32,680 --> 00:04:40,959
+los tutoriales infinitos. Ven cursos, hacen ejercicios básicos, pero nunca
+aplican lo que aprenden. Y después de meses, siguen sin
+
+44
+00:04:40,959 --> 00:04:45,819
+saber programar de verdad. Porque hay algo que nadie te
+dice. Ver videos no te convierte en programador. Lo que
+
+45
+00:04:45,819 --> 00:04:50,579
+realmente te hace mejorar es escribir código, cometer errores y
+aprender de ellos. Si querés avanzar de verdad, deja de
+
+46
+00:04:50,579 --> 00:04:57,620
+acumular cursos y empecé a construir cosas. Un programador sin
+proyectos es como un chef que solo lee recetas, pero
+
+47
+00:04:57,620 --> 00:05:02,540
+nunca cocina. Elegí un lenguaje. Aprende lo básico y después
+aplicadlo en proyectos. No importa si es un minijuego, una
+
+48
+00:05:02,540 --> 00:05:08,800
+calculadora o una web simple. Hacer es la clave. Y
+si esperas saber todo antes de empezar, nunca vas a
+
+49
+00:05:08,800 --> 00:05:15,839
+empezar. Sí, así como lo escuchás. Te hicieron creer que
+aprender a programar es como seguir un manual de instrucciones.
+
+50
+00:05:15,319 --> 00:05:21,459
+Que con el curso correcto y los pasos adecuados, en
+unos meses vas a ser un programador experto y listo
+
+51
+00:05:21,459 --> 00:05:26,79
+para trabajar. Pero la realidad es muy diferente. Si fuera
+tan fácil, todo el mundo lo haría. Pero hay algo
+
+52
+00:05:26,79 --> 00:05:31,60
+que nunca te cuenta. Programar es difícil. Y se pone
+cada vez más difícil. Aprender lo básico es relativamente sencillo.
+
+53
+00:05:31,160 --> 00:05:38,79
+Variables, bucles, funciones. Todo parece ir bien. Pero luego entrasen
+un terreno donde todo empieza a romperse. Es ahí donde
+
+54
+00:05:38,79 --> 00:05:45,139
+muchos abandonan. Porque creen que si se les hace difícil
+es porque no tienen talento o no son buenos para
+
+55
+00:05:45,139 --> 00:05:51,899
+esto. Pero eso es una trampa mental. No existe eso
+de ser bueno o malo en programación. No existen los
+
+56
+00:05:51,899 --> 00:05:57,139
+que siguen adelante y los que se arreglan. Y lo
+más gracioso de todo es que no importa cuántos años
+
+57
+00:05:57,139 --> 00:06:04,339
+tengas programando. Siempre te vas a encontrar con problemas difíciles.
+Hasta los programadores más experimentados pasan horas buscando soluciones en
+
+58
+00:06:04,339 --> 00:06:12,579
+StarCoverFloor o preguntándole a ChargeGPT. La diferencia es que ellos
+ya aceptaron que esto es parte del proceso. Así que
+
+59
+00:06:12,579 --> 00:06:17,360
+si estás en ese punto donde sentís que todo está
+complicado, que los conceptos más avanzados no entran en tu
+
+60
+00:06:17,360 --> 00:06:23,740
+cabeza y querés dejar todo, felicitaciones. Lo más justo donde
+tenés que estar es ahí donde se separan los que
+
+61
+00:06:23,740 --> 00:06:28,959
+realmente aprenden de los que solo querían la salida fácil.
+Si llegaste hasta acá te ya te diste cuenta de
+
+62
+00:06:28,959 --> 00:06:33,480
+algo. Aprender a programar no es fácil. Pero tampoco es
+imposible. Ahora la pregunta es ¿Cómo se aprende de verdad?
+
+63
+00:06:33,480 --> 00:06:40,339
+Primero, dejate de excusas. No existe el no tengo talento,
+esto no es para mí o no sé por dónde
+
+64
+00:06:40,339 --> 00:06:47,639
+empezar. Si realmente querés aprender a programar tenés que hacer
+una cosa sin empezar. No importa con qué lenguaje. No
+
+65
+00:06:47,639 --> 00:06:55,680
+importa si tu primer código es horrible. Lo importante es
+escribir código. Segundo, hace proyectos propios. Basta del solo ver
+
+66
+00:06:55,680 --> 00:07:00,240
+tutoriales. Si querés aprender ponete un objetivo real. No sé,
+voy a hacer una web, voy a crear una app,
+
+67
+00:07:00,439 --> 00:07:05,579
+voy a crear un programa bot. Algo que te desafíe.
+No importa si al principio todo se rompe. Esa es
+
+68
+00:07:05,579 --> 00:07:10,699
+la idea. Tercero, aceptad que te vas a equivocar. Mucho.
+No hay programador en el mundo que no haya pasado
+
+69
+00:07:10,699 --> 00:07:15,759
+horas con un error tonto. La diferencia entre los que
+aprenden y los que no es simple. Los que aprenden
+
+70
+00:07:15,759 --> 00:07:23,259
+no se rinden. Rodiate de otros programadores. La programación es
+un camino solitario si lo hace solo. Unita comunidades, pregunta
+
+71
+00:07:23,259 --> 00:07:29,259
+en foros, busca ayuda cuando te trabes. No tenés que
+saberlo todo. Solo tenés que saber dónde encontrar las respuestas.
+
+72
+00:07:29,459 --> 00:07:34,399
+Al final del día, aprender a programar es una prueba
+de resistencia. Si pasas la frustración y se dice escribiendo
+
+73
+00:07:34,399 --> 00:07:41,180
+código, si te animas a resolver problemas reales, entonces te
+aseguro que vas a aprender. Aprender a programar no es
+
+74
+00:07:41,180 --> 00:07:46,980
+solo escribir código. Es aprender a pensar de otra manera.
+Es equivocarte, corregir, equivocarte de nuevo y seguir adelante. Tener
+
+75
+00:07:46,980 --> 00:07:52,720
+frustrarte con un bus durante horas y después de sentirte
+como un genio cuando lo resolves es el camino en
+
+76
+00:07:52,720 --> 00:07:58,449
+el que cada error te enseña algo nuevo. De cada
+línea que escribís es una prueba de que estás avanzando.
+
+77
+00:07:58,449 --> 00:08:01,980
+Pero lo más importante de todo no tenés que ser
+un genio para aprender a programar. No importa si empezaste
+
+78
+00:08:01,980 --> 00:08:08,339
+tarde, si no entendiste algo a la primera, si alguna
+vez pensaste a rendirte, lo que realmente importa es que
+
+79
+00:08:08,339 --> 00:08:13,240
+sigas adelante. Porque el código no se trata de quién
+es el más inteligente. Se trata de quién tiene la
+
+80
+00:08:13,240 --> 00:08:18,420
+paciencia y la disciplina para seguir escribiendo. Aunque todo parezca
+imposible. Al final del día, la única diferencia entre alguien
+
+81
+00:08:18,420 --> 00:08:22,879
+que aprendió a programar y alguien que no es que
+el primero nunca se rindió. Así que ahora dígame, vas
+
+82
+00:08:22,879 --> 00:08:28,959
+a seguir adelante. Déjame tu respuesta en los comentarios. Y
+si querés seguir aprendiendo sobre este mundo, te recomiendo este
+
+83
+00:08:28,959 --> 00:08:32,120
+vídeo que te va a cambiar la forma de ver
+la programación. Nos vemos. Hasta la próxima.
+

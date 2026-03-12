@@ -1,0 +1,414 @@
+1
+00:00:00,0 --> 00:00:07,200
+Everyone wants to learn how to program.
+earn a good salary and even create their own video game 
+
+2
+00:00:07,200 --> 00:00:16,39
+But there's a problem, most of it is frazzled.
+They learn, but they end up abandoning and saying things like...
+
+3
+00:00:16,39 --> 00:00:22,920
+It takes a genius to program.
+I'm not talented for this, but it really is.
+
+4
+00:00:23,179 --> 00:00:29,280
+It's just that programming is too complicated.
+Today we're going to analyze why.
+
+5
+00:00:29,280 --> 00:00:34,719
+That most people don't learn to program.
+The worst part is that you may be doing these too.
+
+6
+00:00:34,719 --> 00:00:51,700
+Mistakes unnoticed.Welcome to the corner of capitol.
+
+7
+00:00:51,700 --> 00:00:57,119
+One of the biggest problems is that people start with .
+We believe that in a month we will be there 
+
+8
+00:00:57,119 --> 00:01:01,299
+By creating the first viral app.
+that they can't even say their first hello 
+
+9
+00:01:01,299 --> 00:01:07,780
+The world is full, panicked.
+The most popular boosqueda in the history of 
+
+10
+00:01:07,780 --> 00:01:15,840
+Welcome to hell, the problem is that it's not.
+People underestimate what programming really means.
+
+11
+00:01:15,840 --> 00:01:19,900
+Write lines of code and make everything work.
+But the reality is that in 
+
+12
+00:01:19,900 --> 00:01:26,0
+90% del tiempo estás arreglando errores buscando un stack overflow.
+And proving until something finally works.
+
+13
+00:01:26,0 --> 00:01:32,400
+It's just writing code, and fixing a thousand mistakes that you can make.
+It's basically fighting against a machine that is going to kill you.
+
+14
+00:01:32,400 --> 00:01:37,680
+But for some reason it still hasn't been done.
+What if you thought it was a two-way street?
+
+15
+00:01:37,680 --> 00:01:45,480
+You're going to be programming the next GTA for weeks, let me tell you.
+Programming is not difficult, but it does.
+
+16
+00:01:45,480 --> 00:01:51,480
+It is completely different from what most people imagine.
+And that is why many abandon the first obstacle.
+
+17
+00:01:51,480 --> 00:01:57,159
+To program, you have to be a genius.
+Or if you're not good at logic, then no.
+
+18
+00:01:57,159 --> 00:02:03,99
+We must be born with a talent for this.
+Let me tell you something, all of that is a lie.
+
+19
+00:02:03,99 --> 00:02:10,680
+It's a talent that you are born with, not thousands of miles.
+courses, tutorials and universities teaching programming.
+
+20
+00:02:10,680 --> 00:02:17,759
+It takes talent, it needs practice and patience.
+that people see programmers as geniuses with one 
+
+21
+00:02:17,759 --> 00:02:25,439
+Brilliant mind, but the reality is that most of them are just starting out.
+Just like you, without understanding anything. Frustrating with stupid mistakes
+
+22
+00:02:25,439 --> 00:02:30,819
+No matter how many languages they speak, I'm not going to be able to do it.
+When you learn programming, there will always be a time when your own mind is focused.
+
+23
+00:02:30,819 --> 00:02:38,900
+Code and thoughts... who wrote this disaster?
+The key to learning programming is no.
+
+24
+00:02:38,900 --> 00:02:45,379
+The best programmers are not smart, they're constant.
+Those who have more talent, but those that don't.
+
+25
+00:02:45,379 --> 00:02:49,759
+They are reluctant when something doesn't sell.
+It's not about making everything perfect from the start, 
+
+26
+00:02:51,39 --> 00:02:56,439
+Instead of learning how to solve problems.
+It's a lot closer to being an actual programmer.
+
+27
+00:02:56,520 --> 00:03:04,120
+Do you sound familiar, are you programming or think everything is perfect?
+Are you performing? execute? are your programs working? a mysterious error appears.
+
+28
+00:03:04,120 --> 00:03:11,900
+And worst of all, no tennis.
+Right now, you have two options.
+
+29
+00:03:11,900 --> 00:03:17,979
+The mistake, learning and moving on or giving up... 
+Ah, this isn't for me. And sadly most of them are!
+
+30
+00:03:17,979 --> 00:03:23,159
+This happens because nobody warns you.
+Programming is like learning to ride a bicycle.
+
+31
+00:03:23,159 --> 00:03:27,659
+without reditas and with stones on the way.
+You're going to fall a thousand times, but only those who do.
+
+32
+00:03:27,659 --> 00:03:35,939
+They keep trying, they end up dominating it.
+The programming is real, and you'll feel like your coding.
+
+33
+00:03:35,939 --> 00:03:40,500
+I hate that the computer is against you.
+If another error appears, you'll pull everything out of it.
+
+34
+00:03:40,500 --> 00:03:47,460
+But there's something that those who leave don't.
+The frustration is part of the process.
+
+35
+00:03:47,460 --> 00:03:50,900
+What really makes you a programmer.
+that solves an error every time you look for one.
+
+36
+00:03:50,900 --> 00:03:57,20
+Solutions and understanding are evolving, learning how to program.
+Avoiding frustration is learning to overcome it.
+
+37
+00:03:57,20 --> 00:04:03,919
+The first time you think about giving up, because it's your turn.
+The difference between those who learn is 
+
+38
+00:04:03,919 --> 00:04:09,39
+It is not the talent that abandons them.
+The ability to withstand shocks and move on.
+
+39
+00:04:09,39 --> 00:04:15,580
+You overcame the frustration, you had a right mindset but now it's your turn.
+We are faced with another gigantic problem: the information chaos.
+
+40
+00:04:15,580 --> 00:04:20,939
+Where to start? What language do you learn? Do I need a college degree or Ph.D.?
+One YouTube course is enough.Too many questions and 
+
+41
+00:04:20,939 --> 00:04:29,220
+This is what's called paralysis.
+There's so much information, there are many choices that you can do it all at once.
+
+42
+00:04:29,220 --> 00:04:32,680
+To move forward, you become paralyzed without knowing what to do.
+The worst is that many fall into the trap of
+
+43
+00:04:32,680 --> 00:04:40,959
+They come to courses, they do basic exercises but never.
+They apply what they learn, and after months of studying it still goes on.
+
+44
+00:04:40,959 --> 00:04:45,819
+Knowing how to program really, because there's something that nobody knows.
+Watch videos and not become a programmer.
+
+45
+00:04:45,819 --> 00:04:50,579
+It really makes you better at writing code, making mistakes and doing so.
+If you really want to move forward, stop.
+
+46
+00:04:50,579 --> 00:04:57,620
+He accumulated courses and started building things.
+Projects is like a chef who only reads recipes, but 
+
+47
+00:04:57,620 --> 00:05:02,540
+Never cook, choose a language and learn the basics.
+It doesn't matter if it is a mini-game, one 
+
+48
+00:05:02,540 --> 00:05:08,800
+A calculator or a simple web.
+If you hope to know everything before starting, never go.
+
+49
+00:05:08,800 --> 00:05:15,839
+Yes, as you heard it.
+Learning to program is like following an instruction manual. 
+
+50
+00:05:15,319 --> 00:05:21,459
+That with the right course and appropriate steps, in 
+In a few months you will be an experienced and ready programmer.
+
+51
+00:05:21,459 --> 00:05:26,79
+But the reality is very different.
+It's so easy, everyone will do it.
+
+52
+00:05:26,79 --> 00:05:31,60
+Programming is hard, and it's easy.
+Learning the basics is relatively simple. 
+
+53
+00:05:31,160 --> 00:05:38,79
+Variables, loops and functions - everything seems to be going well.
+A terrain where everything begins to break apart.
+
+54
+00:05:38,79 --> 00:05:45,139
+Many give up because they think that if you make it harder for them to do so, then
+It's because they have no talent or are not good at it.
+
+55
+00:05:45,139 --> 00:05:51,899
+But this is a mental trap, there's no such thing.
+There is no such thing as being good or bad in programming.
+
+56
+00:05:51,899 --> 00:05:57,139
+Those who move forward and those that make up for it.
+The funniest thing about it is that no matter how many years you have,
+
+57
+00:05:57,139 --> 00:06:04,339
+You're always going to encounter difficult problems.
+Even the most experienced programmers spend hours searching for solutions.
+
+58
+00:06:04,339 --> 00:06:12,579
+StarCoverFloor or ChargeGPT, the difference is that they are
+They have already accepted that this is part of the process.
+
+59
+00:06:12,579 --> 00:06:17,360
+If you're at that point where it feels like everything is.
+complicated, that the most advanced concepts do not enter you 
+
+60
+00:06:17,360 --> 00:06:23,740
+I want to leave everything behind, congratulations.
+Because being there is where those who are separated from each other.
+
+61
+00:06:23,740 --> 00:06:28,959
+They really learn from those who just want the easy way out. 
+If you've gotten this far, then you realize that.
+
+62
+00:06:28,959 --> 00:06:33,480
+Learning how to program is not easy, but it's also not.
+Now the question is, how do we really learn?
+
+63
+00:06:33,480 --> 00:06:40,339
+First of all, let's not apologize.
+This is not for me or it's going to happen.
+
+64
+00:06:40,339 --> 00:06:47,639
+If you really want to learn how to program, this is what it takes.
+It doesn't matter what language you use.
+
+65
+00:06:47,639 --> 00:06:55,680
+It doesn't matter if your first code is horrible.
+Secondly, he makes his own projects.
+
+66
+00:06:55,680 --> 00:07:00,240
+Tutorials.If you want to learn, then there is a real goal.
+I'm going to make a website, create an app.
+
+67
+00:07:00,439 --> 00:07:05,579
+I'm going to create a bot program, something that challenges you.
+It doesn't matter if everything breaks down at first.
+
+68
+00:07:05,579 --> 00:07:10,699
+Third, accept that you will make a mistake.
+There is no programmer in the world who hasn't gone through 
+
+69
+00:07:10,699 --> 00:07:15,759
+The difference between the two is that 
+Those who learn and those that it is not easy.
+
+70
+00:07:15,759 --> 00:07:23,259
+Rodiate of other programmers.
+It's a lonely path if you do it alone.
+
+71
+00:07:23,259 --> 00:07:29,259
+In forums, seek help when you get stuck.
+You just have to know where you can find the answers.
+
+72
+00:07:29,459 --> 00:07:34,399
+At the end of the day, learning to program is a test.
+If you go through the frustration and say, "Writing".
+
+73
+00:07:34,399 --> 00:07:41,180
+So, if you are passionate about solving real problems then do not.
+I'm sure you will learn.
+
+74
+00:07:41,180 --> 00:07:46,980
+It's just learning to think differently.
+Escarte, correct and make mistakes again to move forward.
+
+75
+00:07:46,980 --> 00:07:52,720
+frustrate you with a bus for hours and after feeling sick.
+As a genius when he solves it is the way in 
+
+76
+00:07:52,720 --> 00:07:58,449
+That every mistake teaches you something new.
+The line I've written is proof that it has progressed.
+
+77
+00:07:58,449 --> 00:08:01,980
+But the most important thing of all is that it doesn't have to be.
+A genius for learning to program, it doesn't matter if you start.
+
+78
+00:08:01,980 --> 00:08:08,339
+Late, if you didn't understand something at first.
+Once you think about giving up, what really matters is that 
+
+79
+00:08:08,339 --> 00:08:13,240
+Keep going, because the code isn't about who.
+He is the smartest man, it's about who has his money.
+
+80
+00:08:13,240 --> 00:08:18,420
+Patience and discipline to continue writing.
+At the end of a day, there's only one difference between someone.
+
+81
+00:08:18,420 --> 00:08:22,879
+I learned to program with someone who wasn't.
+The first one never gives up.
+
+82
+00:08:22,879 --> 00:08:28,959
+Leave your answer in the comments.
+If you want to continue learning about this world, I highly recommend it.
+
+83
+00:08:28,959 --> 00:08:32,120
+A video that will change the way you see things.
+See you on the next one. 
+
