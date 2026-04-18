@@ -268,6 +268,70 @@ def gpu_detecter():
         print(f"This system is {system}. The program is just available for windows atm")
         print()
 
+def check_app(app):
+
+    try:
+        
+        print(f"{app} Check")
+        
+        check = subprocess.run(
+            
+        [f"{app}", "-version"], 
+        capture_output = True, 
+        text = True, 
+        timeout = 5
+        ) 
+        
+        if check.returncode == 0:
+            
+            print(f"{app} already installed")
+            print((check.stdout.split('\n'))[0])
+            print()
+        
+    except FileNotFoundError:
+
+        install_app(app)
+
+    except Exception as ae:
+        
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        print("Press Enter to exit...")
+        input()
+
+def install_app(app):
+        
+    print(f"{app} not installed")
+    print()
+        
+    # Installing app with winget
+        
+    print(f"Installing {app}")
+    print()
+        
+    try:
+        
+        app = subprocess.run(
+            
+            ["winget", "install", f"{app}"],
+            capture_output = True,
+            text = True,
+            timeout = 300,
+        )
+            
+        if app.returncode == 0:
+                
+            print(f"{app} installed successfully")
+                
+            check_app(app)
+
+    except Exception as ae:
+        
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        print("Press Enter to exit...")
+        input()
+
 print()
 print("Starting Installer...")
 print()
@@ -388,82 +452,7 @@ else:
     
 # Checks if ffmpeg is already installed
     
-try:
-    
-    print("FFmpeg Check")
-    
-    check = subprocess.run(
-        
-    ["ffmpeg", "-version"], 
-    capture_output = True, 
-    text = True, 
-    timeout = 5
-    ) 
-    
-    if check.returncode == 0:
-        
-        print("FFmpeg already installed")
-        print((check.stdout.split('\n'))[0])
-        print()
-    
-except FileNotFoundError:
-    
-    print("FFmpeg not installed")
-    print()
-    
-    # Installing ffmpeg with winget
-    
-    print("Installing FFmpeg")
-    print()
-    
-    try:
-    
-        ffmpeg = subprocess.run(
-        
-            ["winget", "install", "ffmpeg"],
-            capture_output = True,
-            text = True,
-            timeout = 300,
-        )
-        
-        if ffmpeg.returncode == 0:
-            
-            print("ffmpeg installed successfully")
-            
-            check = subprocess.run(
-        
-                ["ffmpeg", "-version"], 
-                capture_output = True, 
-                text = True, 
-                timeout = 5
-                
-                )
-    
-            if "ffmpeg version" in check.stdout:
-        
-                print((check.stdout.split('\n'))[0])
-                print()
-            
-        else:
-            
-            error = ffmpeg.stdout[:300] if ffmpeg.stdout else "unknown error"
-            
-            print(f"ffmpeg could not be installed. Error: {error}...")
-            print()
-        
-    except Exception as ae:
-        
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-    
-except Exception as ae:
-    
-    print()
-    print(f"❌ Error: {type(ae).__name__}: {ae}")
-    print("Press Enter to exit...")
-    input()
+check_app("ffmpeg")
     
 # yt-dlp check
 

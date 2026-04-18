@@ -19,7 +19,10 @@ while broker:
                    
 1. Download Video from YouTube.
 2. Create spanish transcription (.str file) of the selected video.
-3. Translate Spanish transcription (.str file) to English 
+3. Translate Spanish transcription (.str file) to English
+4. Burn the translated subtitle into de original video
+5. Delete specified subtitles (.srt files) and input video
+6. More options...  
 0. closing the program. 
 """)
     
@@ -54,7 +57,7 @@ Enter the URL of the video to download: """)
             w_check = False
 
         name = input("""
-Enter the name of the video file: """)
+Enter the name of the video file (wihout extension): """)
 
         name = fh.extract_audio(name)
 
@@ -79,7 +82,37 @@ Enter the name of the spanish .srt file to translate: """)
         print()
         
         nt.srt_translation(name)
+
+    # Burns the specified subtitles into the input video
+
+    elif option == "4":
+
+        name = input("""
+Enter the name of the video file (wihout extension): """)
+        
+        if (fh_check == True):
+
+            from modules import ffmpeg_handler as fh
+
+            fh_check = False
+
+        fh.burn_subtitles(name)
     
+    # Deletes the process files from the algorithm workflow
+
+    elif option == "5":
+
+        name = input("""
+Enter the name of the files to delete (wihout extension): """)
+        
+        if (fh_check == True):
+
+            from modules import ffmpeg_handler as fh
+
+            fh_check = False
+        
+        fh.post_process_delete(name)
+
     elif option == "0":
 
         broker = False
@@ -87,5 +120,5 @@ Enter the name of the spanish .srt file to translate: """)
     else:
 
         print("")
-        print("Enter a correct value (0-2)")
+        print("Enter a correct value (0-6)")
         input()
