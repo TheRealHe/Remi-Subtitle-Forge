@@ -1,414 +1,282 @@
 1
-00:00:00,0 --> 00:00:07,200
-Everyone wants to learn how to program.
-earn a good salary and even create their own video game 
+00:00:00,0 --> 00:00:06,120
+You want to know if you can help me or not?
 
 2
-00:00:07,200 --> 00:00:16,39
-But there's a problem, most of it is frazzled.
-They learn, but they end up abandoning and saying things like...
+00:00:06,120 --> 00:00:16,620
+Are you stealing this car?
+Do you think I'm stealing it, fool?
 
 3
-00:00:16,39 --> 00:00:22,920
-It takes a genius to program.
-I'm not talented for this, but it really is.
+00:00:16,620 --> 00:00:22,640
+Because of my color, if a white estuary is in me.
+Surely you would give him a good Samaritan's trophy, huh? 
 
 4
-00:00:23,179 --> 00:00:29,280
-It's just that programming is too complicated.
-Today we're going to analyze why.
+00:00:22,760 --> 00:00:28,399
+You'd think he was paying for the lights his owner left behind.
+Hey, could I have your documents please? 
 
 5
-00:00:29,280 --> 00:00:34,719
-That most people don't learn to program.
-The worst part is that you may be doing these too.
+00:00:28,699 --> 00:00:38,380
+I'm not going to teach you anything, cop.
+Hey, buddy! this is my car.
 
 6
-00:00:34,719 --> 00:00:51,700
-Mistakes unnoticed.Welcome to the corner of capitol.
+00:00:38,380 --> 00:00:46,719
+He did nothing wrong.Now, according to me, you owe me 
+I'm sorry, what did you call me?
 
 7
-00:00:51,700 --> 00:00:57,119
-One of the biggest problems is that people start with .
-We believe that in a month we will be there 
+00:00:46,719 --> 00:00:53,859
+We have nothing to talk about, unless you want to tell me.
+You are hanging yourself alone, my friend.
 
 8
-00:00:57,119 --> 00:01:01,299
-By creating the first viral app.
-that they can't even say their first hello 
+00:00:53,859 --> 00:01:01,539
+You are very careful what you say.
+What am I going to say now, huh?
 
 9
-00:01:01,299 --> 00:01:07,780
-The world is full, panicked.
-The most popular boosqueda in the history of 
+00:01:01,539 --> 00:01:11,290
+You're under arrest, no I am not.
 
 10
-00:01:07,780 --> 00:01:15,840
-Welcome to hell, the problem is that it's not.
-People underestimate what programming really means.
+00:01:11,450 --> 00:01:18,209
+Yes, I will arrest you and detain a citizen.
+He was arrested for a prepotent detention.
 
 11
-00:01:15,840 --> 00:01:19,900
-Write lines of code and make everything work.
-But the reality is that in 
+00:01:18,209 --> 00:01:24,49
+Over the car and give your wives.
+You warn me, you have the right to close that door.
 
 12
-00:01:19,900 --> 00:01:26,0
-90% del tiempo estÃ¡s arreglando errores buscando un stack overflow.
-And proving until something finally works.
+00:01:24,49 --> 00:01:30,129
+I want your hands in it.
+No me hagas adding resistance to the charges.
 
 13
-00:01:26,0 --> 00:01:32,400
-It's just writing code, and fixing a thousand mistakes that you can make.
-It's basically fighting against a machine that is going to kill you.
+00:01:30,409 --> 00:01:38,709
+Hey, be careful with the car. 
+Relax, this is police brutality.
 
 14
-00:01:32,400 --> 00:01:37,680
-But for some reason it still hasn't been done.
-What if you thought it was a two-way street?
+00:01:38,230 --> 00:01:45,409
+And all you're doing is making your problems worse. 
+This is a bunch of stupid things, I warn you.
 
 15
-00:01:37,680 --> 00:01:45,480
-You're going to be programming the next GTA for weeks, let me tell you.
-Programming is not difficult, but it does.
+00:01:46,650 --> 00:01:53,890
+There's a beehive behind you.
+You wouldn't believe I would fall for that, right?
 
 16
-00:01:45,480 --> 00:01:51,480
-It is completely different from what most people imagine.
-And that is why many abandon the first obstacle.
+00:01:53,890 --> 00:02:07,69
+I'm allergic to bees, and if they attack me then it will kill my life.
+Hinchado. Hey! Nora Luí, you won't be touching it! Quitano! There he is! 
 
 17
-00:01:51,480 --> 00:01:57,159
-To program, you have to be a genius.
-Or if you're not good at logic, then no.
+00:02:07,489 --> 00:02:17,710
+Wait. Are you hitting that gentleman? Oh, help! save me!
 
 18
-00:01:57,159 --> 00:02:03,99
-We must be born with a talent for this.
-Let me tell you something, all of that is a lie.
+00:02:17,710 --> 00:02:23,80
+My eyes, my eyebrows!
 
 19
-00:02:03,99 --> 00:02:10,680
-It's a talent that you are born with, not thousands of miles.
-courses, tutorials and universities teaching programming.
+00:02:23,80 --> 00:02:30,900
+What she's doing in a home video filmed.
 
 20
-00:02:10,680 --> 00:02:17,759
-It takes talent, it needs practice and patience.
-that people see programmers as geniuses with one 
+00:02:30,900 --> 00:02:37,139
+A few hours ago. then he is seen by the police officer,
+Jean-Rapha Dix, beating a man of color with his head fast.
 
 21
-00:02:17,759 --> 00:02:25,439
-Brilliant mind, but the reality is that most of them are just starting out.
-Just like you, without understanding anything. Frustrating with stupid mistakes
+00:02:37,139 --> 00:02:40,780
+colorful. how is that possible? the police no 
+He wants to reveal the victim's number, but we have this one.
 
 22
-00:02:25,439 --> 00:02:30,819
-No matter how many languages they speak, I'm not going to be able to do it.
-When you learn programming, there will always be a time when your own mind is focused.
+00:02:40,780 --> 00:02:54,370
+A photograph of the name taken after a blow with his face 
+His face was horribly swollen and wounded, a beehive.
 
 23
-00:02:30,819 --> 00:02:38,900
-Code and thoughts... who wrote this disaster?
-The key to learning programming is no.
+00:02:54,370 --> 00:03:00,590
+which was given to him by the official, Jean-Rapha of a suspect in
+The color, has unleashed a quick and furious response from the 
 
 24
-00:02:38,900 --> 00:02:45,379
-The best programmers are not smart, they're constant.
-Those who have more talent, but those that don't.
+00:03:00,590 --> 00:03:08,189
+This was stated by Detective Frank Macdon.
+that the Police Department and Court of Justice 
 
 25
-00:02:45,379 --> 00:02:49,759
-They are reluctant when something doesn't sell.
-It's not about making everything perfect from the start, 
+00:03:08,189 --> 00:03:14,310
+They are taking this matter very seriously.
+The citizens who please be patient and leave us 
 
 26
-00:02:51,39 --> 00:02:56,439
-Instead of learning how to solve problems.
-It's a lot closer to being an actual programmer.
+00:03:14,310 --> 00:03:21,210
+This is an isolated case.
+That's how it was, the productibles of sigles!
 
 27
-00:02:56,520 --> 00:03:04,120
-Do you sound familiar, are you programming or think everything is perfect?
-Are you performing? execute? are your programs working? a mysterious error appears.
+00:03:21,349 --> 00:03:34,280
+Look, Mr. Montgomery, this is the detective
+Macdon, Lt. Washington and the district attorney Robert 
 
 28
-00:03:04,120 --> 00:03:11,900
-And worst of all, no tennis.
-Right now, you have two options.
+00:03:34,280 --> 00:03:40,810
+Barton. Hello, how are you? lamame. it's already ponyed up. what am I dreaming about ?
 
 29
-00:03:11,900 --> 00:03:17,979
-The mistake, learning and moving on or giving up... 
-Ah, this isn't for me. And sadly most of them are!
+00:03:40,810 --> 00:03:48,750
+Didn't you show up on TV last night?
 
 30
-00:03:17,979 --> 00:03:23,159
-This happens because nobody warns you.
-Programming is like learning to ride a bicycle.
+00:03:48,750 --> 00:03:55,189
+What happened to his face, sir? 
+I was attacked by one of his crazy officers.
 
 31
-00:03:23,159 --> 00:03:27,659
-without reditas and with stones on the way.
-You're going to fall a thousand times, but only those who do.
+00:03:55,189 --> 00:04:00,789
+What happened to the swelling and los?
+It was just an allergy to bees.
 
 32
-00:03:27,659 --> 00:03:35,939
-They keep trying, they end up dominating it.
-The programming is real, and you'll feel like your coding.
+00:04:00,789 --> 00:04:09,789
+Excuse me? Do you mind if I feel sorry for them? Thank you. They ask him questions 
+A brother and they don't even offer him a chair.
 
 33
-00:03:35,939 --> 00:03:40,500
-I hate that the computer is against you.
-If another error appears, you'll pull everything out of it.
+00:04:10,430 --> 00:04:15,689
+And education where it remains.
+Against the car today and put me a huge stick 
 
 34
-00:03:40,500 --> 00:03:47,460
-But there's something that those who leave don't.
-The frustration is part of the process.
+00:04:15,750 --> 00:04:24,449
+In the neck, that psychopath you call police too.
+He allowed me to die and also permitted a monstrous bumblebee.
 
 35
-00:03:47,460 --> 00:03:50,900
-What really makes you a programmer.
-that solves an error every time you look for one.
+00:04:24,449 --> 00:04:30,769
+The panzón was dedicated to eating my face.
+Thinking that the beehive was actually hers, you know?
 
 36
-00:03:50,900 --> 00:03:57,20
-Solutions and understanding are evolving, learning how to program.
-Avoiding frustration is learning to overcome it.
+00:04:30,769 --> 00:04:37,730
+A species of attack bee, antifreeze, trained to hate a.
+But, you know what? That's the kind of 
 
 37
-00:03:57,20 --> 00:04:03,919
-The first time you think about giving up, because it's your turn.
-The difference between those who learn is 
+00:04:37,730 --> 00:04:46,310
+Things they will discover in the course of their lives.
+Investigation, so... it doesn't matter.Do you want to excuse us a moment? 
 
 38
-00:04:03,919 --> 00:04:09,39
-It is not the talent that abandons them.
-The ability to withstand shocks and move on.
+00:04:46,689 --> 00:04:55,750
+Thank you, this man cannot testify.
 
 39
-00:04:09,39 --> 00:04:15,580
-You overcame the frustration, you had a right mindset but now it's your turn.
-We are faced with another gigantic problem: the information chaos.
+00:04:55,750 --> 00:05:07,449
+Besides, she can't even... Oigan, who is that woman?
+Con cara de simio y faldita? is my father.
 
 40
-00:04:15,580 --> 00:04:20,939
-Where to start? What language do you learn? Do I need a college degree or Ph.D.?
-One YouTube course is enough.Too many questions and 
+00:05:07,889 --> 00:05:15,370
+What's wrong with this man?
+I'm going to cancel the audience, it is crazy. 
 
 41
-00:04:20,939 --> 00:04:29,220
-This is what's called paralysis.
-There's so much information, there are many choices that you can do it all at once.
+00:05:15,569 --> 00:05:21,569
+Wait a second, even if they don't appreciate the privileges and immunities.
+This city will not forget it.
 
 42
-00:04:29,220 --> 00:04:32,680
-To move forward, you become paralyzed without knowing what to do.
-The worst is that many fall into the trap of
+00:05:21,569 --> 00:05:33,560
+If you withdraw the charges, I guarantee that 
+Sir, do you have a stable job?
 
 43
-00:04:32,680 --> 00:04:40,959
-They come to courses, they do basic exercises but never.
-They apply what they learn, and after months of studying it still goes on.
+00:05:35,240 --> 00:05:41,300
+Yes, yes I work in the field of private security.
+That's until I go back to the academy.
 
 44
-00:04:40,959 --> 00:04:45,819
-Knowing how to program really, because there's something that nobody knows.
-Watch videos and not become a programmer.
+00:05:41,300 --> 00:05:46,379
+They should investigate them because it seems to me that they are.
+Mr. President, no, not at all; leaving aside the
 
 45
-00:04:45,819 --> 00:04:50,579
-It really makes you better at writing code, making mistakes and doing so.
-If you really want to move forward, stop.
+00:05:46,379 --> 00:05:54,540
+The official rafertibio attacked, yes or no?
+Sometimes you want me to say it?
 
 46
-00:04:50,579 --> 00:04:57,620
-He accumulated courses and started building things.
-Projects is like a chef who only reads recipes, but 
+00:05:54,540 --> 00:06:03,579
+The Los Angeles County Supreme Court ruled in favor of the city.
+Please take your seat.El State of California vs 
 
 47
-00:04:57,620 --> 00:05:02,540
-Never cook, choose a language and learn the basics.
-It doesn't matter if it is a mini-game, one 
+00:06:03,579 --> 00:06:09,879
+Henry Raferty, case number CB3459, is presided over by his señoría Marcia Ghilli. 
 
 48
-00:05:02,540 --> 00:05:08,800
-A calculator or a simple web.
-If you hope to know everything before starting, never go.
+00:06:12,689 --> 00:06:19,870
+Okay, the vejor has just appeared here.
+It's in the air.
 
 49
-00:05:08,800 --> 00:05:15,839
-Yes, as you heard it.
-Learning to program is like following an instruction manual. 
+00:06:19,870 --> 00:06:27,930
+The picture, but there it is.
 
 50
-00:05:15,319 --> 00:05:21,459
-That with the right course and appropriate steps, in 
-In a few months you will be an experienced and ready programmer.
+00:06:27,930 --> 00:06:33,790
+Now I'm pushing it with the tail of 
 
 51
-00:05:21,459 --> 00:05:26,79
-But the reality is very different.
-It's so easy, everyone will do it.
+00:06:33,790 --> 00:06:44,79
+It was very fast, not a good angle. 
+You mean, Mr. Montgomery that there was no vejor present?
 
 52
-00:05:26,79 --> 00:05:31,60
-Programming is hard, and it's easy.
-Learning the basics is relatively simple. 
+00:06:44,139 --> 00:06:53,319
+I didn't say that, there was one.
+It's a present, brother. Mmm-hmm. That and the birds in the air 
 
 53
-00:05:31,160 --> 00:05:38,79
-Variables, loops and functions - everything seems to be going well.
-A terrain where everything begins to break apart.
+00:06:53,319 --> 00:07:02,480
+There was even a squirrel, yes. 
+The shrubs are planted by eating a turtle.
 
 54
-00:05:38,79 --> 00:05:45,139
-Many give up because they think that if you make it harder for them to do so, then
-It's because they have no talent or are not good at it.
+00:07:02,480 --> 00:07:10,279
+They are dangerous, which is why I take care of them.
 
 55
-00:05:45,139 --> 00:05:51,899
-But this is a mental trap, there's no such thing.
-There is no such thing as being good or bad in programming.
+00:07:10,279 --> 00:07:18,19
+It's funny, Mr. Montgomery I am here seeking justice that man
+There is a man there who attacked me and tried to strangle me.
 
 56
-00:05:51,899 --> 00:05:57,139
-Those who move forward and those that make up for it.
-The funniest thing about it is that no matter how many years you have,
+00:07:18,199 --> 00:07:28,920
+I use excessive violence, and that was long before it happened.
+Or no legara, a panzón vejorro. I know of these things. 
 
 57
-00:05:57,139 --> 00:06:04,339
-You're always going to encounter difficult problems.
-Even the most experienced programmers spend hours searching for solutions.
+00:07:29,560 --> 00:07:36,579
+This is not the first time I have been arrested for a crime.
+MNAV, a black man in the driver's seat.
 
 58
-00:06:04,339 --> 00:06:12,579
-StarCoverFloor or ChargeGPT, the difference is that they are
-They have already accepted that this is part of the process.
+00:07:37,139 --> 00:07:52,889
+Let the accused put on his own skin.
+The jury found him guilty of the charges.
 
 59
-00:06:12,579 --> 00:06:17,360
-If you're at that point where it feels like everything is.
-complicated, that the most advanced concepts do not enter you 
-
-60
-00:06:17,360 --> 00:06:23,740
-I want to leave everything behind, congratulations.
-Because being there is where those who are separated from each other.
-
-61
-00:06:23,740 --> 00:06:28,959
-They really learn from those who just want the easy way out. 
-If you've gotten this far, then you realize that.
-
-62
-00:06:28,959 --> 00:06:33,480
-Learning how to program is not easy, but it's also not.
-Now the question is, how do we really learn?
-
-63
-00:06:33,480 --> 00:06:40,339
-First of all, let's not apologize.
-This is not for me or it's going to happen.
-
-64
-00:06:40,339 --> 00:06:47,639
-If you really want to learn how to program, this is what it takes.
-It doesn't matter what language you use.
-
-65
-00:06:47,639 --> 00:06:55,680
-It doesn't matter if your first code is horrible.
-Secondly, he makes his own projects.
-
-66
-00:06:55,680 --> 00:07:00,240
-Tutorials.If you want to learn, then there is a real goal.
-I'm going to make a website, create an app.
-
-67
-00:07:00,439 --> 00:07:05,579
-I'm going to create a bot program, something that challenges you.
-It doesn't matter if everything breaks down at first.
-
-68
-00:07:05,579 --> 00:07:10,699
-Third, accept that you will make a mistake.
-There is no programmer in the world who hasn't gone through 
-
-69
-00:07:10,699 --> 00:07:15,759
-The difference between the two is that 
-Those who learn and those that it is not easy.
-
-70
-00:07:15,759 --> 00:07:23,259
-Rodiate of other programmers.
-It's a lonely path if you do it alone.
-
-71
-00:07:23,259 --> 00:07:29,259
-In forums, seek help when you get stuck.
-You just have to know where you can find the answers.
-
-72
-00:07:29,459 --> 00:07:34,399
-At the end of the day, learning to program is a test.
-If you go through the frustration and say, "Writing".
-
-73
-00:07:34,399 --> 00:07:41,180
-So, if you are passionate about solving real problems then do not.
-I'm sure you will learn.
-
-74
-00:07:41,180 --> 00:07:46,980
-It's just learning to think differently.
-Escarte, correct and make mistakes again to move forward.
-
-75
-00:07:46,980 --> 00:07:52,720
-frustrate you with a bus for hours and after feeling sick.
-As a genius when he solves it is the way in 
-
-76
-00:07:52,720 --> 00:07:58,449
-That every mistake teaches you something new.
-The line I've written is proof that it has progressed.
-
-77
-00:07:58,449 --> 00:08:01,980
-But the most important thing of all is that it doesn't have to be.
-A genius for learning to program, it doesn't matter if you start.
-
-78
-00:08:01,980 --> 00:08:08,339
-Late, if you didn't understand something at first.
-Once you think about giving up, what really matters is that 
-
-79
-00:08:08,339 --> 00:08:13,240
-Keep going, because the code isn't about who.
-He is the smartest man, it's about who has his money.
-
-80
-00:08:13,240 --> 00:08:18,420
-Patience and discipline to continue writing.
-At the end of a day, there's only one difference between someone.
-
-81
-00:08:18,420 --> 00:08:22,879
-I learned to program with someone who wasn't.
-The first one never gives up.
-
-82
-00:08:22,879 --> 00:08:28,959
-Leave your answer in the comments.
-If you want to continue learning about this world, I highly recommend it.
-
-83
-00:08:28,959 --> 00:08:32,120
-A video that will change the way you see things.
-See you on the next one. 
+00:07:52,889 --> 00:07:55,350
+He was sentenced to serve six months in a state prison.
 

@@ -3,29 +3,15 @@
 # from modules import whisper as w
 # from modules import nllb_translator as nt
 
-fh_check = True
-yd_check = True
-w_check = True
-nt_check = True
+def options(option, name = 0):
 
-broker = True
+    broker = True
 
-# Setting up Menu
+    fh_check = True
+    yd_check = True
+    w_check = True
+    nt_check = True
 
-while broker:
-
-    option = input("""
-        Terminal Menu - Subtitle generator
-                   
-1. Download Video from YouTube.
-2. Create spanish transcription (.str file) of the selected video.
-3. Translate Spanish transcription (.str file) to English
-4. Burn the translated subtitle into de original video
-5. Delete specified subtitles (.srt files) and input video
-6. More options...  
-0. closing the program. 
-""")
-    
     if option == "1":
 
         if yd_check == True:
@@ -33,8 +19,9 @@ while broker:
             from modules import youtube_downloader as yd
 
             yd_check = False
-        
-        name = input("""
+        if name == 0:
+            
+            name = input("""
 Name the video file (without extention, just the name): """)
 
         url = input("""
@@ -56,7 +43,9 @@ Enter the URL of the video to download: """)
 
             w_check = False
 
-        name = input("""
+        if name == 0:
+
+            name = input("""
 Enter the name of the video file (wihout extension): """)
 
         name = fh.extract_audio(name)
@@ -66,8 +55,9 @@ Enter the name of the video file (wihout extension): """)
         if name != None:
 
             w.generate_spanish_subtitles(name)
+
             print()
-            input("Press enter to continue ")
+            print("Transcription Sucessfully")
 
     elif option == "3":
 
@@ -77,7 +67,9 @@ Enter the name of the video file (wihout extension): """)
 
             nt_check = False
 
-        name = input("""
+        if name == 0:
+
+            name = input("""
 Enter the name of the spanish .srt file to translate: """)
         print()
         
@@ -87,7 +79,9 @@ Enter the name of the spanish .srt file to translate: """)
 
     elif option == "4":
 
-        name = input("""
+        if name == 0:
+        
+            name = input("""
 Enter the name of the video file (wihout extension): """)
         
         if (fh_check == True):
@@ -102,7 +96,9 @@ Enter the name of the video file (wihout extension): """)
 
     elif option == "5":
 
-        name = input("""
+        if name == 0:
+
+            name = input("""
 Enter the name of the files to delete (wihout extension): """)
         
         if (fh_check == True):
@@ -122,3 +118,49 @@ Enter the name of the files to delete (wihout extension): """)
         print("")
         print("Enter a correct value (0-6)")
         input()
+    
+    return name, broker
+
+# ----------------------------------- The main code starts here -----------------------------------
+
+# Setting up Menu
+
+broker = True
+
+while broker:
+
+    option = input("""
+        Terminal Menu - Subtitle generator
+                   
+1. Download Video from YouTube.
+2. Create spanish transcription (.str file) of the selected video.
+3. Translate Spanish transcription (.str file) to English
+4. Burn the translated subtitle into de original video
+5. Delete specified subtitles (.srt files) and input video
+6. More options...  
+0. closing the program. 
+""")
+    
+    # If the input is a range (example: 2,4) it runs all the steps inside the range (inclusive)
+
+    if  option.count(",") == 1:
+
+        name = 0
+        ran = option.split(",")
+
+        for x in range(int(ran[0]), (int(ran[1]) + 1)):
+
+            name, broker = options(str(x), name)
+
+    # If the input is a specific number, the code runs that specific step
+
+    elif option.count(",") == 0: 
+
+        name, broker = options(option)
+    
+    # If the input has more than a comma (example: 2,3,4), explains the user that is not possible
+
+    else:
+
+        print()
+        input("You can write just one comma per request. Example: 2,4")

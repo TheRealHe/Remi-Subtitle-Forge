@@ -38,6 +38,7 @@ def srt_translation(srt_file_name):
 
         device = "cpu"
 
+        print()
         print("GPU not available, using CPU (slower)")
 
     # Loads tokenizer if needed
@@ -91,7 +92,7 @@ def srt_translation(srt_file_name):
 
     # Reading and translating lines from spanish .srt
 
-    with open(f"spanish_subtitles/{srt_file_name}.srt", "r") as spanish_subtitles:
+    with open(f"spanish_subtitles/{srt_file_name}.srt", "r", encoding="utf-8") as spanish_subtitles:
 
         lines = spanish_subtitles.readlines()
 
@@ -132,6 +133,8 @@ def srt_translation(srt_file_name):
         for translated_line in translated_lines:
 
             english_subtitles.write(f"{translated_line}")
+
+    return srt_file_name
 
 def model_token_flow(text, final_lang):
 

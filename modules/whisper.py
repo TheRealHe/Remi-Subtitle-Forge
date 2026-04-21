@@ -156,6 +156,8 @@ def generate_spanish_subtitles(audio_name):
 
                             lines_list = []
 
+        return audio_name
+
     except Exception as ae:
 
         print()

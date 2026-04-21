@@ -35,8 +35,7 @@ def extract_audio(video_name):
 ], check = True) 
         
         print()
-        print(f"Audio successfully extracted: temp_{video_name}_audio.wav (press enter to continue)") # Confirmation
-        input()
+        print(f"Audio successfully extracted: temp_{video_name}_audio.wav") # Confirmation
         
         return video_name
 
@@ -71,6 +70,8 @@ def burn_subtitles(subtitles):
         print()
         print("Burning sucessful")
 
+        return subtitles
+
     except Exception as ae:
             
         print()
@@ -88,6 +89,9 @@ def post_process_delete(name):
        os.remove(f"videos/{name}.mp4")
        os.remove(f"english_subtitles/{name}.srt")
        os.remove(f"spanish_subtitles/{name}.srt")
+
+       print()
+       print("Delete succesfully")
 
     except Exception as ae:
             

@@ -35,8 +35,7 @@ def download_youtube(url, name):
             downloader.download([url])
 
             print()
-            print(f"The Video ({name}) has been downloaded successfully (press enter to continue)")
-            input()
+            print(f"The Video ({name}) has been downloaded successfully")
 
             return name
 
