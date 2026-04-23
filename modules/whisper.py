@@ -54,10 +54,9 @@ def generate_spanish_subtitles(audio_name):
             task = "transcribe",
             fp16 = True if device == "cuda" else False,
             compute_word_confidence = True,
-            no_speech_threshold = 0.1,
-            compression_ratio_threshold = 1.8,
+            no_speech_threshold = 0.5,
+            compression_ratio_threshold = 2,
             condition_on_previous_text = True,
-            initial_prompt="THE AUDIO STARTS RIGHT NOW. DO NOT SKIP THE SEGMENT",
             vad = True
 
         )
