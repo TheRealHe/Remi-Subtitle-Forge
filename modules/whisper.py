@@ -12,8 +12,7 @@ def generate_spanish_subtitles(audio_name):
 
     global model
 
-    minumum_subtitles_time = 6 # The minimum amount of time a subtitle will span
-    maximum_subtitle_time = 10 # The maximum amount of time a subtitle will span
+    maximum_subtitle_time = 6 # The maximum amount of time a subtitle will span
     lines_per_subtitle = 2 # The amount of lines of text in the same subtitle
     # (and go to list_lines directly) if there is too much silence between them
 
@@ -71,13 +70,10 @@ def generate_spanish_subtitles(audio_name):
         with open(f"spanish_subtitles/{audio_name}.srt", "w", encoding = "utf-8") as ssf:
 
             lines_list = []
-            subtitle_start = 0
-            subtitle_end = 0
+            subtitle_start = []
+            subtitle_end = []
             x = 0
-            hours = 0
-            minutes = 0
-            seconds = 0
-            miliseconds = 0
+            subtitle_time = 0
 
             # For every segment of the subtitles
 
@@ -87,46 +83,22 @@ def generate_spanish_subtitles(audio_name):
 
                 lines_list.append(segment["text"][1:])
 
-                # Save the start time if it is the first line
+                # Saves times in lists in case max_check is False to acommodate the lines properly
 
-                if len(lines_list) == 1:
+                subtitle_end.append(segment["end"])
+                subtitle_start.append(segment["start"])
 
-                    subtitle_start = segment["start"]
+                subtitle_time = subtitle_end[-1] - subtitle_start[0]
 
                 # Write in .srt file if is the last line
 
-                elif len(lines_list) >= lines_per_subtitle:
+                if (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) < maximum_subtitle_time):
+                    
+                    lines_list, subtitle_start, subtitle_end, x = writting_on_srt_True(ssf, subtitle_start[0], subtitle_end[-1], lines_list, x) 
 
-                    subtitle_end = segment["end"]
+                elif (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) > maximum_subtitle_time):
 
-                    x = x + 1
-                    ssf.write(f"{x}\n")
-
-                    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start)
-                    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
-
-                    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_end) 
-                    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds}\n")
-
-                    # Write the lines
-
-                    print(lines_list)
-
-                    for line in lines_list:
-
-                        # If it is not the last line write just one space between lines
-
-                        if line != lines_list[-1]:
-
-                            ssf.write(f"{line}\n")
-
-                        else:
-                            
-                            # If it is the last line write two space between lines
-
-                            ssf.write(f"{line}\n\n")
-
-                    lines_list = []
+                    lines_list, subtitle_start, subtitle_end, x = writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle)
 
         return audio_name
 
@@ -136,7 +108,7 @@ def generate_spanish_subtitles(audio_name):
         print(f"❌ Error: {type(ae).__name__}: {ae}")
         input()
 
-        return None
+        #return None
 
     finally:
         
@@ -176,3 +148,94 @@ def srt_timelaps_format(x):
         seconds = f"0{seconds}"
 
     return hours, minutes, seconds, miliseconds
+
+def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle):
+
+    new_lines_list = []
+    subtitle_time = 11
+    n = lines_per_subtitle - 1
+
+    while subtitle_time > 10:
+
+        subtitle_time = subtitle_end[n] - subtitle_start[0]
+
+        if n == 0 and subtitle_time > 10:
+
+            subtitle_time = 0
+        
+        n = n - 1
+
+    x = x + 1
+    ssf.write(f"{x}\n")
+
+    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start[0])
+    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
+
+    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_end[n]) 
+    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds}\n")
+
+    print(lines_list)
+
+    # Write the lines
+
+    for i, line in enumerate(lines_list):
+
+        # If lines are inside the max time
+
+        if n > i:
+
+            ssf.write(f"{line}\n")
+
+        # If lines are outside max time
+
+        elif n < i:
+
+            new_lines_list.append(line)
+
+        else:
+                                
+        # If it is the last line inside the max time
+
+            ssf.write(f"{line}\n\n")
+
+        
+    subtitle_end = [subtitle_end[-1]]
+    subtitle_start = [subtitle_start[n + 1]]
+
+
+    return new_lines_list, subtitle_start, subtitle_end, x
+
+def writting_on_srt_True(ssf, subtitle_start, subtitle_end, lines_list, x):
+
+    x = x + 1
+    ssf.write(f"{x}\n")
+
+    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start)
+    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
+
+    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_end) 
+    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds}\n")
+
+    print(lines_list)
+
+    # Write the lines
+
+    for line in lines_list:
+
+        # If it is not the last line write just one space between lines
+
+        if line != lines_list[-1]:
+
+            ssf.write(f"{line}\n")
+
+        else:
+                                
+        # If it is the last line write two space between lines
+
+            ssf.write(f"{line}\n\n")
+
+    lines_list = []
+    subtitle_end = []
+    subtitle_start = []
+
+    return lines_list, subtitle_start, subtitle_end, x
