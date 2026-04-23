@@ -22,7 +22,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][[linkedin-url](https://www.linkedin.com/in/daandev/)]
+[![LinkedIn][linkedin-shield]][[linkedin-url]]
 
 
 
@@ -221,7 +221,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][[linkedin-url](https://www.linkedin.com/in/daandev/)]
+Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][[linkedin-url]]
 
 Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generator](https://github.com/TheRealHe/spanish_to_english_subtitles_generator)
 
@@ -266,4 +266,6 @@ Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generat
 [FFmpeg-url]: https://ffmpeg.org
 [yt-dlp]: https://img.shields.io/badge/yt--dlp-FF0000?style=for-the-badge&logo=youtube&logoColor=white
 [yt-dlp-url]: https://github.com/yt-dlp/yt-dlp
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
+[linkedin-url]: https://www.linkedin.com/in/daandev/
 
