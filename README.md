@@ -22,7 +22,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][[linkedin-url](https://www.linkedin.com/in/daandev/)]
 
 
 
@@ -140,11 +140,11 @@ The installer will:
 ## Usage
 
 After installation, run the main menu:
-
-python main.py (in terminal)
-
+```sh
+python main.py
+```
 You will see an interactive terminal menu:
-
+```sh
 --------------------------------------------------------------------------
                     Terminal Menu - Subtitle generator
 --------------------------------------------------------------------------                 
@@ -154,9 +154,11 @@ You will see an interactive terminal menu:
 4. Burn the translated subtitle into the original video
 5. Delete specified subtitles (.srt files) and input video
 6. More options...
+
 0. close the program. 
 --------------------------------------------------------------------------
 (It is possible to run a range of steps. For example: 2,4 will run steps: 2,3,4)
+```
 
 Typical workflow examples:
 
@@ -191,8 +193,6 @@ All generated files are stored in dedicated folders:
 
 See the open issues for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p><!-- CONTRIBUTING -->
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -211,12 +211,6 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### Top contributors:
-
-<a href="https://github.com/your_username/automatic_spanish_to_english_subtitles">
-  <img src="https://contrib.rocks/image?repo=othneildrew/Best-README-Template" alt="contrib.rocks image" />
-</a>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
@@ -224,17 +218,13 @@ Don't forget to give the project a star! Thanks again!
 
 Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 <!-- CONTACT -->
 ## Contact
 
-Daniel Rojas - hdrojas.sanin@gmail.com
+Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][[linkedin-url](https://www.linkedin.com/in/daandev/)]
 
 Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generator](https://github.com/TheRealHe/spanish_to_english_subtitles_generator)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 <!-- ACKNOWLEDGMENTS -->
