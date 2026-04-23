@@ -34,8 +34,8 @@ def extract_audio(video_name):
 
 ], check = True) 
         
-        print()
         print(f"Audio successfully extracted: temp_{video_name}_audio.wav") # Confirmation
+        print()
         
         return video_name
 

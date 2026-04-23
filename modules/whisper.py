@@ -12,10 +12,9 @@ def generate_spanish_subtitles(audio_name):
 
     global model
 
-    words_per_line = 10 # Amount of words that there will be per line in a subtitle
     minumum_subtitles_time = 6 # The minimum amount of time a subtitle will span
+    maximum_subtitle_time = 10 # The maximum amount of time a subtitle will span
     lines_per_subtitle = 2 # The amount of lines of text in the same subtitle
-    maximum_space_of_time_between_words = 2 # times in seconds for a word to skip the next word
     # (and go to list_lines directly) if there is too much silence between them
 
     if not (os.path.exists(f"temp_{audio_name}_audio.wav")):
@@ -64,97 +63,70 @@ def generate_spanish_subtitles(audio_name):
 
         )
 
+        print()
         print(subtitles)
 
         # Creates subtitles file and saves them as .str (ssf = spanish_subtitles_file)
 
-        with open(f"spanish_subtitles/{audio_name}.srt", "a", encoding = "utf-8") as ssf:
+        with open(f"spanish_subtitles/{audio_name}.srt", "w", encoding = "utf-8") as ssf:
 
-            words_list = []
             lines_list = []
-            start = 0
-            end = 0
+            subtitle_start = 0
+            subtitle_end = 0
             x = 0
             hours = 0
             minutes = 0
             seconds = 0
             miliseconds = 0
-            too_long = False
 
             # For every segment of the subtitles
 
             for segment in subtitles["segments"]:
                 
-                # For every word of each segment
+                # Get the line Spoken into lines_list
 
-                for i, info in enumerate(segment["words"]):
-                    
-                    # saves word in list
+                lines_list.append(segment["text"][1:])
 
-                    words_list.append(info["text"])
-                    
-                    if ((len(segment["words"]) - 1) > i):
+                # Save the start time if it is the first line
 
-                        if ( segment["words"][i + 1]["start"] - info["end"]) > maximum_space_of_time_between_words:
+                if len(lines_list) == 1:
 
-                            too_long = True
-                            
+                    subtitle_start = segment["start"]
+
+                # Write in .srt file if is the last line
+
+                elif len(lines_list) >= lines_per_subtitle:
+
+                    subtitle_end = segment["end"]
+
+                    x = x + 1
+                    ssf.write(f"{x}\n")
+
+                    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start)
+                    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
+
+                    hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_end) 
+                    ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds}\n")
+
+                    # Write the lines
+
+                    print(lines_list)
+
+                    for line in lines_list:
+
+                        # If it is not the last line write just one space between lines
+
+                        if line != lines_list[-1]:
+
+                            ssf.write(f"{line}\n")
+
                         else:
-
-                            too_long = False
-                    
-                    # If first word saves start time
-
-                    if len(words_list) == 1:
-
-                        start = info["start"]
-
-                    # If last word saves end time 
-
-                    if (len(words_list) == words_per_line) or (info["text"] == subtitles["segments"][-1]["words"][-1]["text"]) or (too_long):
-
-                        end = info["end"]
-
-                        # Saves start time for the first line
-
-                        if len(lines_list) == 0:
                             
-                            lines_list.append(start)
-                
-                        # Saves line
+                            # If it is the last line write two space between lines
 
-                        lines_list.append(words_list.copy())
-                        words_list = []
+                            ssf.write(f"{line}\n\n")
 
-                        print(f"{x+1}: {lines_list}")
-
-                        # If time is alr, or in its the last line in the limit (lines_per_subtitle)
-                        # It adds all the information in the file in .srt format
-
-                        if ((len(lines_list) - 1) == lines_per_subtitle) or ((end - lines_list[0]) > minumum_subtitles_time) or (too_long) or (info["text"] == subtitles["segments"][-1]["words"][-1]["text"]):
-
-                            x = x + 1
-                            ssf.write(f"{x}\n")
-                            
-                            hours, minutes, seconds, miliseconds = srt_timelaps_format(lines_list[0])
-                            ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
-
-                            hours, minutes, seconds, miliseconds = srt_timelaps_format(end) 
-                            ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds}\n")
-
-                            del lines_list[0]
-
-                            for line in lines_list:
-
-                                if line == lines_list[-1]:
-
-                                    ssf.write(f"{' '.join(line)}\n\n")
-
-                                else:
-
-                                    ssf.write(f"{' '.join(line)}\n")
-
-                            lines_list = []
+                    lines_list = []
 
         return audio_name
 

@@ -14,6 +14,9 @@ def options(option, name = 0):
 
     if option == "1":
 
+        print()
+        print("Loading...")
+
         if yd_check == True:
 
             from modules import youtube_downloader as yd
@@ -30,6 +33,9 @@ Enter the URL of the video to download: """)
         yd.download_youtube(url, name)
 
     elif option == "2":
+
+        print()
+        print("Loading...")
 
         if (fh_check == True):
 
@@ -61,6 +67,9 @@ Enter the name of the video file (wihout extension): """)
 
     elif option == "3":
 
+        print()
+        print("Loading...")
+
         if (nt_check == True):
 
             from modules import nllb_translator as nt
@@ -79,6 +88,9 @@ Enter the name of the spanish .srt file to translate: """)
 
     elif option == "4":
 
+        print()
+        print("Loading...")
+
         if name == 0:
         
             name = input("""
@@ -96,6 +108,9 @@ Enter the name of the video file (wihout extension): """)
 
     elif option == "5":
 
+        print()
+        print("Loading...")
+            
         if name == 0:
 
             name = input("""
@@ -130,15 +145,20 @@ broker = True
 while broker:
 
     option = input("""
-        Terminal Menu - Subtitle generator
-                   
+--------------------------------------------------------------------------
+                    Terminal Menu - Subtitle generator
+--------------------------------------------------------------------------                 
 1. Download Video from YouTube.
 2. Create spanish transcription (.str file) of the selected video.
 3. Translate Spanish transcription (.str file) to English
 4. Burn the translated subtitle into de original video
 5. Delete specified subtitles (.srt files) and input video
-6. More options...  
-0. closing the program. 
+6. More options...
+  
+0. close the program. 
+--------------------------------------------------------------------------
+(It is possible to run a range of steps. For example: 2,4 will run steps: 2,3,4)
+                   
 """)
     
     # If the input is a range (example: 2,4) it runs all the steps inside the range (inclusive)
