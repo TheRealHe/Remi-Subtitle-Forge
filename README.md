@@ -22,7 +22,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][[linkedin-url]]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -34,14 +34,14 @@
   <p align="center">
     A complete pipeline to generate Spanish subtitles, translate them to English, and burn them into videos.
     <br />
-    <a href="https://github.com/your_username/automatic_spanish_to_english_subtitles"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TheRealHe/spanish_to_english_subtitles_generator"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#usage">View Demo</a>
     &middot;
-    <a href="https://github.com/your_username/automatic_spanish_to_english_subtitles/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/TheRealHe/automatic_spanish_to_english_subtitles/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/your_username/automatic_spanish_to_english_subtitles/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/TheRealHe/automatic_spanish_to_english_subtitles/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -101,6 +101,7 @@ This project automates the entire workflow of generating hardcoded (burned-in) E
 * [![NLLB][NLLB]][NLLB-url]
 * [![FFmpeg][FFmpeg.org]][FFmpeg-url]
 * [![yt-dlp][yt-dlp]][yt-dlp-url]
+* [![ONNX Runtime][onnxruntime-shield]][onnxruntime-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,8 +196,6 @@ See the open issues for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -221,7 +220,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][[linkedin-url]]
+Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generator](https://github.com/TheRealHe/spanish_to_english_subtitles_generator)
 
@@ -238,6 +237,7 @@ Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generat
 * [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 * [PyTorch](https://pytorch.org)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+* [ONNX-Runtime] (https://github.com/microsoft/onnxruntime) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -268,4 +268,5 @@ Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generat
 [yt-dlp-url]: https://github.com/yt-dlp/yt-dlp
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://www.linkedin.com/in/daandev/
-
+[onnxruntime-shield]: https://img.shields.io/badge/ONNX%20Runtime-717272?style=for-the-badge&logo=onnx&logoColor=white
+[onnxruntime-url]: https://onnxruntime.ai

@@ -2,97 +2,13 @@
 # If they are not it installs them (Just working in windows 10+ for now)
 
 import sys
+import os
 import subprocess
 import platform
 import ctypes
+from importlib import import_module as im
 
-def Chocolatey_Install():
-
-    # Checking Chocolatey
-
-    try:
-        
-        print("Checking if Chocolatey is installed")
-        print()
-        
-        check = subprocess.run(
-            
-        ["choco", "-v"], 
-        capture_output = True, 
-        text = True, 
-        timeout = 5
-        
-        ) 
-        
-        if check.returncode == 0:
-       
-            print("Chocolatey already installed")
-            print((check.stdout.split('\n'))[0])
-            print()
-            
-        else:
-                    
-            error = check.stdout[:300] if check.stdout else "unknown error"
-                    
-            print(f"Chocolatey could not be installed. Error: {error}...")
-            print()
-        
-    except FileNotFoundError:
-        
-        # Installing Chocolatey with winget
-        
-            print("Installing Chocolatey")
-        
-            try:
-            
-                chocolatey = subprocess.run(
-                
-                    ["winget", "install", "-e", "--id", "Chocolatey.Chocolatey"],
-                    capture_output = True,
-                    text = True,
-                    timeout = 900,
-                )
-                
-                if chocolatey.returncode == 0:
-                    
-                    print("Chocolatey installed successfully")
-                    
-                    check = subprocess.run(
-            
-                        ["where", "choco"], 
-                        capture_output = True, 
-                        text = True, 
-                        timeout = 5
-                        
-                        )
-            
-                    if check.returncode == 0:
-                
-                        print((check.stdout.split('\n'))[0])
-                        print()
-                    
-                else:
-                    
-                    error = chocolatey.stdout[:300] if chocolatey.stdout else "unknown error"
-                    
-                    print(f"Chocolatey could not be installed. Error: {error}...")
-                    print()
-                
-            except Exception as ae:
-                
-                    print()
-                    print(f"❌ Error: {type(ae).__name__}: {ae}")
-                    print("Press Enter to exit...")
-                    input()
-        
-    except Exception as ae:
-        
-        print()
-        print(f"❌ Error: {type(ae).__name__}: {ae}")
-        print("Press Enter to exit...")
-        input()
-
-# Give admin permises to the script
+# ---------------------------------- Give admin permises to the script ------------------------
 
 def admin_permises():
 
@@ -140,53 +56,7 @@ def admin_permises():
     print()
         
 
-def py_compatible_v_finder():
-    
-    c = 0
-    compatible_py = ""
-    
-    print("Looking for a compatible version of Python...")
-    
-    # Looking for other compatible versions of python than the one currently running
-    
-    while c > -4:
-        
-        try: 
-            
-            version = subprocess.run(
-                
-                
-                ["py", f"3.{c+11}", "--version"],
-                capture_output = True,
-                text = True,
-                timeout = 5
-                
-            )
-            
-            if version.returncode == 0:
-                
-                print(f"Python Version 3.{c+11} was found")
-                
-                compatible_py = f"py_version: 3.{c+11}"
-                            
-                return compatible_py
-                
-            else:
-                
-                print(f"Python Version 3.{c+11} was not found")
-                
-            c = c - 1
-                
-        except Exception as ae:
-            
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-    
-    return compatible_py
-
-# Detects the GPU in the computer
+# ---------------------------------- Detects the GPU in the computer ------------------------
 
 def gpu_detecter():
     
@@ -268,7 +138,9 @@ def gpu_detecter():
         print(f"This system is {system}. The program is just available for windows atm")
         print()
 
-def check_app(app):
+# ---------------------------------- Installing APPs with Funct ------------------------
+
+def check_app(app_term, app, version_check):
 
     try:
         
@@ -276,7 +148,7 @@ def check_app(app):
         
         check = subprocess.run(
             
-        [f"{app}", "-version"], 
+        [app_term, version_check], 
         capture_output = True, 
         text = True, 
         timeout = 5
@@ -290,7 +162,7 @@ def check_app(app):
         
     except FileNotFoundError:
 
-        install_app(app)
+        install_app(app, app_term, version_check)
 
     except Exception as ae:
         
@@ -299,7 +171,7 @@ def check_app(app):
         print("Press Enter to exit...")
         input()
 
-def install_app(app):
+def install_app(app, app_term, version_check):
         
     print(f"{app} not installed")
     print()
@@ -307,23 +179,29 @@ def install_app(app):
     # Installing app with winget
         
     print(f"Installing {app}")
-    print()
         
     try:
         
-        app = subprocess.run(
+        check = subprocess.run(
             
-            ["winget", "install", f"{app}"],
+            ["winget", "install", app],
             capture_output = True,
             text = True,
             timeout = 300,
         )
             
-        if app.returncode == 0:
+        if check.returncode == 0:
                 
             print(f"{app} installed successfully")
                 
-            check_app(app)
+            check_app(app, app_term, version_check)
+
+        else:
+            
+            error = check.stderr[:300] if check.stderr else "unknown error"
+            
+            print(f"{app} could not be installed. Error: {error}...")
+            print()
 
     except Exception as ae:
         
@@ -331,6 +209,73 @@ def install_app(app):
         print(f"❌ Error: {type(ae).__name__}: {ae}")
         print("Press Enter to exit...")
         input()
+
+# ---------------------------------- Installing Libraries with Funct ------------------------
+
+def check_lib(lib, lib_term):
+
+    print(f"{lib} Check")
+
+    try:
+        
+        library = im(lib)
+            
+        print(f"{lib} already installed")
+        print(library.version.__version__)
+        print()
+    
+    except AttributeError:
+
+        print(library.__version__)
+        print()
+
+    except ImportError:
+        
+        print(f"{lib} not installed")
+        print()
+
+        install_lib(lib, lib_term)
+
+def install_lib(lib, lib_term):
+
+    print(f"Installing {lib}")
+    
+    try:
+    
+        check = subprocess.run(
+        
+            [sys.executable, "-m", "pip", "install", lib_term],
+            capture_output = True,
+            text = True,
+            timeout = 300,
+        )
+        
+        if check.returncode == 0:
+            
+            print(f"{lib} installed successfully")
+            
+            library = im(lib)
+            
+            print(library.version.__version__)
+            print()
+
+            check_lib(lib, lib_term)
+            
+        else:
+            
+            error = check.stderr[:300] if check.stderr else "unknown error"
+            
+            print(f"{lib} could not be installed. Error: {error}...")
+            print()
+            
+    except Exception as ae:
+    
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        print("Press Enter to exit...")
+        input()
+
+# ---------------------------------------- Main Starts -------------------------------------
 
 print()
 print("Starting Installer...")
@@ -344,7 +289,7 @@ print("Python Check")
 
 print(f"Python version is: {sys.version}")
 
-if (sys.version_info.major == 3) and (8 <= sys.version_info.minor <= 11):
+if (sys.version_info.major >= 3) and (sys.version_info.minor >= 8):
 
     print("Current Python is compatible")
     print()
@@ -352,406 +297,287 @@ if (sys.version_info.major == 3) and (8 <= sys.version_info.minor <= 11):
 else: 
     
     print("Current Python is not compatible")
-    
-    compatible_py = py_compatible_v_finder()    
         
-    if compatible_py == "":
+    # Installing last version of python
         
-        print()
-        print("Python versions installed are incompatible")
-        print()
-        
-        # Installing compatible python (3.11.9)
-        
-        try:
+    try:
                         
-            Chocolatey_Install()
+        check_app("choco", "Chocolatey.Chocolatey", "-v")
             
-            print("Installing compatible Python")
-            print()
+        print("Installing compatible Python")
+        print()
             
-            py_get = subprocess.run(
+        py_get = subprocess.run(
             
-                ["choco", "install", "python311", "--version=3.11.9", "-y"],
+            ["choco", "install", "python", "-y"],
+            capture_output = True,
+            text = True,
+            timeout = 300,
+            
+        )
+            
+        # Checking it was properly installed
+            
+        if py_get.returncode == 0:
+                    
+            # Running the script again with compatible version of python
+                    
+            try:
+            
+                re_run = subprocess.run(
+                            
+                ["python", "installer.py"],
                 capture_output = True,
                 text = True,
-                timeout = 300,
-            
-            )
-            
-            # Checking it was properly installed
-            
-            if py_get.returncode == 0:
-                
-                compatible_py = py_compatible_v_finder()
-                
-                if compatible_py != "":
-                
-                    print("Compatible Python Installed Successfully")
-                    print(compatible_py)
-                    print()
-                    
-                    # Running the script again with compatible version of python
-                    
-                    try:
-            
-                        re_run = subprocess.run(
+                timeout = 1200   
                             
-                        ["py", f"-{(compatible_py.split(' '))[1]}", "installer.py"],
-                        capture_output = True,
-                        text = True,
-                        timeout = 1200   
-                            
-                        )
+                )
                         
-                        sys.exit(re_run.returncode)
+                sys.exit(re_run.returncode)
                         
-                    except Exception as ae:
+            except Exception as ae:
                         
-                        print()
-                        print(f"❌ Error: {type(ae).__name__}: {ae}")
-                        print("Press Enter to exit...")
-                        input()
-                
-            else:
-                
-                error = py_get.stdout[:300] if py_get.stdout else "unknown error"
-                
-                print(f"Compatible Python could not be Installed. Error: {error}...")
                 print()
-        
-        
-        except Exception as ae:
-            
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-
-    else:
-        
-        try:
-            
-            re_run = subprocess.run(
+                print(f"❌ Error: {type(ae).__name__}: {ae}")
+                print("Press Enter to exit...")
+                input()
                 
-            ["py", f"-{(compatible_py.split(' '))[1]}", "installer.py"],
-            capture_output = True,
-            text = True,
-            timeout = 1200   
+        else:
                 
-            )
-            
-            sys.exit(re_run.returncode)
-            
-        except Exception as ae:
-            
+            error = py_get.stdout[:300] if py_get.stdout else "unknown error"
+                
+            print(f"Compatible Python could not be Installed. Error: {error}...")
             print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-    
-# Checks if ffmpeg is already installed
-    
-check_app("ffmpeg")
-    
-# yt-dlp check
-
-print("Yt-dlp Check")
-
-try:
-    
-    import yt_dlp
         
-    print("Yt-dlp already installed")
-    print(yt_dlp.version.__version__)
-    print()
-    
-except ImportError:
-    
-    print("Yt-dlp not installed")
-    print()
-    
-    # Installing yt-dlp with winget
-    
-    print("Installing Yt-dlp")
-    print()
-    
-    try:
-    
-        check = subprocess.run(
-        
-            [sys.executable, "-m", "pip", "install", "yt-dlp"],
-            capture_output = True,
-            text = True,
-            timeout = 300,
-        )
-        
-        if check.returncode == 0:
-            
-            print("Yt-dlp installed successfully")
-            
-            import yt_dlp
-            
-            print(yt_dlp.version.__version__)
-            print()
-            
-        else:
-            
-            error = check.stdout[:300] if check.stdout else "unknown error"
-            
-            print(f"Yt-dlp could not be installed. Error: {error}...")
-            print()
-            
-    except Exception as ae:
-    
-        print()
-        print(f"❌ Error: {type(ae).__name__}: {ae}")
-        print("Press Enter to exit...")
-        input()
-
-# Checking Whisper 
-
-print("Whisper Check")
-
-try:
-    
-    import whisper 
-    
-    print("Whisper installed")
-    print(f"version: {whisper.__version__}")
-    print()
-    
-except ImportError:
-    
-    print("Whisper not installed")
-    print()
-    
-    print("Installing Whisper")
-    print()
-    
-    try:
-    
-        whispe = subprocess.run(
-        
-            [sys.executable, "-m", "pip", "install", "openai-whisper"],
-            capture_output = True,
-            text = True,
-            timeout = 300,
-        )
-        
-        if whispe.returncode == 0:
-            
-            print("whisper installed successfully")
-            
-            import whisper
-            
-            print(whisper.__version__)
-            print()
-            
-        else:
-            
-            error = whispe.stdout[:300] if whispe.stdout else "unknown error"
-            
-            print(f"whisper could not be installed. Error: {error}...")
-            print()
         
     except Exception as ae:
-        
+            
             print()
             print(f"❌ Error: {type(ae).__name__}: {ae}")
             print("Press Enter to exit...")
             input()
+
+            sys.exit(1)
+    
+# Checks if app is already installed, If not Installs it.
+    
+check_app("ffmpeg", "ffmpeg", "-version")
+    
+# Checks if library is already installed, If not Installs it.
+
+check_lib("yt_dlp", "yt_dlp")
+check_lib("whisper", "openai-whisper")
+check_lib("whisper_timestamped", "whisper-timestamped")
+check_lib("ctranslate2", "ctranslate2")
+check_lib("transformers", "transformers")
+check_lib("silero_vad", "silero-vad")
+check_lib("onnxruntime", "onnxruntime")
+
+# Creating NLLB structure
+
+if os.path.exists("models"):
+
+    print("NLLB structure already exists")
+    print()
+
+else:
+
+    os.mkdir("models")
 
 # Checking GPUs
 
 gpu = gpu_detecter()
 
-# Installing AI Drivers for selected GPU
+# ---------------------------- Installing AI Drivers for selected GPU ------------------------
 
-if gpu == "nvidia":
+# I may add this later on...
 
-    try:
-    
-        import torch 
-    
-        print(f"Torch already Installed")
-        print(torch.__version__)
-    
-        if torch.cuda.is_available():
-        
-            gpu_name = torch.cuda.get_device_name()
-        
-            print(f"Nvidia GPU available: {gpu_name}")
-            print()
-        
-        else: 
-        
-            print("Not Nvidia GPU available")
-            print("Try updating Nvidia drivers")
-            print()
-        
-    except ImportError:
-    
-        print("Torch not installed")
-        print()
-        
-        print("Installing Torch for Nvidia")
-        print()
-        
-        try:
-            
-            check = subprocess.run(
-                
-                [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio", "--index-url", "https://download.pytorch.org/whl/cu118"],
-                capture_output = True,
-                text = True,
-                timeout = 1200
+def AI_GPU_installation():
 
-            )
-            
-            if check.returncode == 0:
-                
-                import torch 
-    
-                print(f"Torch for Nvidia GPU Installed")    
-                print(torch.__version__)
-            
-                if torch.cuda.is_available():
-                
-                    gpu_name = torch.cuda.get_device_name() 
-                
-                    print(f"Nvidia GPU available: {gpu_name}")
-                    print()
-                
-                else: 
-                
-                    print("Not Nvidia GPU available")
-                    print("Try updating Nvidia drivers")
-                    print()
-                    
-            else:
-            
-                error = check.stdout[:300] if check.stdout else "unknown error"
-                
-                print(f"Torch for Nvidia GPU could not be installed. Error: {error}...")
-                print()
-                    
-        except Exception as ae:
-    
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
+    if gpu == "nvidia":
 
-    except Exception as ae:
-    
-        print()
-        print(f"❌ Error: {type(ae).__name__}: {ae}")
-        print("Press Enter to exit...")
-        input()
-        
-elif gpu == "amd":
-    
-    try:
-    
-        import directml
-        
-        print("Torch DirecTML (amd) already installed")
-        print(directml.__version__)
-        print()
-        
-    except ImportError:
-        
-        print("Torch not installed")
-        print()
-        
-        print("Installing Torch for AMD (DirecTML)")
-        print()
-        
-        try:
-            
-            check = subprocess.run(
-                
-                [sys.executable, "-m", "pip", "install", "torch-directml"],
-                capture_output=True,
-                text=True,
-                timeout=1200 
-                
-            )
-            
-            if check.returncode == 0:
-                
-                print("Torch DirecTML (amd) successfully installed")
-                
-                import directml
-                
-                print(directml.__version__)
-                print()
-                
-            else:
-            
-                error = check.stdout[:300] if check.stdout else "unknown error"
-                
-                print(f"Torch DirecTML (amd) could not be installed. Error: {error}...")
-                print()
-            
-        except Exception as ae:
-        
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-            
-else:
-    
-    try:
-        
-        import torch
-        
-        print(f"Torch already Installed")
-        print(torch.__version__)
-        
-    except ImportError:
-    
-        print("Torch not installed")
-        print()
-        
-        print("Installing Torch for CPU")
-        print()
-    
         try:
         
-            check = subprocess.run(
+            import torch 
+        
+            print(f"Torch already Installed")
+            print(torch.__version__)
+        
+            if torch.cuda.is_available():
+            
+                gpu_name = torch.cuda.get_device_name()
+            
+                print(f"Nvidia GPU available: {gpu_name}")
+                print()
+            
+            else: 
+            
+                print("Not Nvidia GPU available")
+                print("Try updating Nvidia drivers")
+                print()
+            
+        except ImportError:
+        
+            print("Torch not installed")
+            print()
+            
+            print("Installing Torch for Nvidia")
+            print()
+            
+            try:
+                
+                check = subprocess.run(
                     
-                    [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio"],
+                    [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio", "--index-url", "https://download.pytorch.org/whl/cu118"],
                     capture_output = True,
                     text = True,
                     timeout = 1200
 
                 )
                 
-            if check.returncode == 0:
+                if check.returncode == 0:
                     
-                print("Torch for CPU Installed Successfully")
+                    import torch 
+        
+                    print(f"Torch for Nvidia GPU Installed")    
+                    print(torch.__version__)
                 
-                import torch
+                    if torch.cuda.is_available():
+                    
+                        gpu_name = torch.cuda.get_device_name() 
+                    
+                        print(f"Nvidia GPU available: {gpu_name}")
+                        print()
+                    
+                    else: 
+                    
+                        print("Not Nvidia GPU available")
+                        print("Try updating Nvidia drivers")
+                        print()
+                        
+                else:
                 
-                print(torch.__version__)
+                    error = check.stdout[:300] if check.stdout else "unknown error"
+                    
+                    print(f"Torch for Nvidia GPU could not be installed. Error: {error}...")
+                    print()
+                        
+            except Exception as ae:
+        
                 print()
-            
-            else:
-                
-                error = check.stdout[:300] if check.stdout else "unknown error"
-                
-                print(f"Torch for CPU could not be installed. Error: {error}...")
-                print()
-            
+                print(f"❌ Error: {type(ae).__name__}: {ae}")
+                print("Press Enter to exit...")
+                input()
+
         except Exception as ae:
         
             print()
             print(f"❌ Error: {type(ae).__name__}: {ae}")
             print("Press Enter to exit...")
             input()
+            
+    elif gpu == "amd":
+        
+        try:
+        
+            import directml
+            
+            print("Torch DirecTML (amd) already installed")
+            print(directml.__version__)
+            print()
+            
+        except ImportError:
+            
+            print("Torch not installed")
+            print()
+            
+            print("Installing Torch for AMD (DirecTML)")
+            print()
+            
+            try:
+                
+                check = subprocess.run(
+                    
+                    [sys.executable, "-m", "pip", "install", "torch-directml"],
+                    capture_output=True,
+                    text=True,
+                    timeout=1200 
+                    
+                )
+                
+                if check.returncode == 0:
+                    
+                    print("Torch DirecTML (amd) successfully installed")
+                    
+                    import directml
+                    
+                    print(directml.__version__)
+                    print()
+                    
+                else:
+                
+                    error = check.stdout[:300] if check.stdout else "unknown error"
+                    
+                    print(f"Torch DirecTML (amd) could not be installed. Error: {error}...")
+                    print()
+                
+            except Exception as ae:
+            
+                print()
+                print(f"❌ Error: {type(ae).__name__}: {ae}")
+                print("Press Enter to exit...")
+                input()
+                
+    else:
+        
+        try:
+            
+            import torch
+            
+            print(f"Torch already Installed")
+            print(torch.__version__)
+            
+        except ImportError:
+        
+            print("Torch not installed")
+            print()
+            
+            print("Installing Torch for CPU")
+            print()
+        
+            try:
+            
+                check = subprocess.run(
+                        
+                        [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio"],
+                        capture_output = True,
+                        text = True,
+                        timeout = 1200
+
+                    )
+                    
+                if check.returncode == 0:
+                        
+                    print("Torch for CPU Installed Successfully")
+                    
+                    import torch
+                    
+                    print(torch.__version__)
+                    print()
+                
+                else:
+                    
+                    error = check.stdout[:300] if check.stdout else "unknown error"
+                    
+                    print(f"Torch for CPU could not be installed. Error: {error}...")
+                    print()
+                
+            except Exception as ae:
+            
+                print()
+                print(f"❌ Error: {type(ae).__name__}: {ae}")
+                print("Press Enter to exit...")
+                input()
             
         
 # Saves information in .txt
@@ -764,3 +590,4 @@ with open("cache/computer_information.txt", "w") as data:
 print("Installation Complete Successfully")
 print("Press Enter to exit...")
 input()
+
