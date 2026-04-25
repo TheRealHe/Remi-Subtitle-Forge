@@ -1,5 +1,7 @@
 from ctranslate2 import Translator as ct
 from transformers import AutoTokenizer as at
+from modules import installing as ins
+import pickle as pi
 import torch
 import os
 
@@ -14,6 +16,22 @@ def srt_translation(srt_file_name):
 
     global tokenizer
     global model
+
+    # Getting the translation_AI_model_being_used, input and output language from cache
+
+    with open("cache/settings.pkl", "rb") as data:
+
+        settings = (pi.load(data))
+        translation_AI_model_being_used = settings["translation_AI_model_being_used"]
+
+        if os.path.exists(f"models/{translation_AI_model_being_used}") == False:
+
+            print("Current AI translation model being used is not installed...")
+            print("Go to (6. More options...) and manage AI translation models")
+            print("(You may install this model, or use a different one already installed)")
+            print()
+
+            return None
 
     if not (os.path.exists(f"spanish_subtitles/{srt_file_name}.srt")):
 
@@ -49,7 +67,7 @@ def srt_translation(srt_file_name):
 
             tokenizer = at.from_pretrained(
 
-                "facebook/nllb-200-distilled-600M",
+                f"Models/{translation_AI_model_being_used}",
 
                 src_lang = source_lang,
 
@@ -70,7 +88,7 @@ def srt_translation(srt_file_name):
 
             tokenizer = AT.from_pretrained(
 
-                "facebook/nllb-200-distilled-600M",
+                f"models/{translation_AI_model_being_used}",
 
                 src_lang = source_lang,
 
@@ -84,7 +102,7 @@ def srt_translation(srt_file_name):
         
         model = ct(
 
-        "Models/nllb-600M-ct2",
+        f"models/{translation_AI_model_being_used}",
         device = device,
         compute_type = "int8"
 

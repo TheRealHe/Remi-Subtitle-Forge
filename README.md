@@ -24,8 +24,6 @@
 [![Unlicense License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -111,6 +109,7 @@ This project automates the entire workflow of generating hardcoded (burned-in) E
 ### Prerequisites
 
 - **Windows 10/11** (the auto‑installer is Windows‑only; other OS may work with manual setup)
+- **Python 3.8+** Required for compatibility with modern ML libraries (Transformers, CTranslate2, etc.). Your existing Python version will be verified by installer.py.
 - **Administrator privileges** (required for the installer to set up FFmpeg and Chocolatey)
 - **Internet connection** (to download models and dependencies)
 
@@ -220,7 +219,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Daniel Rojas - hdrojas.sanin@gmail.com - [![LinkedIn][linkedin-shield]][linkedin-url]
+Daniel Rojas - hdrojas.sanin@gmail.com - [LinkedIn][linkedin-url]
 
 Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generator](https://github.com/TheRealHe/spanish_to_english_subtitles_generator)
 
