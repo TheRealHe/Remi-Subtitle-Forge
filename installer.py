@@ -126,195 +126,24 @@ gpu = ins.gpu_detecter()
 
 # ---------------------------- Installing AI Drivers for selected GPU ------------------------
 
-# I may add this later on...
+if gpu == "nvidia":
 
-def AI_GPU_installation():
+    print("This PC requires Torch for Nvidia...")
 
-    if gpu == "nvidia":
+    ins.check_lib("torch", ["torch", "torchvision", "torchaudio", "--index-url", "https://download.pytorch.org/whl/cu118"])
 
-        try:
-        
-            import torch 
-        
-            print(f"Torch already Installed")
-            print(torch.__version__)
-        
-            if torch.cuda.is_available():
-            
-                gpu_name = torch.cuda.get_device_name()
-            
-                print(f"Nvidia GPU available: {gpu_name}")
-                print()
-            
-            else: 
-            
-                print("Not Nvidia GPU available")
-                print("Try updating Nvidia drivers")
-                print()
-            
-        except ImportError:
-        
-            print("Torch not installed")
-            print()
-            
-            print("Installing Torch for Nvidia")
-            print()
-            
-            try:
-                
-                check = sr(
-                    
-                    [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio", "--index-url", "https://download.pytorch.org/whl/cu118"],
-                    capture_output = True,
-                    text = True,
-                    timeout = 1200
+elif gpu == "amd":
 
-                )
-                
-                if check.returncode == 0:
-                    
-                    import torch 
-        
-                    print(f"Torch for Nvidia GPU Installed")    
-                    print(torch.__version__)
-                
-                    if torch.cuda.is_available():
-                    
-                        gpu_name = torch.cuda.get_device_name() 
-                    
-                        print(f"Nvidia GPU available: {gpu_name}")
-                        print()
-                    
-                    else: 
-                    
-                        print("Not Nvidia GPU available")
-                        print("Try updating Nvidia drivers")
-                        print()
-                        
-                else:
-                
-                    error = check.stdout[:300] if check.stdout else "unknown error"
-                    
-                    print(f"Torch for Nvidia GPU could not be installed. Error: {error}...")
-                    print()
-                        
-            except Exception as ae:
-        
-                print()
-                print(f"❌ Error: {type(ae).__name__}: {ae}")
-                print("Press Enter to exit...")
-                input()
+    print("This PC requires Torch for AMD...")
 
-        except Exception as ae:
-        
-            print()
-            print(f"❌ Error: {type(ae).__name__}: {ae}")
-            print("Press Enter to exit...")
-            input()
-            
-    elif gpu == "amd":
-        
-        try:
-        
-            import directml
-            
-            print("Torch DirecTML (amd) already installed")
-            print(directml.__version__)
-            print()
-            
-        except ImportError:
-            
-            print("Torch not installed")
-            print()
-            
-            print("Installing Torch for AMD (DirecTML)")
-            print()
-            
-            try:
-                
-                check = sr(
-                    
-                    [sys.executable, "-m", "pip", "install", "torch-directml"],
-                    capture_output=True,
-                    text=True,
-                    timeout=1200 
-                    
-                )
-                
-                if check.returncode == 0:
-                    
-                    print("Torch DirecTML (amd) successfully installed")
-                    
-                    import directml
-                    
-                    print(directml.__version__)
-                    print()
-                    
-                else:
-                
-                    error = check.stdout[:300] if check.stdout else "unknown error"
-                    
-                    print(f"Torch DirecTML (amd) could not be installed. Error: {error}...")
-                    print()
-                
-            except Exception as ae:
-            
-                print()
-                print(f"❌ Error: {type(ae).__name__}: {ae}")
-                print("Press Enter to exit...")
-                input()
-                
-    else:
-        
-        try:
-            
-            import torch
-            
-            print(f"Torch already Installed")
-            print(torch.__version__)
-            
-        except ImportError:
-        
-            print("Torch not installed")
-            print()
-            
-            print("Installing Torch for CPU")
-            print()
-        
-            try:
-            
-                check = sr(
-                        
-                        [sys.executable, "-m", "pip", "install", "torch", "torchvision", "torchaudio"],
-                        capture_output = True,
-                        text = True,
-                        timeout = 1200
+    ins.check_lib("torch_directml", ["torch-directml"])
 
-                    )
-                    
-                if check.returncode == 0:
-                        
-                    print("Torch for CPU Installed Successfully")
-                    
-                    import torch
-                    
-                    print(torch.__version__)
-                    print()
-                
-                else:
-                    
-                    error = check.stdout[:300] if check.stdout else "unknown error"
-                    
-                    print(f"Torch for CPU could not be installed. Error: {error}...")
-                    print()
-                
-            except Exception as ae:
-            
-                print()
-                print(f"❌ Error: {type(ae).__name__}: {ae}")
-                print("Press Enter to exit...")
-                input()
-            
+else:
+
+    print("This PC requires Torch for CPU...")
+
+    ins.check_lib("torch", ["torch", "torchvision", "torchaudio", "--index-url", "https://download.pytorch.org/whl/cpu"])
+         
         
 # Saves computer information in .pkl
                         
@@ -323,7 +152,7 @@ with open("cache/computer_information.pkl", "wb") as data:
     com_info = {
 
         "GPU": gpu,
-        "PYTHON_VERSION": f"3.{sys.version_info.minor}"
+        "PYTHON_VERSION": f"{((sys.version).split(" "))[0]}"
 
     }
 

@@ -1,20 +1,37 @@
 from whisper_timestamped import transcribe as wt
 from whisper_timestamped import load_model as wld
+from modules import support_functions as sf
+import pickle as pi
 import os
-import torch
 
 # Global variable to make sure the model loads only the first time
+
 model = None
 
 # Generating Spanish subtitles of the temporal audio with Whisper5
 
-def generate_spanish_subtitles(audio_name):
+def generate_transcription_subtitles(audio_name):
 
     global model
 
-    maximum_subtitle_time = 6 # The maximum amount of time a subtitle will span
-    lines_per_subtitle = 2 # The amount of lines of text in the same subtitle
-    # (and go to list_lines directly) if there is too much silence between them
+    with open("cache/settings.pkl", "rb") as data:
+
+        settings = (pi.load(data))
+
+        # Source language and subtitles settings being defined
+
+        source_lang = settings["input_lan"]
+        source_lang = source_lang[0]
+
+        # The maximum amount of time a subtitle will span
+
+        maximum_subtitle_time = settings["maximum_subtitle_time"]
+
+        # The amount of lines of text in the same subtitle
+        # (and go to list_lines directly) if there is too much silence between them
+
+        lines_per_subtitle = settings["lines_per_subtitle"] 
+        
 
     if not (os.path.exists(f"temp_{audio_name}_audio.wav")):
 
@@ -24,17 +41,9 @@ def generate_spanish_subtitles(audio_name):
         
         return None
 
-    # If GPU is available, whisper uses it. Otherwise CPU is used
+    # find device and then does an availability check
 
-    if torch.cuda.is_available():
-        
-        device = "cuda"
-
-    else:
-
-        device = "cpu"
-
-        print("GPU not available, using CPU (slower)")
+    device = sf.device_identifier()
 
     # Load small model 
 
@@ -66,7 +75,7 @@ def generate_spanish_subtitles(audio_name):
 
         # Creates subtitles file and saves them as .str (ssf = spanish_subtitles_file)
 
-        with open(f"spanish_subtitles/{audio_name}.srt", "w", encoding = "utf-8") as ssf:
+        with open(f"transcripted_subtitles/{audio_name}.srt", "w", encoding = "utf-8") as ssf:
 
             lines_list = []
             subtitle_start = []
@@ -89,15 +98,17 @@ def generate_spanish_subtitles(audio_name):
 
                 subtitle_time = subtitle_end[-1] - subtitle_start[0]
 
-                # Write in .srt file if is the last line
+                # Write in .srt file if is the last line and max time is alr
 
                 if (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) < maximum_subtitle_time):
                     
                     lines_list, subtitle_start, subtitle_end, x = writting_on_srt_True(ssf, subtitle_start[0], subtitle_end[-1], lines_list, x) 
 
+                # Write in .srt file if is the last line and max time is not alr
+
                 elif (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) > maximum_subtitle_time):
 
-                    lines_list, subtitle_start, subtitle_end, x = writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle)
+                    lines_list, subtitle_start, subtitle_end, x = writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle, maximum_subtitle_time)
 
         return audio_name
 
@@ -116,6 +127,8 @@ def generate_spanish_subtitles(audio_name):
         if os.path.exists(f"temp_{audio_name}_audio.wav"):
            
             os.remove(f"temp_{audio_name}_audio.wav")
+
+# Acommodates time into .srt format
 
 def srt_timelaps_format(x):
 
@@ -148,24 +161,31 @@ def srt_timelaps_format(x):
 
     return hours, minutes, seconds, miliseconds
 
-def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle):
+# writes on .srt file (original language) when max time is not alr
+
+def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle, maximum_subtitle_time):
 
     new_lines_list = []
     subtitle_time = 11
     n = lines_per_subtitle - 1
 
-    while subtitle_time > 10:
+
+    while subtitle_time > maximum_subtitle_time:
 
         subtitle_time = subtitle_end[n] - subtitle_start[0]
 
-        if n == 0 and subtitle_time > 10:
+        if n == 1 and subtitle_time > maximum_subtitle_time:
 
             subtitle_time = 0
         
         n = n - 1
 
+    # writes subtitle number
+
     x = x + 1
     ssf.write(f"{x}\n")
+
+    # writes time in correct .srt format
 
     hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start[0])
     ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")
@@ -204,10 +224,16 @@ def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, line
 
     return new_lines_list, subtitle_start, subtitle_end, x
 
+# writes on .srt file (original language) when max time is alr
+
 def writting_on_srt_True(ssf, subtitle_start, subtitle_end, lines_list, x):
+
+    # writes subtitle number
 
     x = x + 1
     ssf.write(f"{x}\n")
+
+    # writes time in correct .srt format
 
     hours, minutes, seconds, miliseconds = srt_timelaps_format(subtitle_start)
     ssf.write(f"{hours}:{minutes}:{seconds},{miliseconds} --> ")

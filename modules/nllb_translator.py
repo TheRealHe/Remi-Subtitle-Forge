@@ -1,8 +1,7 @@
 from ctranslate2 import Translator as ct
 from transformers import AutoTokenizer as at
-from modules import installing as ins
+from modules import support_functions as sf
 import pickle as pi
-import torch
 import os
 
 # Global variables to corroborate lazy loading
@@ -24,6 +23,12 @@ def srt_translation(srt_file_name):
         settings = (pi.load(data))
         translation_AI_model_being_used = settings["translation_AI_model_being_used"]
 
+        # Source and Final language being defined
+
+        source_lang = settings["input_lan"]
+        source_lang = source_lang[1]
+        final_lang = settings["output_lan"]
+
         if os.path.exists(f"models/{translation_AI_model_being_used}") == False:
 
             print("Current AI translation model being used is not installed...")
@@ -33,7 +38,7 @@ def srt_translation(srt_file_name):
 
             return None
 
-    if not (os.path.exists(f"spanish_subtitles/{srt_file_name}.srt")):
+    if not (os.path.exists(f"transcripted_subtitles/{srt_file_name}.srt")):
 
         print()
         print(".srt not found")
@@ -41,23 +46,9 @@ def srt_translation(srt_file_name):
         
         return None
 
-    # Source and Final language being defined
+    # find device and then does an availability check
 
-    source_lang = "spa_Latn"
-    final_lang = "eng_Latn"
-
-    # Cuda available check
-
-    if torch.cuda.is_available():
-        
-        device = "cuda"
-
-    else:
-
-        device = "cpu"
-
-        print()
-        print("GPU not available, using CPU (slower)")
+    device = sf.device_identifier()
 
     # Loads tokenizer if needed
 
@@ -110,7 +101,7 @@ def srt_translation(srt_file_name):
 
     # Reading and translating lines from spanish .srt
 
-    with open(f"spanish_subtitles/{srt_file_name}.srt", "r", encoding="utf-8") as spanish_subtitles:
+    with open(f"transcripted_subtitles/{srt_file_name}.srt", "r", encoding="utf-8") as spanish_subtitles:
 
         lines = spanish_subtitles.readlines()
 
@@ -146,7 +137,7 @@ def srt_translation(srt_file_name):
 
     # Writes the translated lines in a new .srt english subtitles document
 
-    with open(f"english_subtitles/{srt_file_name}.srt", "w") as english_subtitles:
+    with open(f"translated_subtitles/{srt_file_name}.srt", "w", encoding = "utf-8") as english_subtitles:
 
         for translated_line in translated_lines:
 

@@ -10,7 +10,7 @@ def download_youtube(url, name):
     settings = {
 
     "format": "best[ext=mp4]",           
-    "outtmpl": f"videos/{name}.%(ext)s", 
+    "outtmpl": f"input_videos/{name}.%(ext)s", 
     "quiet": False,
     "skip_unavailable_fragments": False,
 

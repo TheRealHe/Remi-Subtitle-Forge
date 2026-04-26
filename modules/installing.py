@@ -202,7 +202,7 @@ def gpu_detecter():
             
     else:
         
-        print(f"This system is {system}. The program is just available for windows atm")
+        print(f"This system is {system}. Installer.py is just available for windows atm")
         print()
 
 # ---------------------------------- Installing APPs with Funct ------------------------
@@ -288,12 +288,12 @@ def check_lib(lib, lib_term):
         library = im(lib)
             
         print(f"{lib} already installed")
-        print(library.version.__version__)
+        print(f"version: {library.version.__version__}")
         print()
     
     except AttributeError:
 
-        print(library.__version__)
+        print(f"version: {library.__version__}")
         print()
 
     except ImportError:

@@ -1,6 +1,6 @@
 import os
 from subprocess import run as sr
-import sys
+import pickle as pi
 
 # Extract audio of video - Input is name of the video in folder /video
 
@@ -8,7 +8,7 @@ def extract_audio(video_name):
 
     # Checking file existence
 
-    if not (os.path.exists(f"videos/{video_name}.mp4")):
+    if not (os.path.exists(f"input_videos/{video_name}.mp4")):
 
         print()
         print("❌ Video not found (press enter to continue)")
@@ -23,7 +23,7 @@ def extract_audio(video_name):
         sr([
 
             "ffmpeg",
-            "-i", f"videos/{video_name}.mp4",
+            "-i", f"input_videos/{video_name}.mp4",
             "-vn", 
             "-ar", "16000", 
             "-ac", "1",
@@ -57,14 +57,23 @@ def burn_subtitles(subtitles):
     print()
     print(f"Burning subtittles ({subtitles}) into the video")
 
+    # Gets the task from cache (whatever it is burning the transcriptions or translations)
+
+    with open("cache/settings.pkl", "rb") as data:
+
+        settings = pi.load(data)
+
+        task = settings["task"]
+        task = (task.split("_"))[0]
+
     try:
    
         sr([
 
             "ffmpeg",
-            "-i", f"videos/{subtitles}.mp4",
-            "-vf", f"subtitles=english_subtitles/{subtitles}.srt",
-            f"subtitled_videos/{subtitles}.mp4"
+            "-i", f"input_videos/{subtitles}.mp4",
+            "-vf", f"subtitles={task}_subtitles/{subtitles}.srt",
+            f"output_videos/{subtitles}.mp4"
             
         ], check = True)
 
@@ -87,9 +96,9 @@ def post_process_delete(name):
 
     try:
     
-       os.remove(f"videos/{name}.mp4")
-       os.remove(f"english_subtitles/{name}.srt")
-       os.remove(f"spanish_subtitles/{name}.srt")
+       os.remove(f"input_videos/{name}.mp4")
+       os.remove(f"translated_subtitles/{name}.srt")
+       os.remove(f"transcripted_subtitles/{name}.srt")
 
        print()
        print("Delete succesfully")

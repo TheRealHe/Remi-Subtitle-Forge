@@ -60,7 +60,7 @@ Enter the name of the video file (wihout extension): """)
 
         if name != None:
 
-            w.generate_spanish_subtitles(name)
+            w.generate_transcription_subtitles(name)
 
             print()
             print("Transcription Sucessfully")
