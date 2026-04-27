@@ -13,13 +13,19 @@ print()
 print("Starting Installer...")
 print()
 
+# Gets admin permises
+
 ins.admin_permises()
+
+# Installs/updates Visual c++ Redistributable
+
+restart_required = ins.update_vc_redist()
 
 # Checks that the current python running the program is a compatible version
 
 print("Python Check")
 
-print(f"Python version is: {sys.version}")
+print(f"Python version is: {((sys.version).split(" "))[0]}")
 
 if (sys.version_info.major >= 3) and (sys.version_info.minor >= 8):
 
@@ -157,8 +163,14 @@ with open("cache/computer_information.pkl", "wb") as data:
     }
 
     pi.dump(com_info, data)
+
+if restart_required:
+
+    print("⚠️ IMPORTANT: A system restart is required for Visual C++ to work.")
+    print("Please restart your computer before using the program (main.py).")
+    print()
+
     
 print("Installation Complete Successfully")
 print("Press Enter to exit...")
 input()
-

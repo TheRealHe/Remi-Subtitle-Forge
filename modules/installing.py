@@ -1,5 +1,6 @@
 from importlib import import_module as im
 from subprocess import run as sr
+from urllib.request import urlretrieve as url_r
 from shutil import rmtree as rmt
 import sys
 import platform
@@ -347,3 +348,91 @@ def install_lib(lib, lib_term):
         print(f"❌ Error: {type(ae).__name__}: {ae}")
         print("Press Enter to exit...")
         input()
+
+# ----------------------- Installing Visual C++ Redistributable updates ------------------------
+
+    # Downloads and silently installs the latest version of Visual C++ Redistributable.
+    # Also handles cases where it's already installed or a restart is required.
+
+def update_vc_redist():
+
+    print("Visual C++ Redistributable verification")
+    
+    restart_required = False
+
+    # 1. Determine system architecture (x64 is the most common today)
+
+    arch = "x64" if platform.machine().endswith('64') else "x86"
+    
+    # 2. URL for the latest version (aka.ms/vs/17/release/vc_redist.x64.exe is a direct link)
+
+    url = f"https://aka.ms/vs/17/release/vc_redist.{arch}.exe"
+    installer_path = "vcredist_temp.exe"
+
+    try:
+
+        # 3. Download the installer
+
+        print(f"Downloading installer for {arch.upper()} architecture")
+        url_r(url, installer_path)
+
+        # 4. Run the installation SILENTLY.
+        #    /quiet: Silent mode, no GUI.
+        #    /norestart: Prevents automatic system restart after installation.
+
+        print("Checking and then Installing/Updating Visual C++ if required")
+        result = sr(
+            [installer_path, '/quiet', '/norestart'],
+            capture_output=True,
+            text=True
+        )
+
+        # 5. Interpret the exit code.
+
+        if result.returncode == 0:
+
+            print("Visual C++ Redistributable installed/updated successfully.")
+            print()
+
+        elif result.returncode == 3010:
+
+            # 3010 means installation was successful, BUT restart is required.
+
+            print("⚠️ Installation completed, but a system restart is required.")
+            print("Please restart your computer after installer.py executes")
+            print("for the changes in Visual C++ Redistributable to take effect.")
+            print("(Press enter to continue...)")
+            input()
+
+            restart_required = True
+
+        elif result.returncode == 1638:
+
+            # 1638 indicates a newer or equal version is already installed.
+            print("Visual C++ Redistributable was already up to date.")
+            print()
+
+        else:
+
+            # Any other error code.
+
+            print(f"❌ Installation error. Code: {result.returncode}")
+            print(f"   {result.stderr}")
+            input()
+
+        return restart_required
+
+    except Exception as ae:
+    
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        print("Press Enter to exit...")
+        input()
+
+    finally:
+
+        # 6. Clean up the temporary installer.
+
+        if os.path.exists(installer_path):
+
+            os.remove(installer_path)
