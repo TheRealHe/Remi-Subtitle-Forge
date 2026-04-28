@@ -23,6 +23,10 @@ def generate_transcription_subtitles(audio_name):
         source_lang = settings["input_lan"]
         source_lang = source_lang[0]
 
+        # whisper_model_size being defined
+
+        whisper_model_size = settings["whisper_model_size"]
+
         # The maximum amount of time a subtitle will span
 
         maximum_subtitle_time = settings["maximum_subtitle_time"]
@@ -49,7 +53,7 @@ def generate_transcription_subtitles(audio_name):
 
     if model == None:
 
-        model = wld("small").to(device)
+        model = wld(whisper_model_size).to(device)
 
     # Subtitle settings and running
 
