@@ -227,7 +227,7 @@ def manage_AI_translation_models():
 
     broker = True
 
-    global translation_AI_model_being_used
+    global translation_AI_model_being_used, installed_translation_AI_models
         
     while broker:
 
@@ -240,8 +240,7 @@ current AI translation model being used:
 
 1. Change current AI translation model being used
 2. Install new AI translation model
-3. Update existent AI translation model
-4. Delete existent AI translation model
+3. Delete existent AI translation model
 
 0. Go back to more options 
 -------------------------------------------------------
@@ -252,19 +251,146 @@ current AI translation model being used:
 
         if option == "1":
 
-            print("Building...")
+            print("All installed AI translation models are: ")
+            print("----------------------------------------")
+
+            chosen_model = ""
+            exists = True
+
+            for i, model in enumerate(installed_translation_AI_models):
+
+                print(f"{i+1}. {model}")
+
+            print("----------------------------------------")
+
+            while (type(chosen_model) != int) or exists:
+                
+                try:
+
+                    print("Choose one of these models (enter the number)")
+                    print("(enter 0 to exit):")
+
+                    chosen_model = int(input())
+                    
+                    chosen_model = abs(chosen_model)
+
+                except ValueError:
+
+                    print("Input must be a whole number")
+                    print("Try again")
+                    print() 
+
+                if chosen_model == 0:
+
+                    print("Exiting...")
+                    print()
+
+                    break
+
+                elif (type(chosen_model) == int):
+
+                    try:
+                        
+                        translation_AI_model_being_used = installed_translation_AI_models[chosen_model-1]
+                        exists = False
+
+                    except IndexError:
+
+                        print("Input must be one of the numbers in the previously showed models list")
+                        print("Try again")
+                        print()
+
+                        chosen_model = ""
+
+            settings["translation_AI_model_being_used"] = translation_AI_model_being_used 
+
+            with open("cache/settings.pkl", "wb") as data:
+
+                pi.dump(settings, data) 
+
+
+            print("Current AI translation model being used has succesfully changed to:")
+            print(translation_AI_model_being_used)
+            print()
 
         elif option == "2":
 
-            print("Building...")
+            print("---------------------------------------------------")
+            print("Enter the new model identifier you want to install")
+            print("Format: user/model-name")
+            print("facebook/nllb-200-distilled-600M")
+            print("---------------------------------------------------")
+            model_path = input()
+
+            print("---------------------------------------------------")
+            print("Enter the new model desired quantization")
+            print("Example: int8")
+            print("Make sure specified quantization is posible in this model")
+            print("----------------------------------------------------------")
+            qua = input()
+            print()
+
+            from modules import installing as ins
+
+            ins.install_translation_model_ct2(model_path, qua)
 
         elif option == "3":
 
-            print("Building...")
+            print("All installed AI translation models are: ")
+            print("----------------------------------------")
 
-        elif option == "4":
+            chosen_model = ""
+            exists = True
 
-            print("Building...")
+            for i, model in enumerate(installed_translation_AI_models):
+
+                print(f"{i+1}. {model}")
+
+            print("----------------------------------------")
+
+            while (type(chosen_model) != int) or exists:
+                
+                try:
+
+                    print("Choose one of these models (enter the number):")
+                    print("(enter 0 to exit):")
+
+                    chosen_model = int(input())
+                    
+                    chosen_model = abs(chosen_model)
+
+                except ValueError:
+
+                    print("Input must be a whole number")
+                    print("Try again")
+                    print() 
+
+                if chosen_model == 0:
+
+                    print("Exiting...")
+                    print()
+
+                    break
+
+                elif (type(chosen_model) == int):
+
+                    try:
+                        
+                        from modules import installing as ins
+
+                        model_to_delete = installed_translation_AI_models[chosen_model-1]
+
+                        ins.delete_translation_model(model_to_delete)
+
+                        exists = False
+
+                    except IndexError:
+
+                        print("Input must be one of the numbers in the previously showed models list")
+                        print("Try again")
+                        print()
+
+                        chosen_model = ""
 
         elif option == "0":
 
@@ -531,8 +657,72 @@ Current task is: {task}
 
 def update_computer_information_in_cache():
 
-    print("I have no idea yet")
+    from modules import installing as ins
+
+    with open("cache/computer_information.pkl", "rb") as data:
+
+        computer_information = pi.load(data)
+
+    GPUs = ins.gpu_detecter()
+
+    print("These GPUS were found")
     print()
+    print(f"Current device being used for AI is {computer_information["GPU"]}") 
+    print("----------------------------------")
+
+    for i, gpu in enumerate(GPUs):
+
+        print(f"{i+1}. {gpu}")
+
+    print("----------------------------------")
+
+    chosen_gpu = ""
+
+    while (type(chosen_gpu) != int) or exists:
+                
+        try:
+
+            print("Choose one of these GPUs (enter the number)")
+            print("(enter 0 to exit):")
+
+            chosen_gpu = int(input())
+                    
+            chosen_gpu = abs(chosen_gpu)
+
+        except ValueError:
+
+            print("Input must be a whole number")
+            print("Try again")
+            print() 
+
+        if chosen_gpu == 0:
+
+            print("Exiting...")
+            print()
+
+            break
+
+        elif (type(chosen_gpu) == int):
+
+            try:
+                
+                computer_information["GPU"] = ins.gpu_chooser([GPUs[chosen_gpu-1]])
+
+                with open("cache/computer_information.pkl", "wb") as data:
+
+                    pi.dump(computer_information, data)
+
+                print(f"The device used for the AIs has changed to {computer_information["GPU"]}")
+                
+                exists = False
+
+            except IndexError:
+
+                print("Input must be one of the numbers in the previously showed models list")
+                print("Try again")
+                print()
+
+                chosen_gpu = ""
 
 # ------------------------- Other Tools Menu -------------------------
 
@@ -592,6 +782,7 @@ with open("cache/settings.pkl", "rb") as data:
     maximum_subtitle_time = settings["maximum_subtitle_time"]
     lines_per_subtitle = settings["lines_per_subtitle"]
     task = settings["task"]
+    installed_translation_AI_models = settings["installed_translation_AI_models"]
 
 broker = True
 

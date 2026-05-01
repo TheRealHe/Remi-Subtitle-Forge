@@ -2,10 +2,63 @@ from importlib import import_module as im
 from subprocess import run as sr
 from urllib.request import urlretrieve as url_r
 from shutil import rmtree as rmt
+import pickle as pi
 import sys
 import platform
 import ctypes
 import os
+# --------------------------- Install AI models and coverts them to ct2 ------------------------
+
+def delete_translation_model(model_path):
+
+    print(f"Deleting {model_path} tokenaizer and model")
+
+    # Deletes model
+
+    try:
+
+        rmt(f"models/{model_path}")
+
+    except FileNotFoundError:
+
+        print("Model folder does not exists")
+        input()
+
+        return None
+
+    except PermissionError:
+
+        print("You have no permises to delete this folder")
+        print("Run program as administrator")
+        input()
+
+        return None
+    
+    except Exception as ae:
+            
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        print("Press Enter to exit...")
+        input()
+
+        return None
+
+    # Register changes
+
+    with open("cache/settings.pkl", "rb") as data:
+
+        settings = pi.load(data)
+        installed_translation_AI_models = settings["installed_translation_AI_models"]
+            
+    installed_translation_AI_models.remove(model_path)
+
+    with open("cache/settings.pkl", "wb") as data:
+
+        settings["installed_translation_AI_models"] = installed_translation_AI_models
+        pi.dump(settings, data)
+
+    print(f"{model_path} has been successfully deleted")
+
 
 # --------------------------- Install AI models and coverts them to ct2 ------------------------
 
@@ -17,6 +70,8 @@ def install_translation_model_ct2(AI_model, qua):
     from transformers import AutoTokenizer as at
 
     try: 
+        
+        # Installs model using Ctranslate download function
 
         check = sr(
             
@@ -43,10 +98,14 @@ def install_translation_model_ct2(AI_model, qua):
        
         if check.returncode == 0:
 
+            # downloads specified tokenaizer in models/
+
             tokenizer.save_pretrained(f"models/{AI_model}-ct2")
                 
             print(f"{AI_model} tokenaizer is now installed")
             print()
+
+            # Removes not needed files
 
             print("Removing temporal files")
 
@@ -55,12 +114,25 @@ def install_translation_model_ct2(AI_model, qua):
             print("Removing was a success")
             print()
 
-            # downloads specified tokenaizer in models/
-
             print(f"{AI_model} installing of tokenaizer and model was successful")
             print()
 
-            return f"{AI_model}-ct2"
+            # Registers new download in installed_translation_AI_models list (cache)
+
+            with open("cache/settings.pkl", "rb") as data:
+
+                settings = pi.load(data)
+                installed_translation_AI_models = settings["installed_translation_AI_models"]
+            
+            new_model_path = f"{AI_model}-ct2"
+            installed_translation_AI_models.append(new_model_path)
+
+            with open("cache/settings.pkl", "wb") as data:
+
+                settings["installed_translation_AI_models"] = installed_translation_AI_models
+                pi.dump(settings, data)
+
+            return new_model_path
 
         else:
             
@@ -153,14 +225,14 @@ def gpu_detecter():
             
             if gpu.returncode == 0:
                 
-               lines = gpu.stdout.split("\n")
-               lines.remove(lines[0])
+                lines = gpu.stdout.split("\n")
+                lines.remove(lines[0])
 
-               GPUs = []
+                GPUs = []
                
                # Get the GPU names
                
-               for line in lines:
+                for line in lines:
                
                     if line != "":
                        
@@ -170,41 +242,45 @@ def gpu_detecter():
                         GPUs.append(line)
                         
                         print(f"GPU: {line} Found")
-            
-                # Read names and gets the best GPU
-            
-               for GPU in GPUs:
-                    
-                    if "NVIDIA" in GPU and ("GEFORCE" in GPU or "QUADRO" in GPU or "TESLA" in GPU ):
-                        
-                        print(f"The {GPU} will be used")
-                        print()
-                    
-                        return "nvidia"
-                    
-                    elif ("AMD" in GPU or "RADEON" in GPU) and not ("VEGA" in GPU and not ("RX" in GPU)) and not ("GRAPHICS" in GPU):
-                    
-                        print(f"The {GPU} will be used")
-                        print()    
-                            
-                        return "amd"
-                        
-               print("GPUs were not found. Using CPU therefore.")
-               print()
-                                
-               return "cpu"
-                                
+
+                return GPUs
+
+            else:
+        
+                print(f"This system is {system}. Installer.py is just available for windows atm")
+                print()
+
         except Exception as ae:
     
             print()
             print(f"❌ Error: {type(ae).__name__}: {ae}")
             print("Press Enter to exit...")
             input()
-            
-    else:
-        
-        print(f"This system is {system}. Installer.py is just available for windows atm")
+                        
+# -------------------------------- Read Names and Gets The Best GPU ------------------------
+
+def gpu_chooser(GPUs):
+
+    for GPU in GPUs:
+                    
+        if "NVIDIA" in GPU and ("GEFORCE" in GPU or "QUADRO" in GPU or "TESLA" in GPU ):
+                        
+            print(f"The {GPU} will be used")
+            print()
+                    
+            return "nvidia"
+                    
+        elif ("AMD" in GPU or "RADEON" in GPU) and not ("VEGA" in GPU and not ("RX" in GPU)) and not ("GRAPHICS" in GPU):
+                    
+            print(f"The {GPU} will be used")
+            print()    
+                            
+            return "amd"
+                        
+        print("GPUs were not found. Using CPU therefore.")
         print()
+                                
+        return "cpu"
 
 # ---------------------------------- Installing APPs with Funct ------------------------
 
