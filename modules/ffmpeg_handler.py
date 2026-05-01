@@ -81,6 +81,11 @@ def burn_subtitles(subtitles):
         print("Burning sucessful")
 
         return subtitles
+    
+    except FileNotFoundError:
+
+        print("File was not found")
+        input()
 
     except Exception as ae:
             
@@ -103,6 +108,11 @@ def post_process_delete(name):
        print()
        print("Delete succesfully")
 
+    except FileNotFoundError:
+
+        print("File was not found")
+        input()
+
     except Exception as ae:
             
         print()
@@ -111,3 +121,39 @@ def post_process_delete(name):
 
         return None
     
+# Cuts a section of a video
+
+def cut_video(video, start_cut, end_cut):
+
+    print()
+    print(f"Cutting video ({video}) as specified")
+
+    try:
+
+        # ffmpeg -i input.mp4 -ss 00:01:00 -t 30 -c:v libx264 -c:a aac output.mp4
+
+        sr(
+
+            ["ffmpeg",
+            "-i", f"input_vidoes/{video}",
+            "-ss", start_cut,
+            "-to", end_cut,
+            "-c", "copy", f"input_vidoes/{video}-cut"],
+
+            check = True
+
+        )
+
+        print()
+        print("Video cut successfully")
+    
+    except FileNotFoundError:
+
+        print("File was not found")
+        input()
+
+    except Exception as ae:
+            
+        print()
+        print(f"❌ Error: {type(ae).__name__}: {ae}")
+        input()

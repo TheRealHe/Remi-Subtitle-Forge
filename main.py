@@ -60,7 +60,7 @@ Enter the name of the video file (wihout extension): """)
         if name == 0:
 
             name = input("""
-Enter the name of the spanish .srt file to translate: """)
+Enter the name of transcripted .srt file to translate: """)
         print()
         
         nt.srt_translation(name)
@@ -200,11 +200,11 @@ def manage_languages():
 
         if option == "1":
 
-            print("Building...")
+            Change_input_language()
 
         elif option == "2":
 
-            print("Building...")
+            Change_output_language()
 
         elif option == "0":
 
@@ -219,7 +219,311 @@ def manage_languages():
 
 def Change_input_language():
 
-    print("me woa matar")
+    global input_lan
+
+    available_lan = ["english", "chinese", "german", "spanish", "russian", "korean", "french", "japanese", "portuguese", "turkish", "polish", "catalan", "dutch", "arabic", "swedish", "italian", "indonesian", "hindi", "finnish", "vietnamese", "hebrew", "ukrainian", "greek", "malay", "czech", "romanian", "danish", "hungarian", "tamil", "norwegian", "thai", "urdu", "croatian", "bulgarian", "lithuanian", "latin", "maori", "malayalam", "welsh", "slovak", "telugu", "persian", "latvian", "bengali", "serbian", "azerbaijani", "slovenian", "kannada", "estonian", "macedonian", "breton", "basque", "icelandic", "armenian", "nepali", "mongolian", "bosnian", "kazakh", "albanian", "swahili", "galician", "marathi", "punjabi", "sinhala", "khmer", "shona", "yoruba", "somali", "afrikaans", "occitan", "georgian", "belarusian", "tajik", "sindhi", "gujarati", "amharic", "yiddish", "lao", "uzbek", "faroese", "haitian creole", "pashto", "turkmen", "nynorsk", "maltese", "sanskrit", "luxembourgish", "myanmar", "tibetan", "tagalog", "malagasy", "assamese", "tatar", "hawaiian", "lingala", "hausa", "bashkir", "javanese", "sundanese"]
+
+    lan_codes = {
+
+        "english": ["en", "eng_Latn"],
+        "chinese": ["zh", "zho_Hans"], # Chinese code may be problematic as whisper mixes both traditional and simplified
+        "german": ["de", "deu_Latn"],
+        "spanish": ["es", "spa_Latn"],
+        "russian": ["ru", "rus_Cyrl"],
+        "korean": ["ko", "kor_Hang"],
+        "french": ["fr", "fra_Latn"],
+        "japanese": ["ja", "jpn_Jpan"],
+        "portuguese": ["pt", "por_Latn"],
+        "turkish": ["tr", "tur_Latn"],
+        "polish": ["pl", "pol_Latn"],
+        "catalan": ["ca", "cat_Latn"],
+        "dutch": ["nl", "nld_Latn"],
+        "arabic": ["ar", "arb_Arab"],
+        "swedish": ["sv", "swe_Latn"],
+        "italian": ["it", "ita_Latn"],
+        "indonesian": ["id", "ind_Latn"],
+        "hindi": ["hi", "hin_Deva"],
+        "finnish": ["fi", "fin_Latn"],
+        "vietnamese": ["vi", "vie_Latn"],
+        "hebrew": ["he", "heb_Hebr"],
+        "ukrainian": ["uk", "ukr_Cyrl"],
+        "greek": ["el", "ell_Grek"],
+        "malay": ["ms", "msa_Latn"],
+        "czech": ["cs", "ces_Latn"],
+        "romanian": ["ro", "ron_Latn"],
+        "danish": ["da", "dan_Latn"],
+        "hungarian": ["hu", "hun_Latn"],
+        "tamil": ["ta", "tam_Taml"],
+        "norwegian": ["no", "nor_Latn"],
+        "thai": ["th", "tha_Thai"],
+        "urdu": ["ur", "urd_Arab"],
+        "croatian": ["hr", "hrv_Latn"],
+        "bulgarian": ["bg", "bul_Cyrl"],
+        "lithuanian": ["lt", "lit_Latn"],
+        "latin": ["la", "lat_Latn"],
+        "maori": ["mi", "mri_Latn"],
+        "malayalam": ["ml", "mal_Mlym"],
+        "welsh": ["cy", "cym_Latn"],
+        "slovak": ["sk", "slk_Latn"],
+        "telugu": ["te", "tel_Telu"],
+        "persian": ["fa", "pes_Arab"],
+        "latvian": ["lv", "lav_Latn"],
+        "bengali": ["bn", "ben_Beng"],
+        "serbian": ["sr", "srp_Cyrl"],
+        "azerbaijani": ["az", "aze_Latn"],
+        "slovenian": ["sl", "slv_Latn"],
+        "kannada": ["kn", "kan_Knda"],
+        "estonian": ["et", "est_Latn"],
+        "macedonian": ["mk", "mkd_Cyrl"],
+        "breton": ["br", "bre_Latn"],
+        "basque": ["eu", "eus_Latn"],
+        "icelandic": ["is", "isl_Latn"],
+        "armenian": ["hy", "hye_Armn"],
+        "nepali": ["ne", "nep_Deva"],
+        "mongolian": ["mn", "khk_Cyrl"],
+        "bosnian": ["bs", "bos_Latn"],
+        "kazakh": ["kk", "kaz_Cyrl"],
+        "albanian": ["sq", "sqi_Latn"],
+        "swahili": ["sw", "swa_Latn"],
+        "galician": ["gl", "glg_Latn"],
+        "marathi": ["mr", "mar_Deva"],
+        "punjabi": ["pa", "pan_Guru"],
+        "sinhala": ["si", "sin_Sinh"],
+        "khmer": ["km", "khm_Khmr"],
+        "shona": ["sn", "sna_Latn"],
+        "yoruba": ["yo", "yor_Latn"],
+        "somali": ["so", "som_Latn"],
+        "afrikaans": ["af", "afr_Latn"],
+        "occitan": ["oc", "oci_Latn"],
+        "georgian": ["ka", "kat_Geor"],
+        "belarusian": ["be", "bel_Cyrl"],
+        "tajik": ["tg", "tgk_Cyrl"],
+        "sindhi": ["sd", "snd_Arab"],
+        "gujarati": ["gu", "guj_Gujr"],
+        "amharic": ["am", "amh_Ethi"],
+        "yiddish": ["yi", "yid_Hebr"],
+        "lao": ["lo", "lao_Laoo"],
+        "uzbek": ["uz", "uzn_Latn"],
+        "faroese": ["fo", "fao_Latn"],
+        "haitian creole": ["ht", "hat_Latn"],
+        "pashto": ["ps", "pbt_Arab"],
+        "turkmen": ["tk", "tuk_Latn"],
+        "nynorsk": ["nn", "nno_Latn"],
+        "maltese": ["mt", "mlt_Latn"],
+        "sanskrit": ["sa", "san_Deva"],
+        "luxembourgish": ["lb", "ltz_Latn"],
+        "myanmar": ["my", "mya_Mymr"],
+        "tibetan": ["bo", "bod_Tibt"],
+        "tagalog": ["tl", "tgl_Latn"],
+        "malagasy": ["mg", "mlg_Latn"],
+        "assamese": ["as", "asm_Beng"],
+        "tatar": ["tt", "tat_Cyrl"],
+        "hawaiian": ["haw", "haw_Latn"],
+        "lingala": ["ln", "lin_Latn"],
+        "hausa": ["ha", "hau_Latn"],
+        "bashkir": ["ba", "bak_Cyrl"],
+        "javanese": ["jw", "jav_Latn"],
+        "sundanese": ["su", "sun_Latn"]
+    }
+
+    broker = True
+
+    while broker:
+
+        print("Enter the new input language")
+        print("(enter 0 to exit)")
+        print("(enter \'help\' to see available input languages)")
+        print("--------------------------------------------------")
+
+        option = input()
+        print()
+        option = (option.lower()).strip()
+
+        if option == "0":
+
+            print("Exiting...")
+
+            return None
+        
+        elif option == "help":
+        
+            from modules import support_functions as sf
+
+            sf.print_languages_table(available_lan)
+
+            print()
+
+        elif available_lan.count(option) > 0:
+            
+            input_lan = lan_codes[option]
+
+            with open("cache/settings.pkl", "wb") as data:
+
+                settings["input_lan"] = input_lan
+
+                pi.dump(settings, data)
+
+            broker = False
+
+        else:
+
+            print("Language not found")
+            print()
+
+# Change output language
+
+def Change_output_language():
+
+    global output_lan
+
+    available_lan = ["english", "chinese", "german", "spanish", "russian", "korean", "french", "japanese", "portuguese", "turkish", "polish", "catalan", "dutch", "arabic", "swedish", "italian", "indonesian", "hindi", "finnish", "vietnamese", "hebrew", "ukrainian", "greek", "malay", "czech", "romanian", "danish", "hungarian", "tamil", "norwegian", "thai", "urdu", "croatian", "bulgarian", "lithuanian", "latin", "maori", "malayalam", "welsh", "slovak", "telugu", "persian", "latvian", "bengali", "serbian", "azerbaijani", "slovenian", "kannada", "estonian", "macedonian", "breton", "basque", "icelandic", "armenian", "nepali", "mongolian", "bosnian", "kazakh", "albanian", "swahili", "galician", "marathi", "punjabi", "sinhala", "khmer", "shona", "yoruba", "somali", "afrikaans", "occitan", "georgian", "belarusian", "tajik", "sindhi", "gujarati", "amharic", "yiddish", "lao", "uzbek", "faroese", "haitian creole", "pashto", "turkmen", "nynorsk", "maltese", "sanskrit", "luxembourgish", "myanmar", "tibetan", "tagalog", "malagasy", "assamese", "tatar", "hawaiian", "lingala", "hausa", "bashkir", "javanese", "sundanese"]
+
+    lan_codes = {
+
+        "english": "eng_Latn",
+        "chinese": "zho_Hans",
+        "german": "deu_Latn",
+        "spanish": "spa_Latn",
+        "russian": "rus_Cyrl",
+        "korean": "kor_Hang",
+        "french": "fra_Latn",
+        "japanese": "jpn_Jpan",
+        "portuguese": "por_Latn",
+        "turkish": "tur_Latn",
+        "polish": "pol_Latn",
+        "catalan": "cat_Latn",
+        "dutch": "nld_Latn",
+        "arabic": "arb_Arab",
+        "swedish": "swe_Latn",
+        "italian": "ita_Latn",
+        "indonesian": "ind_Latn",
+        "hindi": "hin_Deva",
+        "finnish": "fin_Latn",
+        "vietnamese": "vie_Latn",
+        "hebrew": "heb_Hebr",
+        "ukrainian": "ukr_Cyrl",
+        "greek": "ell_Grek",
+        "malay": "msa_Latn",
+        "czech": "ces_Latn",
+        "romanian": "ron_Latn",
+        "danish": "dan_Latn",
+        "hungarian": "hun_Latn",
+        "tamil": "tam_Taml",
+        "norwegian": "nor_Latn",
+        "thai": "tha_Thai",
+        "urdu": "urd_Arab",
+        "croatian": "hrv_Latn",
+        "bulgarian": "bul_Cyrl",
+        "lithuanian": "lit_Latn",
+        "latin": "lat_Latn",
+        "maori": "mri_Latn",
+        "malayalam": "mal_Mlym",
+        "welsh": "cym_Latn",
+        "slovak": "slk_Latn",
+        "telugu": "tel_Telu",
+        "persian": "pes_Arab",
+        "latvian": "lav_Latn",
+        "bengali": "ben_Beng",
+        "serbian": "srp_Cyrl",
+        "azerbaijani": "aze_Latn",
+        "slovenian": "slv_Latn",
+        "kannada": "kan_Knda",
+        "estonian": "est_Latn",
+        "macedonian": "mkd_Cyrl",
+        "breton": "bre_Latn",
+        "basque": "eus_Latn",
+        "icelandic": "isl_Latn",
+        "armenian": "hye_Armn",
+        "nepali": "nep_Deva",
+        "mongolian": "khk_Cyrl",
+        "bosnian": "bos_Latn",
+        "kazakh": "kaz_Cyrl",
+        "albanian": "sqi_Latn",
+        "swahili": "swa_Latn",
+        "galician": "glg_Latn",
+        "marathi": "mar_Deva",
+        "punjabi": "pan_Guru",
+        "sinhala": "sin_Sinh",
+        "khmer": "khm_Khmr",
+        "shona": "sna_Latn",
+        "yoruba": "yor_Latn",
+        "somali": "som_Latn",
+        "afrikaans": "afr_Latn",
+        "occitan": "oci_Latn",
+        "georgian": "kat_Geor",
+        "belarusian": "bel_Cyrl",
+        "tajik": "tgk_Cyrl",
+        "sindhi": "snd_Arab",
+        "gujarati": "guj_Gujr",
+        "amharic": "amh_Ethi",
+        "yiddish": "yid_Hebr",
+        "lao": "lao_Laoo",
+        "uzbek": "uzn_Latn",
+        "faroese": "fao_Latn",
+        "haitian creole": "hat_Latn",
+        "pashto": "pbt_Arab",
+        "turkmen": "tuk_Latn",
+        "nynorsk": "nno_Latn",
+        "maltese": "mlt_Latn",
+        "sanskrit": "san_Deva",
+        "luxembourgish": "ltz_Latn",
+        "myanmar": "mya_Mymr",
+        "tibetan": "bod_Tibt",
+        "tagalog": "tgl_Latn",
+        "malagasy": "mlg_Latn",
+        "assamese": "asm_Beng",
+        "tatar": "tat_Cyrl",
+        "hawaiian": "haw_Latn",
+        "lingala": "lin_Latn",
+        "hausa": "hau_Latn",
+        "bashkir": "bak_Cyrl",
+        "javanese": "jav_Latn",
+        "sundanese": "sun_Latn"
+    }
+
+    broker = True
+
+    while broker:
+
+        print("Enter the new output language")
+        print("(enter 0 to exit)")
+        print("(enter \'help\' to see available input languages)")
+        print("--------------------------------------------------")
+
+        option = input()
+        print()
+        option = (option.lower()).strip()
+
+        if option == "0":
+
+            print("Exiting...")
+
+            return None
+        
+        elif option == "help":
+        
+            from modules import support_functions as sf
+
+            sf.print_languages_table(available_lan)
+
+            print()
+
+        elif available_lan.count(option) > 0:
+            
+            output_lan = lan_codes[option]
+
+            with open("cache/settings.pkl", "wb") as data:
+
+                settings["output_lan"] = output_lan
+
+                pi.dump(settings, data)
+
+            broker = False
+
+        else:
+
+            print("Language not found")
+            print()
 
 # ------------------- Manage AI Translation Models Menu -------------------
 
@@ -315,24 +619,27 @@ current AI translation model being used:
 
         elif option == "2":
 
-            print("---------------------------------------------------")
-            print("Enter the new model identifier you want to install")
-            print("Format: user/model-name")
-            print("facebook/nllb-200-distilled-600M")
-            print("---------------------------------------------------")
-            model_path = input()
 
-            print("---------------------------------------------------")
-            print("Enter the new model desired quantization")
-            print("Example: int8")
-            print("Make sure specified quantization is posible in this model")
-            print("----------------------------------------------------------")
-            qua = input()
-            print()
+            model_path = choosing_NLLB_model_to_install()
 
-            from modules import installing as ins
+            if model_path != 0:
 
-            ins.install_translation_model_ct2(model_path, qua)
+                print("---------------------------------------------------")
+                print("Enter the new model desired quantization")
+                print("Example: int8")
+                print("Make sure specified quantization is posible in this model")
+                print("----------------------------------------------------------")
+                qua = input()
+                print()
+
+                from modules import installing as ins
+
+                ins.install_translation_model_ct2(model_path, qua)
+
+            else:
+
+                print("Exiting...")
+                print()
 
         elif option == "3":
 
@@ -399,6 +706,96 @@ current AI translation model being used:
         else:
 
             print("Enter a correct value (0-4)")
+            input()
+
+# Menu to select which NLB model to install
+
+def choosing_NLLB_model_to_install():
+     
+    broker = True
+
+    check_one = "not installed"
+    check_two = "not installed"
+    check_three = "not installed"
+    
+    import pickle as pi
+
+    with open("cache/settings.pkl", "rb") as data:
+
+        settings = pi.load(data)
+
+    if (settings["installed_translation_AI_models"]).count("facebook/nllb-200-distilled-600M-ct2") > 0:
+
+        check_one = "installed"
+
+    if (settings["installed_translation_AI_models"]).count("facebook/nllb-200-distilled-1.3B-ct2") > 0:
+
+        check_two = "installed"
+
+    if (settings["installed_translation_AI_models"]).count("facebook/nllb-200-3.3B-ct2") > 0:
+
+        check_three = "installed"
+
+    while broker:
+
+        option = input(f"""
+----------------------------------------------------
+            Choose NLLB Model to Install
+----------------------------------------------------      
+1. nllb-200-distilled-600M ({check_one})
+2. nllb-200-distilled-1.3B ({check_two})
+3. nllb-200-3.3B ({check_three})
+  
+0. Go back to more options 
+---------------------------------------------------- 
+                   
+""")
+    
+        print()
+
+        if option == "1":
+
+            if check_one == "installed":
+
+                print("This model is already installed")
+                print("Delete and re install if you want to update")
+                print()
+
+            else:
+                
+                return "facebook/nllb-200-distilled-600M"
+
+        elif option == "2":
+
+            if check_two == "installed":
+
+                print("This model is already installed")
+                print("Delete and re install if you want to update")
+                print()
+
+            else:
+
+                return "facebook/nllb-200-distilled-1.3B"
+            
+        elif option == "3":
+
+            if check_three == "installed":
+
+                print("This model is already installed")
+                print("Delete and re install if you want to update")
+                print()
+
+            else:
+
+                return "facebook/nllb-200-3.3B"
+
+        elif option == "0":
+
+            broker = False
+
+        else:
+
+            print("Enter a correct value (0-3)")
             input()
 
 # ------------------- Change Whisper Parameters Menu -------------------

@@ -53,3 +53,61 @@ def device_identifier():
         print("Go to (6. More options...) and manage GPUs")
 
     return device
+
+def print_languages_table(languages, columns=4):
+
+    # Calculate max length of each name for alignment
+
+    max_len = max(len(lang) for lang in languages) + 2
+    
+    import math
+
+    # Calculate how many rows we need
+
+    rows = math.ceil(len(languages) / columns)
+    
+    # Calculate total box width
+
+    box_width = (max_len + 3) * columns + 2
+    
+    # Print top border
+
+    print("╔" + "═" * (box_width - 2) + "╗")
+    
+    # Print centered title
+
+    title = "AVAILABLE LANGUAGES"
+    padding = (box_width - len(title) - 2) // 2
+    print(f"║{' ' * padding}{title}{' ' * (box_width - len(title) - padding - 2)}║")
+    
+    # Separator line
+    print("╠" + "═" * (box_width - 2) + "╣")
+    
+    # Print languages in columns
+
+    for i in range(rows):
+
+        row = ""
+
+        for j in range(columns):
+
+            idx = i + j * rows
+
+            if idx < len(languages):
+
+                lang = languages[idx]
+
+                # Format each column left-aligned
+
+                row += f"│ {lang:<{max_len - 1}}"
+
+            else:
+
+                row += "│" + " " * (max_len + 1)
+
+        row += "│"
+        print(row)
+    
+    # Print bottom border
+
+    print("╚" + "═" * (box_width - 2) + "╝")
