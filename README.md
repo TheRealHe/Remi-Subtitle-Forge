@@ -30,7 +30,7 @@
   <h3 align="center">Automatic Spanish to English Subtitles Generator</h3>
 
   <p align="center">
-    A complete pipeline to generate Spanish subtitles, translate them to English, and burn them into videos.
+    A complete pipeline to generate subtitles with Whisper (+100 languages), translate them with NLLB-200 (+200 languages), and burn specified subtitles into input videos.
     <br />
     <a href="https://github.com/TheRealHe/spanish_to_english_subtitles_generator"><strong>Explore the docs »</strong></a>
     <br />
