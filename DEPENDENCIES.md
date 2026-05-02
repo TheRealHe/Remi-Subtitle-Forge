@@ -20,9 +20,9 @@ The correct PyTorch version depends on your GPU. The auto-installer handles this
 
 | GPU Type | Command |
 |---------|---------|
-| **NVIDIA GPU (CUDA)** | `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` |
-| **AMD GPU (DirectML)** | `pip install torch-directml` |
-| **No GPU / Low VRAM (CPU)** | `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu` |
+| NVIDIA GPU (CUDA) | `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118` |
+| AMD GPU (DirectML) | `pip install torch-directml` |
+| No GPU / Low VRAM (CPU) | `pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu` |
 
 **Note:** If you have an older NVIDIA GPU (Compute Capability < 3.5), the CPU version is recommended.
 

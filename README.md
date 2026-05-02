@@ -66,8 +66,8 @@
     <li>
       <a href="#usage">Usage</a>
       <ul>
-        <li><a href="#main-menu">Prerequisites</a></li>
-        <li><a href="#more-options-menu">Installation (Automatic – Recommended)</a></li>
+        <li><a href="#main-menu">Main Menu</a></li>
+        <li><a href="#more-options-menu">More Options Menu</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -196,18 +196,7 @@ You will see an interactive terminal menu:
 (It is possible to run a range of steps. For example: 2,4 will run steps: 2,3,4)
 ```
 
-Typical workflow examples:
-
-| Command | What it does |
-|---------|---------------|
-| `1` | Download a video from YouTube |
-| `2` | Generate Spanish subtitles (`.srt`) |
-| `3` | Translate Spanish `.srt` to English |
-| `4` | Burn subtitles into the video |
-| `5` | Delete original video and subtitle files |
-| RANGES `2,4` (FOR EXAMPLE) | Run steps 2, 3, 4 in one go |
-
-All generated files are stored in dedicated folders:
+**All** generated files are stored in dedicated folders:
 
 - input_videos/ – input videos
 - transcripted_subtitles/ – generated transcription .srt
@@ -233,12 +222,14 @@ All generated files are stored in dedicated folders:
 
 **Options Description:**
 
-1. Manage languages Change the input language (for Whisper transcription) and output language (for NLLB translation).
-2. Manage AI translation models Install, switch between, or delete NLLB translation models (600M, 1.3B, 3.3B).
-3. Change Whisper parameters Adjust the Whisper model size (tiny to turbo), maximum subtitle duration (seconds), and lines per subtitle.
-4. Change subtitulation task Choose which subtitles get burned into the final video: transcribed (original language) or translated (target language).
-5. Update computer information in cache Manually select which GPU the AI should use (if multiple GPUs are available).
-6. Other tools allow the user to cut videos by time or concatenate multiple videos before processing.
+| Command | What it does |
+|---------|---------------|
+| `1` | **Manage languages Change the input language** - (for Whisper transcription) and output language (for NLLB translation). |
+| `2` | **Manage AI translation models** - Install, switch between, or delete NLLB translation models (600M, 1.3B, 3.3B). |
+| `3` | **Change Whisper parameters** - Adjust the Whisper model size (tiny to turbo), maximum subtitle duration (seconds), and lines per subtitle. |
+| `4` | **Change subtitulation task** - Choose which subtitles get burned into the final video: transcribed (original language) or translated (target language). |
+| `5` | **Update computer information in cache** - Manually select which GPU the AI should use (if multiple GPUs are available). |
+| `6` | **Other tools** - Allow the user to cut videos by time or concatenate multiple videos before processing. |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
