@@ -1133,8 +1133,9 @@ def other_tools():
 --------------------------------------------------
                 Other Tools - Menu
 --------------------------------------------------                    
-1. I will put stuff in here eventually...
-2. miau
+1. Cut specified input video
+2. Concatenate input videos (merge multiple files)
+3. Speed up / Slow down input video
 
 0. Go back to more options 
 --------------------------------------------------
@@ -1145,9 +1146,21 @@ def other_tools():
 
         if option == "1":
 
-            print("Building...")
+            from modules import ffmpeg_handler as fh
+
+            name = input("Enter the name of the video to cut (wihout extention): ")
+
+            print()
+
+            fh.cut_video(name)
 
         elif option == "2":
+
+            from modules import ffmpeg_handler as fh
+
+            fh.concatenate_video()
+
+        elif option == "3":
 
             print("Building...")
 
@@ -1157,7 +1170,7 @@ def other_tools():
 
         else:
 
-            print("Enter a correct value (0-2)")
+            print("Enter a correct value (0-3)")
             input()
 
 # ----------------------------------- The main code starts here -----------------------------------
