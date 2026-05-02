@@ -162,11 +162,11 @@ f you are not using Windows, or if the automatic installer fails, you can instal
 
 **This file includes:**
 
-· Python version requirements (3.8+)
-· List of all required Python packages with installation commands
-· System dependencies (FFmpeg, etc.) for Linux and macOS
-· GPU backend setup (CUDA for NVIDIA, DirectML for AMD, or CPU fallback)
-· Model download instructions (Whisper and NLLB-200)
+- Python version requirements (3.8+)
+- List of all required Python packages with installation commands
+- System dependencies (FFmpeg, etc.) for Linux and macOS
+- GPU backend setup (CUDA for NVIDIA, DirectML for AMD, or CPU fallback)
+- Model download instructions (Whisper and NLLB-200)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

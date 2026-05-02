@@ -28,7 +28,7 @@ The correct PyTorch version depends on your GPU. The auto-installer handles this
 
 **After installing PyTorch, the version of it being used MUST be entered into the program**
 
-This is possible in the **Update Computer Information Menu** found in the **6. More options...** menu:
+This is possible in the **Update Computer Information** menu, found in the **More options...** menu:
 
 ```sh
 ---------------------------------------------------
