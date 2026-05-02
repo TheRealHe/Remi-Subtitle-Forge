@@ -76,18 +76,30 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project automates the entire workflow of generating hardcoded (burned-in) English subtitles for Spanish videos. It was designed for content creators, translators, or anyone who needs to repurpose Spanish videos for an English-speaking audience.
+This project automates the entire workflow of generating burned-in subtitles for videos, supporting translation between any of the +200 languages supported by NLLB and transcription of any of the +100 languages supported by Whisper. It was designed for content creators, translators, or anyone who needs to repurpose videos for a global audience.
 
 **Why this project exists?**
-- Whisper is great for transcription, but needs post-processing for proper subtitle formatting (`.srt`).
-- NLLB-200 provides high-quality translation between Spanish and English, even for "low-resource" expressions.
-- Burning subtitles into videos ensures compatibility with any media player (no external files or players needed).
+- Whisper is great for transcription, but needs post-processing for proper subtitle formatting (.srt).
+- NLLB-200 provides high-quality translation among +200 languages.
+- Hardcoded (burned-in) subtitles are part of the video image itself, so they work on any device or player (TV, smartphone, projector, etc.) without needing separate .srt files or player support.
+- Human-in-the-loop – Automatically generated .srt files can be edited by the user at any stage, allowing manual correction of transcription or translation errors before burning them into the final video.
 
 **What makes it special?**
-- **Auto‑installer** – Checks and installs Python 3.11, FFmpeg, PyTorch (with GPU support), and even downloads the AI models automatically.
+
+- **Auto‑installer** – Checks and installs Python 3.8+, FFmpeg, PyTorch (among other dependencies), and automatically downloads AI models.
+- **Fully dynamic configuration** – Everything is configurable through interactive menus:
+  - **Translation models** – Install and switch between NLLB sizes (600M, 1.3B, 3.3B) on the fly.
+  - **Whisper models** – Choose between tiny, base, small, medium, large, or turbo based on your VRAM.
+  - **Input/Output languages** – Select from +100 languages for transcription (Whisper) and +200 languages for translation (NLLB).
+  - **Subtitling task** – Burn either the original transcription OR the translated version.
+  - **Subtitle formatting** – Adjust maximum subtitle duration and lines per subtitle.
+- **Human-in-the-loop workflow** – Since .srt files are plain text, users can manually correct any transcription or translation errors using any text editor before burning them into the video. This ensures final subtitle quality even when automatic generation makes mistakes.
 - **Modular design** – Each step (download, transcription, translation, burning, cleanup) runs independently or in sequence.
-- **Interactive menu** – Execute single steps (e.g., `2`) or a range (e.g., `2,4` to run steps 2,3,4).
-- **Smart SRT generation** – Groups Whisper words into lines, respects a maximum subtitle duration, and splits long segments cleanly.
+- **Interactive menu** – Execute single steps (e.g., 2) or a range (e.g., 2,4 to run steps 2,3,4).
+- **Smart SRT generation** – Respects a maximum subtitle duration, and lines per subtitle parameters.
+- **Video preprocessing tools** – Cut videos by time, concatenate multiple videos, and automatically avoid file overwrites with unique naming.
+- **Cross‑platform GPU support** – Works with NVIDIA (CUDA) and AMD (DirectML), with automatic fallback to CPU.
+- **Persistent configuration** – All settings are saved in cache/settings.pkl and persist between sessions.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,19 +137,36 @@ This project automates the entire workflow of generating hardcoded (burned-in) E
     python installer.py
 ```
     
-The installer will:
+**The installer will:**
 
 - Request administrator privileges
 - Install FFmpeg via winget
 - Install all Python dependencies (whisper‑timestamped, torch, ctranslate2, yt‑dlp, etc.)
 - Detect your GPU (NVIDIA, AMD, or CPU) and install the correct PyTorch backend
-- Download the Whisper model (small) and the NLLB‑200 model (converted to CTranslate2)
+- Download the NLLB‑200 model (converted to CTranslate2) and prepare Whisper model (small) for download before first use
+
+### Manual Installation (Linux / macOS)
+
+f you are not using Windows, or if the automatic installer fails, you can install everything manually.
+
+**All dependencies and detailed instructions are documented in:**
+
+[DEPENDENCIES.md](DEPENDENCIES.md)
+
+**This file includes:**
+
+· Python version requirements (3.8+)
+· List of all required Python packages with installation commands
+· System dependencies (FFmpeg, etc.) for Linux and macOS
+· GPU backend setup (CUDA for NVIDIA, DirectML for AMD, or CPU fallback)
+· Model download instructions (Whisper and NLLB-200)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+### Main Menu
 
 After installation, run the main menu:
 ```sh
@@ -148,13 +177,13 @@ You will see an interactive terminal menu:
 --------------------------------------------------------------------------
                     Terminal Menu - Subtitle generator
 --------------------------------------------------------------------------                 
-1. Download Video from YouTube.
-2. Create spanish transcription (.srt file) of the selected video.
-3. Translate Spanish transcription (.srt file) to English
-4. Burn the translated subtitle into the original video
+1. Download video from YouTube.
+2. Create video transcription (.str file) in [current input language]
+3. Translate transcription (.str file) to [current output language]
+4. Burn translated subtitles into de original video
 5. Delete specified subtitles (.srt files) and input video
 6. More options...
-
+  
 0. close the program. 
 --------------------------------------------------------------------------
 (It is possible to run a range of steps. For example: 2,4 will run steps: 2,3,4)
@@ -173,10 +202,36 @@ Typical workflow examples:
 
 All generated files are stored in dedicated folders:
 
-- videos/ – input videos
-- spanish_subtitles/ – generated Spanish .srt
-- english_subtitles/ – translated English .srt
-- subtitled_videos/ – final videos with burned‑in English subtitles
+- input_videos/ – input videos
+- transcripted_subtitles/ – generated transcription .srt
+- translated_subtitles/ – translated transcription .srt
+- output_videos/ – final videos with burned‑in subtitles
+
+### More Options Menu
+
+```sh
+---------------------------------------------------
+                More Options - Menu
+---------------------------------------------------        
+1. Manage languages (input and output)
+2. Manage AI translation models
+3. Change whisper parameters
+4. Change subtitulation task
+5. Update computer information in cache
+6. Other tools (basic video editing)
+  
+0. Go back to main menu 
+---------------------------------------------------
+```
+
+**Options Description:**
+
+1. Manage languages Change the input language (for Whisper transcription) and output language (for NLLB translation).
+2. Manage AI translation models Install, switch between, or delete NLLB translation models (600M, 1.3B, 3.3B).
+3. Change Whisper parameters Adjust the Whisper model size (tiny to turbo), maximum subtitle duration (seconds), and lines per subtitle.
+4. Change subtitulation task Choose which subtitles get burned into the final video: transcribed (original language) or translated (target language).
+5. Update computer information in cache Manually select which GPU the AI should use (if multiple GPUs are available).
+6. Other tools allow the user to cut videos by time or concatenate multiple videos before processing.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -187,7 +242,7 @@ All generated files are stored in dedicated folders:
 - [x] Auto‑installer for dependencies and models 
 - [x] Interactive menu with range execution  
 - [x] Smart SRT splitting (time‑aware)  
-- [ ] Multi‑language support (target other languages)  
+- [x] Multi‑language support (target other languages)  
 - [ ] Add a simple GUI (optional)  
 - [ ] Publish to PyPI  
 

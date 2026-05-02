@@ -376,110 +376,96 @@ def Change_output_language():
 
     global output_lan
 
-    available_lan = ["english", "chinese", "german", "spanish", "russian", "korean", "french", "japanese", "portuguese", "turkish", "polish", "catalan", "dutch", "arabic", "swedish", "italian", "indonesian", "hindi", "finnish", "vietnamese", "hebrew", "ukrainian", "greek", "malay", "czech", "romanian", "danish", "hungarian", "tamil", "norwegian", "thai", "urdu", "croatian", "bulgarian", "lithuanian", "latin", "maori", "malayalam", "welsh", "slovak", "telugu", "persian", "latvian", "bengali", "serbian", "azerbaijani", "slovenian", "kannada", "estonian", "macedonian", "breton", "basque", "icelandic", "armenian", "nepali", "mongolian", "bosnian", "kazakh", "albanian", "swahili", "galician", "marathi", "punjabi", "sinhala", "khmer", "shona", "yoruba", "somali", "afrikaans", "occitan", "georgian", "belarusian", "tajik", "sindhi", "gujarati", "amharic", "yiddish", "lao", "uzbek", "faroese", "haitian creole", "pashto", "turkmen", "nynorsk", "maltese", "sanskrit", "luxembourgish", "myanmar", "tibetan", "tagalog", "malagasy", "assamese", "tatar", "hawaiian", "lingala", "hausa", "bashkir", "javanese", "sundanese"]
+    available_lan = [
+    "acehnese (arabic)", "acehnese (latin)", "mesopotamian arabic", "ta'izzi-adeni arabic",
+    "tunisian arabic", "afrikaans", "south levantine arabic", "akan", "amharic",
+    "north levantine arabic", "modern standard arabic", "najdi arabic", "moroccan arabic",
+    "egyptian arabic", "assamese", "asturian", "awadhi", "central aymara", "south azerbaijani",
+    "north azerbaijani", "bashkir", "bambara", "balinese", "belarusian", "bemba", "bengali",
+    "bhojpuri", "banjar (arabic)", "banjar (latin)", "standard tibetan", "bosnian", "buginese",
+    "bulgarian", "catalan", "cebuano", "czech", "chokwe", "central kurdish", "crimean tatar",
+    "welsh", "danish", "german", "southwestern dinka", "dyula", "dzongkha", "greek", "english",
+    "esperanto", "estonian", "basque", "ewe", "faroese", "fijian", "finnish", "fon", "french",
+    "friulian", "nigerian fulfulde", "scottish gaelic", "irish", "galician", "guarani",
+    "gujarati", "haitian creole", "hausa", "hebrew", "hindi", "chhattisgarhi", "croatian",
+    "hungarian", "armenian", "igbo", "ilocano", "indonesian", "icelandic", "italian", "javanese",
+    "japanese", "kabyle", "jingpho", "kamba", "kannada", "kashmiri (arabic)", "kashmiri (devanagari)",
+    "georgian", "central kanuri (arabic)", "central kanuri (latin)", "kazakh", "kabiyè",
+    "kabuverdianu", "khmer", "kikuyu", "kinyarwanda", "kyrgyz", "kimbundu", "northern kurdish",
+    "kikongo", "korean", "lao", "ligurian", "limburgish", "lingala", "lithuanian", "lombard",
+    "latgalian", "luxembourgish", "luba-kasai", "ganda", "luo", "mizo", "standard latvian",
+    "magahi", "maithili", "malayalam", "marathi", "minangkabau (arabic)", "minangkabau (latin)",
+    "macedonian", "plateau malagasy", "maltese", "meitei (bengali)", "halh mongolian", "mossi",
+    "maori", "burmese", "dutch", "norwegian nynorsk", "norwegian bokmål", "nepali", "northern sotho",
+    "nuer", "nyanja", "occitan", "west central oromo", "odia", "pangasinan", "eastern punjabi",
+    "papiamento", "western persian", "polish", "portuguese", "dari", "southern pashto",
+    "ayacucho quechua", "romanian", "rundi", "russian", "sango", "sanskrit", "santali", "sicilian",
+    "shan", "sinhala", "slovak", "slovenian", "samoan", "shona", "sindhi", "somali", "southern sotho",
+    "spanish", "tosk albanian", "sardinian", "serbian", "swati", "sundanese", "swedish", "swahili",
+    "silesian", "tamil", "tatar", "telugu", "tajik", "tagalog", "thai", "tigrinya",
+    "tamasheq (latin)", "tamasheq (tifinagh)", "tok pisin", "tswana", "tsonga", "turkmen",
+    "tumbuka", "turkish", "twi", "central atlas tamazight", "uyghur", "ukrainian", "umbundu",
+    "urdu", "northern uzbek", "venetian", "vietnamese", "waray", "wolof", "xhosa", "eastern yiddish",
+    "yoruba", "yue chinese", "chinese (simplified)", "chinese (traditional)", "standard malay",
+    "zulu"]
 
-    lan_codes = {
-
-        "english": "eng_Latn",
-        "chinese": "zho_Hans",
-        "german": "deu_Latn",
-        "spanish": "spa_Latn",
-        "russian": "rus_Cyrl",
-        "korean": "kor_Hang",
-        "french": "fra_Latn",
-        "japanese": "jpn_Jpan",
-        "portuguese": "por_Latn",
-        "turkish": "tur_Latn",
-        "polish": "pol_Latn",
-        "catalan": "cat_Latn",
-        "dutch": "nld_Latn",
-        "arabic": "arb_Arab",
-        "swedish": "swe_Latn",
-        "italian": "ita_Latn",
-        "indonesian": "ind_Latn",
-        "hindi": "hin_Deva",
-        "finnish": "fin_Latn",
-        "vietnamese": "vie_Latn",
-        "hebrew": "heb_Hebr",
-        "ukrainian": "ukr_Cyrl",
-        "greek": "ell_Grek",
-        "malay": "msa_Latn",
-        "czech": "ces_Latn",
-        "romanian": "ron_Latn",
-        "danish": "dan_Latn",
-        "hungarian": "hun_Latn",
-        "tamil": "tam_Taml",
-        "norwegian": "nor_Latn",
-        "thai": "tha_Thai",
-        "urdu": "urd_Arab",
-        "croatian": "hrv_Latn",
-        "bulgarian": "bul_Cyrl",
-        "lithuanian": "lit_Latn",
-        "latin": "lat_Latn",
-        "maori": "mri_Latn",
-        "malayalam": "mal_Mlym",
-        "welsh": "cym_Latn",
-        "slovak": "slk_Latn",
-        "telugu": "tel_Telu",
-        "persian": "pes_Arab",
-        "latvian": "lav_Latn",
-        "bengali": "ben_Beng",
-        "serbian": "srp_Cyrl",
-        "azerbaijani": "aze_Latn",
-        "slovenian": "slv_Latn",
-        "kannada": "kan_Knda",
-        "estonian": "est_Latn",
-        "macedonian": "mkd_Cyrl",
-        "breton": "bre_Latn",
-        "basque": "eus_Latn",
-        "icelandic": "isl_Latn",
-        "armenian": "hye_Armn",
-        "nepali": "nep_Deva",
-        "mongolian": "khk_Cyrl",
-        "bosnian": "bos_Latn",
-        "kazakh": "kaz_Cyrl",
-        "albanian": "sqi_Latn",
-        "swahili": "swa_Latn",
-        "galician": "glg_Latn",
-        "marathi": "mar_Deva",
-        "punjabi": "pan_Guru",
-        "sinhala": "sin_Sinh",
-        "khmer": "khm_Khmr",
-        "shona": "sna_Latn",
-        "yoruba": "yor_Latn",
-        "somali": "som_Latn",
-        "afrikaans": "afr_Latn",
-        "occitan": "oci_Latn",
-        "georgian": "kat_Geor",
-        "belarusian": "bel_Cyrl",
-        "tajik": "tgk_Cyrl",
-        "sindhi": "snd_Arab",
-        "gujarati": "guj_Gujr",
-        "amharic": "amh_Ethi",
-        "yiddish": "yid_Hebr",
-        "lao": "lao_Laoo",
-        "uzbek": "uzn_Latn",
-        "faroese": "fao_Latn",
-        "haitian creole": "hat_Latn",
-        "pashto": "pbt_Arab",
-        "turkmen": "tuk_Latn",
-        "nynorsk": "nno_Latn",
-        "maltese": "mlt_Latn",
-        "sanskrit": "san_Deva",
-        "luxembourgish": "ltz_Latn",
-        "myanmar": "mya_Mymr",
-        "tibetan": "bod_Tibt",
-        "tagalog": "tgl_Latn",
-        "malagasy": "mlg_Latn",
-        "assamese": "asm_Beng",
-        "tatar": "tat_Cyrl",
-        "hawaiian": "haw_Latn",
-        "lingala": "lin_Latn",
-        "hausa": "hau_Latn",
-        "bashkir": "bak_Cyrl",
-        "javanese": "jav_Latn",
-        "sundanese": "sun_Latn"
-    }
+    lan_nllb_codes = {
+    "acehnese (arabic)": "ace_Arab", "acehnese (latin)": "ace_Latn", "mesopotamian arabic": "acm_Arab",
+    "ta'izzi-adeni arabic": "acq_Arab", "tunisian arabic": "aeb_Arab", "afrikaans": "afr_Latn",
+    "south levantine arabic": "ajp_Arab", "akan": "aka_Latn", "amharic": "amh_Ethi",
+    "north levantine arabic": "apc_Arab", "modern standard arabic": "arb_Arab", "najdi arabic": "ars_Arab",
+    "moroccan arabic": "ary_Arab", "egyptian arabic": "arz_Arab", "assamese": "asm_Beng",
+    "asturian": "ast_Latn", "awadhi": "awa_Deva", "central aymara": "ayr_Latn", "south azerbaijani": "azb_Arab",
+    "north azerbaijani": "azj_Latn", "bashkir": "bak_Cyrl", "bambara": "bam_Latn", "balinese": "ban_Latn",
+    "belarusian": "bel_Cyrl", "bemba": "bem_Latn", "bengali": "ben_Beng", "bhojpuri": "bho_Deva",
+    "banjar (arabic)": "bjn_Arab", "banjar (latin)": "bjn_Latn", "standard tibetan": "bod_Tibt",
+    "bosnian": "bos_Latn", "buginese": "bug_Latn", "bulgarian": "bul_Cyrl", "catalan": "cat_Latn",
+    "cebuano": "ceb_Latn", "czech": "ces_Latn", "chokwe": "cjk_Latn", "central kurdish": "ckb_Arab",
+    "crimean tatar": "crh_Latn", "welsh": "cym_Latn", "danish": "dan_Latn", "german": "deu_Latn",
+    "southwestern dinka": "dik_Latn", "dyula": "dyu_Latn", "dzongkha": "dzo_Tibt", "greek": "ell_Grek",
+    "english": "eng_Latn", "esperanto": "epo_Latn", "estonian": "est_Latn", "basque": "eus_Latn",
+    "ewe": "ewe_Latn", "faroese": "fao_Latn", "fijian": "fij_Latn", "finnish": "fin_Latn",
+    "fon": "fon_Latn", "french": "fra_Latn", "friulian": "fur_Latn", "nigerian fulfulde": "fuv_Latn",
+    "scottish gaelic": "gla_Latn", "irish": "gle_Latn", "galician": "glg_Latn", "guarani": "grn_Latn",
+    "gujarati": "guj_Gujr", "haitian creole": "hat_Latn", "hausa": "hau_Latn", "hebrew": "heb_Hebr",
+    "hindi": "hin_Deva", "chhattisgarhi": "hne_Deva", "croatian": "hrv_Latn", "hungarian": "hun_Latn",
+    "armenian": "hye_Armn", "igbo": "ibo_Latn", "ilocano": "ilo_Latn", "indonesian": "ind_Latn",
+    "icelandic": "isl_Latn", "italian": "ita_Latn", "javanese": "jav_Latn", "japanese": "jpn_Jpan",
+    "kabyle": "kab_Latn", "jingpho": "kac_Latn", "kamba": "kam_Latn", "kannada": "kan_Knda",
+    "kashmiri (arabic)": "kas_Arab", "kashmiri (devanagari)": "kas_Deva", "georgian": "kat_Geor",
+    "central kanuri (arabic)": "knc_Arab", "central kanuri (latin)": "knc_Latn", "kazakh": "kaz_Cyrl",
+    "kabiyè": "kbp_Latn", "kabuverdianu": "kea_Latn", "khmer": "khm_Khmr", "kikuyu": "kik_Latn",
+    "kinyarwanda": "kin_Latn", "kyrgyz": "kir_Cyrl", "kimbundu": "kmb_Latn", "northern kurdish": "kmr_Latn",
+    "kikongo": "kon_Latn", "korean": "kor_Hang", "lao": "lao_Laoo", "ligurian": "lij_Latn",
+    "limburgish": "lim_Latn", "lingala": "lin_Latn", "lithuanian": "lit_Latn", "lombard": "lmo_Latn",
+    "latgalian": "ltg_Latn", "luxembourgish": "ltz_Latn", "luba-kasai": "lua_Latn", "ganda": "lug_Latn",
+    "luo": "luo_Latn", "mizo": "lus_Latn", "standard latvian": "lvs_Latn", "magahi": "mag_Deva",
+    "maithili": "mai_Deva", "malayalam": "mal_Mlym", "marathi": "mar_Deva",
+    "minangkabau (arabic)": "min_Arab", "minangkabau (latin)": "min_Latn", "macedonian": "mkd_Cyrl",
+    "plateau malagasy": "plt_Latn", "maltese": "mlt_Latn", "meitei (bengali)": "mni_Beng",
+    "halh mongolian": "khk_Cyrl", "mossi": "mos_Latn", "maori": "mri_Latn", "burmese": "mya_Mymr",
+    "dutch": "nld_Latn", "norwegian nynorsk": "nno_Latn", "norwegian bokmål": "nob_Latn", "nepali": "npi_Deva",
+    "northern sotho": "nso_Latn", "nuer": "nus_Latn", "nyanja": "nya_Latn", "occitan": "oci_Latn",
+    "west central oromo": "gaz_Latn", "odia": "ory_Orya", "pangasinan": "pag_Latn",
+    "eastern punjabi": "pan_Guru", "papiamento": "pap_Latn", "western persian": "pes_Arab", "polish": "pol_Latn",
+    "portuguese": "por_Latn", "dari": "prs_Arab", "southern pashto": "pbt_Arab", "ayacucho quechua": "quy_Latn",
+    "romanian": "ron_Latn", "rundi": "run_Latn", "russian": "rus_Cyrl", "sango": "sag_Latn",
+    "sanskrit": "san_Deva", "santali": "sat_Olck", "sicilian": "scn_Latn", "shan": "shn_Mymr",
+    "sinhala": "sin_Sinh", "slovak": "slk_Latn", "slovenian": "slv_Latn", "samoan": "smo_Latn",
+    "shona": "sna_Latn", "sindhi": "snd_Arab", "somali": "som_Latn", "southern sotho": "sot_Latn",
+    "spanish": "spa_Latn", "tosk albanian": "als_Latn", "sardinian": "srd_Latn", "serbian": "srp_Cyrl",
+    "swati": "ssw_Latn", "sundanese": "sun_Latn", "swedish": "swe_Latn", "swahili": "swh_Latn",
+    "silesian": "szl_Latn", "tamil": "tam_Taml", "tatar": "tat_Cyrl", "telugu": "tel_Telu",
+    "tajik": "tgk_Cyrl", "tagalog": "tgl_Latn", "thai": "tha_Thai", "tigrinya": "tir_Ethi",
+    "tamasheq (latin)": "taq_Latn", "tamasheq (tifinagh)": "taq_Tfng", "tok pisin": "tpi_Latn",
+    "tswana": "tsn_Latn", "tsonga": "tso_Latn", "turkmen": "tuk_Latn", "tumbuka": "tum_Latn",
+    "turkish": "tur_Latn", "twi": "twi_Latn", "central atlas tamazight": "tzm_Tfng", "uyghur": "uig_Arab",
+    "ukrainian": "ukr_Cyrl", "umbundu": "umb_Latn", "urdu": "urd_Arab", "northern uzbek": "uzn_Latn",
+    "venetian": "vec_Latn", "vietnamese": "vie_Latn", "waray": "war_Latn", "wolof": "wol_Latn",
+    "xhosa": "xho_Latn", "eastern yiddish": "ydd_Hebr", "yoruba": "yor_Latn", "yue chinese": "yue_Hant",
+    "chinese (simplified)": "zho_Hans", "chinese (traditional)": "zho_Hant", "standard malay": "zsm_Latn",
+    "zulu": "zul_Latn"
+}
 
     broker = True
 
@@ -510,7 +496,7 @@ def Change_output_language():
 
         elif available_lan.count(option) > 0:
             
-            output_lan = lan_codes[option]
+            output_lan = lan_nllb_codes[option]
 
             with open("cache/settings.pkl", "wb") as data:
 
@@ -739,15 +725,15 @@ def choosing_NLLB_model_to_install():
     while broker:
 
         option = input(f"""
-----------------------------------------------------
-            Choose NLLB Model to Install
-----------------------------------------------------      
-1. nllb-200-distilled-600M ({check_one})
-2. nllb-200-distilled-1.3B ({check_two})
-3. nllb-200-3.3B ({check_three})
+----------------------------------------------------------------------------   
+                        Choose NLLB Model to Install
+----------------------------------------------------------------------------   
+1. nllb-200-distilled-600M - fastest, ~650 MB, 1-2 GB VRAM ({check_one})
+2. nllb-200-distilled-1.3B - balanced, ~1.3 GB, 3-4 GB VRAM ({check_two})
+3. nllb-200-3.3B - best quality, ~ 3 GB, 6-8 GB VRAM ({check_three})
   
 0. Go back to more options 
----------------------------------------------------- 
+----------------------------------------------------------------------------
                    
 """)
     
@@ -1054,72 +1040,180 @@ Current task is: {task}
 
 def update_computer_information_in_cache():
 
-    from modules import installing as ins
+    broker = True
+        
+    while broker:
+
+        option = input(f"""
+---------------------------------------------------
+            Update Computer Information
+---------------------------------------------------                    
+1. Automatic GPU update
+2. Manual GPU update (for manual installations)
+
+0. Go back to more options 
+---------------------------------------------------
+                   
+""")
+    
+        print()
+
+        if option == "1":
+
+            from modules import installing as ins
+
+            with open("cache/computer_information.pkl", "rb") as data:
+
+                computer_information = pi.load(data)
+
+            GPUs = ins.gpu_detecter()
+
+            print("These GPUS were found")
+            print()
+            print(f"Current device being used for AI is {computer_information["GPU"]}") 
+            print("----------------------------------")
+
+            for i, gpu in enumerate(GPUs):
+
+                print(f"{i+1}. {gpu}")
+
+            print("----------------------------------")
+
+            chosen_gpu = ""
+
+            while (type(chosen_gpu) != int) or exists:
+                        
+                try:
+
+                    print("Choose one of these GPUs (enter the number)")
+                    print("(enter 0 to exit):")
+
+                    chosen_gpu = int(input())
+                            
+                    chosen_gpu = abs(chosen_gpu)
+
+                except ValueError:
+
+                    print("Input must be a whole number")
+                    print("Try again")
+                    print() 
+
+                if chosen_gpu == 0:
+
+                    print("Exiting...")
+                    print()
+
+                    break
+
+                elif (type(chosen_gpu) == int):
+
+                    try:
+                        
+                        computer_information["GPU"] = ins.gpu_chooser([GPUs[chosen_gpu-1]])
+
+                        with open("cache/computer_information.pkl", "wb") as data:
+
+                            pi.dump(computer_information, data)
+
+                        print(f"The device used for the AIs has changed to {computer_information["GPU"]}")
+                        
+                        exists = False
+
+                    except IndexError:
+
+                        print("Input must be one of the numbers in the previously showed models list")
+                        print("Try again")
+                        print()
+
+                        chosen_gpu = ""
+
+        elif option == "2":
+
+            device_manual_choosing()
+
+        elif option == "0":
+
+            broker = False
+
+        else:
+
+            print("Enter a correct value (0-2)")
+            input()
+
+# Allows the user to manually change their GPU...
+
+def device_manual_choosing():
+
+    broker = True
 
     with open("cache/computer_information.pkl", "rb") as data:
 
         computer_information = pi.load(data)
+        
+    while broker:
 
-    GPUs = ins.gpu_detecter()
+        option = input(f"""
+------------------------------
+        Manual Update
+------------------------------
+Select the brand of your GPU
 
-    print("These GPUS were found")
-    print()
-    print(f"Current device being used for AI is {computer_information["GPU"]}") 
-    print("----------------------------------")
+1. Nvidia
+2. AMD/Ryzen
+3. CPU 
+                       
+Choose CPU if GPU is not
+capable enough (few VRAM)
 
-    for i, gpu in enumerate(GPUs):
+0. Go back to more options
+------------------------------
+                   
+""")
+    
+        print()
 
-        print(f"{i+1}. {gpu}")
+        broker = False
 
-    print("----------------------------------")
+        if option == "1":
 
-    chosen_gpu = ""
+            computer_information["GPU"] = "nvidia"
 
-    while (type(chosen_gpu) != int) or exists:
-                
-        try:
+            with open("cache/computer_information.pkl", "wb") as data:
 
-            print("Choose one of these GPUs (enter the number)")
-            print("(enter 0 to exit):")
+                pi.dump(computer_information, data)
 
-            chosen_gpu = int(input())
-                    
-            chosen_gpu = abs(chosen_gpu)
+            print(f"GPU correctly updated to: {computer_information["GPU"]}")
 
-        except ValueError:
+        elif option == "2":
+            
+            computer_information["GPU"] = "amd"
 
-            print("Input must be a whole number")
-            print("Try again")
-            print() 
+            with open("cache/computer_information.pkl", "wb") as data:
 
-        if chosen_gpu == 0:
+                pi.dump(computer_information, data)
 
-            print("Exiting...")
-            print()
+            print(f"GPU correctly updated to: {computer_information["GPU"]}")
 
-            break
+        elif option == "3":
 
-        elif (type(chosen_gpu) == int):
+            computer_information["GPU"] = "cpu"
 
-            try:
-                
-                computer_information["GPU"] = ins.gpu_chooser([GPUs[chosen_gpu-1]])
+            with open("cache/computer_information.pkl", "wb") as data:
 
-                with open("cache/computer_information.pkl", "wb") as data:
+                pi.dump(computer_information, data)
 
-                    pi.dump(computer_information, data)
+            print(f"GPU correctly updated to: {computer_information["GPU"]}")
 
-                print(f"The device used for the AIs has changed to {computer_information["GPU"]}")
-                
-                exists = False
+        elif option == "0":
 
-            except IndexError:
+            broker = False
 
-                print("Input must be one of the numbers in the previously showed models list")
-                print("Try again")
-                print()
+        else:
 
-                chosen_gpu = ""
+            print("Enter a correct value (0-3)")
+            input()
+
+            broker = True
 
 # ------------------------- Other Tools Menu -------------------------
 
@@ -1135,7 +1229,6 @@ def other_tools():
 --------------------------------------------------                    
 1. Cut specified input video
 2. Concatenate input videos (merge multiple files)
-3. Speed up / Slow down input video
 
 0. Go back to more options 
 --------------------------------------------------
@@ -1160,17 +1253,13 @@ def other_tools():
 
             fh.concatenate_video()
 
-        elif option == "3":
-
-            print("Building...")
-
         elif option == "0":
 
             broker = False
 
         else:
 
-            print("Enter a correct value (0-3)")
+            print("Enter a correct value (0-2)")
             input()
 
 # ----------------------------------- The main code starts here -----------------------------------
