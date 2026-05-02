@@ -59,10 +59,17 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#installation-automatic--recommended">Installation (Automatic – Recommended)</a></li>
+        <li><a href="#manual-installation-linux--macos">Manual Installation (Linux / macOS)</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#main-menu">Prerequisites</a></li>
+        <li><a href="#more-options-menu">Installation (Automatic – Recommended)</a></li>
+      </ul>
+    </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -143,7 +150,7 @@ This project automates the entire workflow of generating burned-in subtitles for
 - Install FFmpeg via winget
 - Install all Python dependencies (whisper‑timestamped, torch, ctranslate2, yt‑dlp, etc.)
 - Detect your GPU (NVIDIA, AMD, or CPU) and install the correct PyTorch backend
-- Download the NLLB‑200 model (converted to CTranslate2) and prepare Whisper model (small) for download before first use
+- Download the NLLB‑200 model (converted to CTranslate2) and prepare Whisper model (small) for download just before first use
 
 ### Manual Installation (Linux / macOS)
 
@@ -291,7 +298,7 @@ Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generat
 * [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 * [PyTorch](https://pytorch.org)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* [ONNX-Runtime] (https://github.com/microsoft/onnxruntime) 
+* [ONNX-Runtime](https://github.com/microsoft/onnxruntime) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
