@@ -27,7 +27,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">Automatic Spanish to English Subtitles Generator</h3>
+  <h3 align="center">Remi Subtitle Forge</h3>
 
   <p align="center">
     A complete pipeline to generate subtitles with Whisper (+100 languages), translate them with NLLB-200 (+200 languages), and burn specified subtitles into input videos.
@@ -72,6 +72,7 @@
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#support-the-project">Support the Project</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -264,10 +265,16 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Support the Project
+
+If you find this tool useful, consider supporting its development:
+
+[![Support via Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/DaanDev)
+
 <!-- LICENSE -->
 ## License
 
-Distributed under the Unlicense License. See `LICENSE.txt` for more information.
+Distributed under the Unlicense License. See [LICENSE.txt](LICENSE.txt) for more information.
 
 <!-- CONTACT -->
 ## Contact
