@@ -32,14 +32,14 @@
   <p align="center">
     A complete pipeline to generate subtitles with Whisper (+100 languages), translate them with NLLB-200 (+200 languages), and burn specified subtitles into input videos.
     <br />
-    <a href="https://github.com/TheRealHe/spanish_to_english_subtitles_generator"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TheRealHe/Remi-Subtitle-Forge"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#usage">View Demo</a>
     &middot;
-    <a href="https://github.com/TheRealHe/automatic_spanish_to_english_subtitles/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/TheRealHe/Remi-Subtitle-Forge/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/TheRealHe/automatic_spanish_to_english_subtitles/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/TheRealHe/Remi-Subtitle-Forge/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -136,8 +136,8 @@ This project automates the entire workflow of generating burned-in subtitles for
 
 1. **Clone the repository**
 ```sh
-   git clone https://github.com/your_username/automatic_spanish_to_english_subtitles.git
-   cd automatic_spanish_to_english_subtitles
+   git clone https://github.com/your_username/Remi-Subtitle-Forge.git
+   cd Remi-Subtitle-Forge
 ```
 2. **Run the installer**
 ```sh
@@ -274,7 +274,7 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 Daniel Rojas - hdrojas.sanin@gmail.com - [LinkedIn][linkedin-url]
 
-Project Link: [https://github.com/TheRealHe/spanish_to_english_subtitles_generator](https://github.com/TheRealHe/spanish_to_english_subtitles_generator)
+Project Link: [https://github.com/TheRealHe/Remi-Subtitle-Forge](https://github.com/TheRealHe/Remi-Subtitle-Forge)
 
 
 <!-- ACKNOWLEDGMENTS -->
