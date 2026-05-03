@@ -547,9 +547,15 @@ current AI translation model being used:
             chosen_model = ""
             exists = True
 
-            for i, model in enumerate(installed_translation_AI_models):
+            if len(installed_translation_AI_models) > 0:
 
-                print(f"{i+1}. {model}")
+                for i, model in enumerate(installed_translation_AI_models):
+
+                    print(f"{i+1}. {model}")
+
+            else:
+
+                print("None")
 
             print("----------------------------------------")
 
@@ -635,9 +641,15 @@ current AI translation model being used:
             chosen_model = ""
             exists = True
 
-            for i, model in enumerate(installed_translation_AI_models):
+            if len(installed_translation_AI_models) > 0:
 
-                print(f"{i+1}. {model}")
+                for i, model in enumerate(installed_translation_AI_models):
+
+                    print(f"{i+1}. {model}")
+
+            else:
+
+                print("None")
 
             print("----------------------------------------")
 
@@ -777,7 +789,7 @@ def choosing_NLLB_model_to_install():
 
         elif option == "0":
 
-            broker = False
+            return 0
 
         else:
 
