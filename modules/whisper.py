@@ -104,13 +104,13 @@ def generate_transcription_subtitles(audio_name):
 
                 # Write in .srt file if is the last line and max time is alr
 
-                if (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) < maximum_subtitle_time):
+                if (len(lines_list) >= lines_per_subtitle) and (subtitle_time <= maximum_subtitle_time):
                     
                     lines_list, subtitle_start, subtitle_end, x = writting_on_srt_True(ssf, subtitle_start[0], subtitle_end[-1], lines_list, x) 
 
                 # Write in .srt file if is the last line and max time is not alr
 
-                elif (len(lines_list) >= lines_per_subtitle) and ((subtitle_time) > maximum_subtitle_time):
+                elif (len(lines_list) >= lines_per_subtitle) and (subtitle_time > maximum_subtitle_time):
 
                     lines_list, subtitle_start, subtitle_end, x = writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle, maximum_subtitle_time)
 
@@ -122,7 +122,7 @@ def generate_transcription_subtitles(audio_name):
         print(f"❌ Error: {type(ae).__name__}: {ae}")
         input()
 
-        #return None
+        return None
 
     finally:
         
@@ -170,19 +170,19 @@ def srt_timelaps_format(x):
 def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, lines_per_subtitle, maximum_subtitle_time):
 
     new_lines_list = []
-    subtitle_time = 11
-    n = lines_per_subtitle - 1
-
+    subtitle_time = maximum_subtitle_time + 1
+    n = lines_per_subtitle
 
     while subtitle_time > maximum_subtitle_time:
 
+        n = n - 1
+
         subtitle_time = subtitle_end[n] - subtitle_start[0]
 
-        if n == 1 and subtitle_time > maximum_subtitle_time:
+        if (n == 0) and subtitle_time > maximum_subtitle_time:
 
             subtitle_time = 0
         
-        n = n - 1
 
     # writes subtitle number
 
@@ -223,8 +223,14 @@ def writting_on_srt_False(ssf, subtitle_start, subtitle_end, lines_list, x, line
 
         
     subtitle_end = [subtitle_end[-1]]
-    subtitle_start = [subtitle_start[n + 1]]
 
+    if n != 0:
+
+        subtitle_start = [subtitle_start[n + 1]]
+
+    else:
+
+        subtitle_start = []
 
     return new_lines_list, subtitle_start, subtitle_end, x
 
