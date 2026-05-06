@@ -12,6 +12,8 @@ model = None
 
 def generate_transcription_subtitles(audio_name):
 
+    name = ".".join((audio_name.split("."))[:-1])
+
     global model
 
     with open("cache/settings.pkl", "rb") as data:
@@ -37,7 +39,7 @@ def generate_transcription_subtitles(audio_name):
         lines_per_subtitle = settings["lines_per_subtitle"] 
         
 
-    if not (os.path.exists(f"temp_{audio_name}_audio.wav")):
+    if not (os.path.exists(f"temp_{name}_audio.wav")):
 
         print()
         print("Audio not found")
@@ -61,9 +63,9 @@ def generate_transcription_subtitles(audio_name):
 
         subtitles = wt(model,
 
-            f"temp_{audio_name}_audio.wav",
+            f"temp_{name}_audio.wav",
 
-            language = "es",
+            language = source_lang,
             task = "transcribe",
             fp16 = True if device == "cuda" else False,
             compute_word_confidence = True,
@@ -79,7 +81,7 @@ def generate_transcription_subtitles(audio_name):
 
         # Creates subtitles file and saves them as .str (ssf = spanish_subtitles_file)
 
-        with open(f"transcripted_subtitles/{audio_name}.srt", "w", encoding = "utf-8") as ssf:
+        with open(f"transcripted_subtitles/{name}.srt", "w", encoding = "utf-8") as ssf:
 
             lines_list = []
             subtitle_start = []
@@ -128,9 +130,9 @@ def generate_transcription_subtitles(audio_name):
         
         # Deleting temporal audio
 
-        if os.path.exists(f"temp_{audio_name}_audio.wav"):
+        if os.path.exists(f"temp_{name}_audio.wav"):
            
-            os.remove(f"temp_{audio_name}_audio.wav")
+            os.remove(f"temp_{name}_audio.wav")
 
 # Acommodates time into .srt format
 

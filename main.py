@@ -24,7 +24,7 @@ Name the video file (without extention, just the name): """)
         url = input("""
 Enter the URL of the video to download: """)
 
-        yd.download_youtube(url, name)
+        name = yd.download_youtube(url, name)
 
     elif option == "2":
 
@@ -37,7 +37,7 @@ Enter the URL of the video to download: """)
         if name == 0:
 
             name = input("""
-Enter the name of the video file (wihout extension): """)
+Enter the name of the video file (with extension): """)
 
         name = fh.extract_audio(name)
 
@@ -60,7 +60,7 @@ Enter the name of the video file (wihout extension): """)
         if name == 0:
 
             name = input("""
-Enter the name of transcripted .srt file to translate: """)
+Enter the name of the video to translate subtitles (with extension): """)
         print()
         
         nt.srt_translation(name)
@@ -75,7 +75,7 @@ Enter the name of transcripted .srt file to translate: """)
         if name == 0:
         
             name = input("""
-Enter the name of the video file (wihout extension): """)
+Enter the name of the video file (with extension): """)
         
         from modules import ffmpeg_handler as fh
 
@@ -91,7 +91,7 @@ Enter the name of the video file (wihout extension): """)
         if name == 0:
 
             name = input("""
-Enter the name of the files to delete (wihout extension): """)
+Enter the name of the video which files will be deleted (with extension): """)
         
         from modules import ffmpeg_handler as fh
         

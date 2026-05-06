@@ -8,7 +8,7 @@ def extract_audio(video_name):
 
     # Checking file existence
 
-    if not (os.path.exists(f"input_videos/{video_name}.mp4")):
+    if not (os.path.exists(f"input_videos/{video_name}")):
 
         print()
         print("❌ Video not found (press enter to continue)")
@@ -18,24 +18,26 @@ def extract_audio(video_name):
 
     try:
 
-    # Runs "ffmpeg -i "video.mp4" -vn -ar 16000 -ac 1 "audio.wav" in CMD 
+    # Runs "ffmpeg -i "video" -vn -ar 16000 -ac 1 "audio.wav" in CMD 
+
+        name = ".".join((video_name.split("."))[:-1])
 
         sr([
 
             "ffmpeg",
-            "-i", f"input_videos/{video_name}.mp4",
+            "-i", f"input_videos/{video_name}",
             "-vn", 
             "-ar", "16000", 
             "-ac", "1",
             "-af", "volume=1.2", 
-            f"temp_{video_name}_audio.wav"
+            f"temp_{name}_audio.wav"
 
  # Captures output and allows Python to check if line fails
 
 ], check = True) 
         
         print()
-        print(f"Audio successfully extracted: temp_{video_name}_audio.wav") # Confirmation
+        print(f"Audio successfully extracted: temp_{name}_audio.wav") # Confirmation
         print()
         
         return video_name
@@ -52,10 +54,12 @@ def extract_audio(video_name):
     
 # Burns the specified subtitles into the input video
 
-def burn_subtitles(subtitles):
+def burn_subtitles(video):
+
+    name = ".".join((video.split("."))[:-1])
 
     print()
-    print(f"Burning subtittles ({subtitles}) into the video")
+    print(f"Burning subtittles ({name}) into the video")
 
     # Gets the task from cache (whatever it is burning the transcriptions or translations)
 
@@ -71,16 +75,16 @@ def burn_subtitles(subtitles):
         sr([
 
             "ffmpeg",
-            "-i", f"input_videos/{subtitles}.mp4",
-            "-vf", f"subtitles={task}_subtitles/{subtitles}.srt",
-            f"output_videos/{subtitles}.mp4"
+            "-i", f"input_videos/{video}",
+            "-vf", f"subtitles={task}_subtitles/{name}.srt",
+            f"output_videos/{name}.mp4"
             
         ], check = True)
 
         print()
         print("Burning sucessful")
 
-        return subtitles
+        return video
     
     except FileNotFoundError:
 
@@ -97,16 +101,18 @@ def burn_subtitles(subtitles):
     
 # Deletes the process files from the algorithm workflow
 
-def post_process_delete(name):
+def post_process_delete(video_name):
 
     try:
     
-       os.remove(f"input_videos/{name}.mp4")
-       os.remove(f"translated_subtitles/{name}.srt")
-       os.remove(f"transcripted_subtitles/{name}.srt")
+        name = ".".join((video_name.split("."))[:-1])
 
-       print()
-       print("Delete succesfully")
+        os.remove(f"input_videos/{video_name}")
+        os.remove(f"translated_subtitles/{name}.srt")
+        os.remove(f"transcripted_subtitles/{name}.srt")
+
+        print()
+        print("Delete succesfully")
 
     except FileNotFoundError:
 

@@ -35,9 +35,9 @@ def download_youtube(url, name):
             downloader.download([url])
 
             print()
-            print(f"The Video ({name}) has been downloaded successfully")
+            print(f"The Video ({name}.mp4) has been downloaded successfully")
 
-            return name
+            return f"{name}.mp4"
 
     except Exception as ae:
 

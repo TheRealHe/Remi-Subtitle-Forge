@@ -16,6 +16,8 @@ def srt_translation(srt_file_name):
     global tokenizer
     global model
 
+    name = ".".join((srt_file_name.split("."))[:-1])
+
     # Getting the translation_AI_model_being_used, input and output language from cache
 
     with open("cache/settings.pkl", "rb") as data:
@@ -38,7 +40,7 @@ def srt_translation(srt_file_name):
 
             return None
 
-    if not (os.path.exists(f"transcripted_subtitles/{srt_file_name}.srt")):
+    if not (os.path.exists(f"transcripted_subtitles/{name}.srt")):
 
         print()
         print(".srt not found")
@@ -101,7 +103,7 @@ def srt_translation(srt_file_name):
 
     # Reading and translating lines from spanish .srt
 
-    with open(f"transcripted_subtitles/{srt_file_name}.srt", "r", encoding="utf-8") as spanish_subtitles:
+    with open(f"transcripted_subtitles/{name}.srt", "r", encoding="utf-8") as spanish_subtitles:
 
         lines = spanish_subtitles.readlines()
 
@@ -137,7 +139,7 @@ def srt_translation(srt_file_name):
 
     # Writes the translated lines in a new .srt english subtitles document
 
-    with open(f"translated_subtitles/{srt_file_name}.srt", "w", encoding = "utf-8") as english_subtitles:
+    with open(f"translated_subtitles/{name}.srt", "w", encoding = "utf-8") as english_subtitles:
 
         for translated_line in translated_lines:
 
